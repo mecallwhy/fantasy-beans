@@ -1,0 +1,165 @@
+#stats-blur{
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.596);
+    backdrop-filter: blur(5px);
+    z-index: 999;
+    position:fixed;
+}
+#stats-container{
+    border-radius: 10px;
+    background-color: var(--second-color);
+    height: 530px;
+    width: 650px;
+    margin: 3% auto 3% auto;
+    display: grid;
+    grid-template-columns: 25px 400px 200px 25px; 
+    grid-template-rows: 61px 145px 300px;
+}
+#stats-fullname{
+    grid-column: 2/3;
+    grid-row: 1/2;
+    margin: 0;
+    align-self: end;
+}
+#stats-points{
+    font-size: larger;
+    font-weight: bold;
+    list-style: none;
+    padding: 0;
+    grid-column: 2/3;
+    grid-row: 2/3;
+}
+#stats-points li{
+    display:grid;
+    grid-template-columns: 50% 50%;
+    font-weight: lighter;
+    font-size: large;
+}
+#stats-container h1 span{
+    font-weight: lighter;
+}
+#stats-points li{
+    font-weight: lighter;
+    font-size: large;
+}
+#stats-position{
+    color: white;
+    margin: 0;
+    height: 30px;
+    width: 120px;
+    margin-top: 10px;
+    padding: 6px 2px 0 0;
+    border-radius: 5px;
+    grid-column: 3/4;
+    grid-row: 2/3;
+    text-align: center;
+    justify-self: end;
+}
+#stats-close-img{
+    height: 20px;
+    grid-column: 4/5;
+    grid-row: 1/2;
+    margin-top: 5px;
+    cursor: pointer;
+}
+#stats-club{
+    grid-column: 3/4;
+    grid-row: 1/2;
+    justify-self: end;
+    align-self: end;
+    text-align: center;
+    margin: 0;
+    height: 30px;
+    width: 190px;
+    padding: 6px 2px 0 0;
+    border-radius: 5px;
+}
+.stats-club-Ata{
+    color: white;
+    background-color: #1E71B8ee;
+}
+.stats-club-Bol{
+    color: #1A2F48;
+    background-color: #a21c25ee;
+}
+.stats-club-Cag{
+    color: white;
+    background-color: #002350ee;
+}
+.stats-club-Emp{
+    color: white;
+    background-color: #00579Cee;
+}
+.stats-club-Fio{
+    color: white;
+    background-color: #482E92ee;
+}
+.stats-club-Gen{
+    color: #FFD400;
+    background-color: #AD1919ee;
+}
+.stats-club-Hel{
+    color: #FFE74A;
+    background-color: #005395ee;
+}
+.stats-club-Int{
+    color: white;
+    background-color: #010E80ee;
+}
+.stats-club-Juv{
+    color: white;
+    background-color: black;
+}
+.stats-club-Laz{
+    color: black;
+    background-color: #87D8F7ee;
+}
+.stats-club-Mil{
+    color: black;
+    background-color: #FB090Bee;
+}
+.stats-club-Nap{
+    color: white;
+    background-color: #12A0D7ee;
+}
+.stats-club-Rom{
+    color: #F0BC42;
+    background-color: #8E1F2Fee;
+}
+.stats-club-Sal{
+    color: white;
+    background-color: rgba(79, 18, 17);
+}
+.stats-club-Sam{
+     color: white;
+    background-color: rgba(27, 84, 151);
+}
+.stats-club-Sas{
+    color: black;
+    background-color: rgba(0, 167, 82);
+}
+.stats-club-Spe{
+    color: black;
+    background-color: white;
+}
+.stats-club-Tor{
+    color: white;
+    background-color: #8A1E03;
+}
+.stats-club-Udi{
+    color: white;
+    background-color: rgb(49, 97, 135);
+}
+.stats-club-Ven{
+    color: rgb(235, 214, 149);
+    background-color: black;
+}
+#chart-container{
+    height: 300px;
+    width: 600px;
+    margin: 0;
+    padding: 0;
+    grid-column: 2/4;
+    grid-row: 3/4;
+}

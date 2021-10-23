@@ -1,0 +1,517 @@
+.player-bean-blank{
+    font-size: .8em;
+    color: white;
+    opacity: .5;
+    font-weight: bold;
+    height: 6vw;
+    width: 4.5vw;
+    border: 2px solid black;
+    border-radius: 1.7vw;
+    background: url(./images/blank.jpg);
+    background-size: contain;
+    background-position: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto 1.7em auto;
+    padding: .5vw;
+    align-items: center;
+    justify-items: center;
+}
+
+.player-bean-atalanta{
+    font-size: .8em;
+    color: white;
+    font-weight: bold;
+    height: 6vw;
+    width: 4.5vw;
+    border: 2px solid black;
+    border-radius: 1.7vw;
+    background: url(./images/atalanta.jpg);
+    background-size: contain;
+    background-position: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto 1.7em auto;
+    padding: .5vw;
+    align-items: center;
+    justify-items: center;
+  }
+  .player-bean-bologna{
+    font-size: .8em;
+    color: white;
+    font-weight: bold;
+    height: 6vw;
+    width: 4.5vw;
+    border: 2px solid black;
+    border-radius: 1.7vw;
+    background: url(./images/bologna.jpg);
+    background-size: contain;
+    background-position: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto 1.7em auto;
+    padding: .5vw;
+    align-items: center;
+    justify-items: center;
+  }
+  .player-bean-cagliari{
+    font-size: .8em;
+    color: white;
+    font-weight: bold;
+    height: 6vw;
+    width: 4.5vw;
+    border: 2px solid black;
+    border-radius: 1.7vw;
+    background: url(./images/cagliari.jpg);
+    background-size: contain;
+    background-position: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto 1.7em auto;
+    padding: .5vw;
+    align-items: center;
+    justify-items: center;
+  }
+  .player-bean-empoli{
+    font-size: .8em;
+    color: white;
+    font-weight: bold;
+    height: 6vw;
+    width: 4.5vw;
+    border: 2px solid black;
+    border-radius: 1.7vw;
+    /* background: url(./images/empoli.jpg); */
+    background-size: contain;
+    background-position: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto 1.7em auto;
+    padding: .5vw;
+    align-items: center;
+    justify-items: center;
+  }
+  .player-bean-fiorentina{
+    font-size: .8em;
+    color: white;
+    font-weight: bold;
+    height: 6vw;
+    width: 4.5vw;
+    border: 2px solid black;
+    border-radius: 1.7vw;
+    background: url(./images/fiorentina.jpg);
+    background-size: contain;
+    background-position: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto 1.7em auto;
+    padding: .5vw;
+    align-items: center;
+    justify-items: center;
+  }
+  .player-bean-genoa{
+    font-size: .8em;
+    color: white;
+    font-weight: bold;
+    height: 6vw;
+    width: 4.5vw;
+    border: 2px solid black;
+    border-radius: 1.7vw;
+    background: url(./images/genoa.jpg);
+    background-size: contain;
+    background-position: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto 1.7em auto;
+    padding: .5vw;
+    align-items: center;
+    justify-items: center;
+  }
+  .player-bean-hellas{
+    font-size: .8em;
+    color: #FFE74A;
+    font-weight: bold;
+    height: 6vw;
+    width: 4.5vw;
+    border: 2px solid black;
+    border-radius: 1.7vw;
+    background: url(./images/hellas.jpg);
+    background-size: contain;
+    background-position: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto 1.7em auto;
+    padding: .5vw;
+    align-items: center;
+    justify-items: center;
+  }
+  .player-bean-inter{
+    font-size: .8em;
+    color: white;
+    font-weight: bold;
+    height: 6vw;
+    width: 4.5vw;
+    border: 2px solid black;
+    border-radius: 1.7vw;
+    background: url(./images/inter.jpg);
+    background-size: contain;
+    background-position: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto 1.7em auto;
+    padding: .5vw;
+    align-items: center;
+    justify-items: center;
+  }
+  .player-bean-juventus{
+    font-size: .8em;
+    color: white;
+    font-weight: bold;
+    height: 6vw;
+    width: 4.5vw;
+    border: 2px solid black;
+    border-radius: 1.7vw;
+    background: url(./images/juventus.jpg);
+    background-size: contain;
+    background-position: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto 1.7em auto;
+    padding: .5vw;
+    align-items: center;
+    justify-items: center;
+  }
+  .player-bean-lazio{
+    font-size: .8em;
+    color: black;
+    font-weight: bold;
+    height: 6vw;
+    width: 4.5vw;
+    border: 2px solid black;
+    border-radius: 1.7vw;
+    background: url(./images/lazio.jpg);
+    background-size: contain;
+    background-position: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto 1.7em auto;
+    padding: .5vw;
+    align-items: center;
+    justify-items: center;
+  }
+  .player-bean-milan{
+    font-size: .8em;
+    color: white;
+    font-weight: bold;
+    height: 6vw;
+    width: 4.5vw;
+    border: 2px solid black;
+    border-radius: 1.7vw;
+    background: url(./images/milan.jpg);
+    background-size: contain;
+    background-position: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto 1.7em auto;
+    padding: .5vw;
+    align-items: center;
+    justify-items: center;
+  }
+  .player-bean-napoli{
+    font-size: .8em;
+    color: black;
+    font-weight: bold;
+    height: 6vw;
+    width: 4.5vw;
+    border: 2px solid black;
+    border-radius: 1.7vw;
+    background: url(./images/napoli.jpg);
+    background-size: contain;
+    background-position: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto 1.7em auto;
+    padding: .5vw;
+    align-items: center;
+    justify-items: center;
+  }
+  .player-bean-roma{
+    font-size: .8em;
+    color: black;
+    font-weight: bold;
+    height: 6vw;
+    width: 4.5vw;
+    border: 2px solid black;
+    border-radius: 1.7vw;
+    background: url(./images/roma.jpg);
+    background-size: auto;
+    background-position: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto 1.7em auto;
+    padding: .5vw;
+    align-items: center;
+    justify-items: center;
+  }
+  .player-bean-salernitana{
+    font-size: .8em;
+    color: white;
+    font-weight: bold;
+    height: 6vw;
+    width: 4.5vw;
+    border: 2px solid black;
+    border-radius: 1.7vw;
+    /* background: url(./images/salernitana.jpg); */
+    background-size: contain;
+    background-position: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto 1.7em auto;
+    padding: .5vw;
+    align-items: center;
+    justify-items: center;
+  }
+  .player-bean-sampdoria{
+    font-size: .8em;
+    color: white;
+    font-weight: bold;
+    height: 6vw;
+    width: 4.5vw;
+    border: 2px solid black;
+    border-radius: 1.7vw;
+    /* background: url(./images/sampdoria.jpg); */
+    background-size: contain;
+    background-position: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto 1.7em auto;
+    padding: .5vw;
+    align-items: center;
+    justify-items: center;
+  }
+  .player-bean-sassuolo{
+    font-size: .8em;
+    color: white;
+    font-weight: bold;
+    height: 6vw;
+    width: 4.5vw;
+    border: 2px solid black;
+    border-radius: 1.7vw;
+    background: url(./images/sassuolo.jpg);
+    background-size: contain;
+    background-position: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto 1.7em auto;
+    padding: .5vw;
+    align-items: center;
+    justify-items: center;
+  }
+  .player-bean-spezia{
+    font-size: .8em;
+    color: white;
+    font-weight: bold;
+    height: 6vw;
+    width: 4.5vw;
+    border: 2px solid black;
+    border-radius: 1.7vw;
+    /* background: url(./images/spezia.jpg); */
+    background-size: contain;
+    background-position: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto 1.7em auto;
+    padding: .5vw;
+    align-items: center;
+    justify-items: center;
+  }
+  .player-bean-torino{
+    font-size: .8em;
+    color: white;
+    font-weight: bold;
+    height: 6vw;
+    width: 4.5vw;
+    border: 2px solid black;
+    border-radius: 1.7vw;
+    background: url(./images/torino.jpg);
+    background-size: contain;
+    background-position: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto 1.7em auto;
+    padding: .5vw;
+    align-items: center;
+    justify-items: center;
+  }
+  .player-bean-udinese{
+    font-size: .8em;
+    color: white;
+    font-weight: bold;
+    height: 6vw;
+    width: 4.5vw;
+    border: 2px solid black;
+    border-radius: 1.7vw;
+    /* background: url(./images/udinese.jpg); */
+    background-size: contain;
+    background-position: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto 1.7em auto;
+    padding: .5vw;
+    align-items: center;
+    justify-items: center;
+  }
+  .player-bean-venezia{
+    font-size: .8em;
+    color: white;
+    font-weight: bold;
+    height: 6vw;
+    width: 4.5vw;
+    border: 2px solid black;
+    border-radius: 1.7vw;
+    /* background: url(./images/venezia.jpg); */
+    background-size: contain;
+    background-position: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto 1.7em auto;
+    padding: .5vw;
+    align-items: center;
+    justify-items: center;
+  }
+
+.player-bean-surname{
+    text-transform: uppercase;
+    text-align: center;
+    width: 140%;
+    grid-column: 1/3;
+    grid-row: 1/2;
+}
+.player-bean-number{
+    font-size: 38px;
+    grid-column: 1/3;
+    grid-row: 2/3;
+}
+.player-bean-points{
+    grid-column: 1/2;
+    grid-row: 3/4;
+}
+.player-bean-price{
+    grid-column: 2/3;
+    grid-row: 3/4;
+}
+.player-bean-btn-stats{
+    grid-column: 1/3;
+    grid-row: 2/3;
+    background-color: white;
+    color: #001011;
+    text-transform: uppercase;
+    border: 0;
+    height: 100%;
+    width: 100%;
+    border: 1px solid black;
+    display: none;
+    font-size: .8em;
+}
+.player-bean-btn-switch-small{
+    grid-column: 1/2;
+    grid-row: 3/4;
+    background-color: white;
+    color: #001011;
+    text-transform: uppercase;
+    border: 0;
+    height: 100%;
+    width: 100%;
+    border: 1px solid black;
+    display: none;
+    font-size: .8em;
+}
+.player-bean-btn-switch-big{
+    grid-column: 1/3;
+    grid-row: 2/4;
+    background: none;
+    height: 120%;
+    width: 90%;
+    z-index: 99;
+    display: none;
+    border: none;
+    border-radius: 50%;
+    padding: 0;
+    font-size: .8em;
+}
+.player-bean-btn-eliminate{
+    grid-column: 2/3;
+    grid-row: 3/4;
+    background-color: white;
+    color: #001011;
+    text-transform: uppercase;
+    border: 0;
+    height: 100%;
+    width: 100%;
+    border: 1px solid black;
+    display: none;
+    font-size: .8em;
+}
+.switch-img-small{
+  width: 100%;
+}
+
+.switch-img{
+  width: 100%;
+  animation: rotation 1s ease-in-out infinite;
+}
+
+@keyframes rotation{
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
+
+.player-bean-btn-stats:hover{
+  background: #6CCFF6;
+  transition-duration: 300ms;
+}
+.player-bean-btn-switch-small:hover{
+  background: #6CCFF6;
+  transition-duration: 300ms;
+}
+.player-bean-btn-eliminate:hover{
+  background: #6CCFF6;
+  transition-duration: 300ms;
+}
+
+.player-bean-hover:hover{
+  transition-duration: 300ms;
+  transform: scale(1.6);
+  grid-gap: 10px;
+}
+
+.player-bean-hover:hover{
+  transition-duration: 300ms;
+  transform: scale(1.6);
+  grid-gap: 10px;
+}
+.player-bean-hover:hover .player-bean-number{
+  display: none;
+}
+.player-bean-hover:hover .player-bean-points{
+  display: none;
+}
+.player-bean-hover:hover .player-bean-price{
+  display: none;
+}
+.player-bean-hover:hover .player-bean-btn-stats{
+  display: block;
+}
+.player-bean-hover:hover .player-bean-btn-switch-small{
+  display: block;
+}
+.player-bean-hover:hover .player-bean-btn-eliminate{
+  display: block;
+}
+
+.extra-bean{
+  display: none;
+}
