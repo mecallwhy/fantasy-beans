@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useFetch} from "react"
+import React, { useEffect, useState} from "react"
 import players from "./Players";
 import formations from "./formations.js"
 import PageToggleButton from "./PageToggleButton.js";
@@ -292,10 +292,8 @@ const Market = (props) => {
               clubTotalValue={clubTotalValue}
               formationIndex={formationIndex}
               setBalance = {setBalance}
-              leaveChosenBeans = {true}
               setTemporarySquad = {setTemporarySquad}
               setDisabledButtons={(data) => setDisabledButtons(data)}
-              clubCounterSetters = {clubCounterSetters}
               setBeansCounter = {setBeansCounter}
               positionCounters ={positionCounters}
               clubCounterSetters = {clubCounterSetters}

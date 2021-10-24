@@ -1,4 +1,4 @@
-import React, { useState, useHire } from "react";
+import React, { useState } from "react";
 import "./style-main.css";
 import "./style-bean.css";
 import "./style-market.css";
@@ -222,7 +222,6 @@ function Main(){
               beansCounter = {beansCounter}
               setStatsToShowIndex = {setStatsToShowIndex}
               setShowStats={setShowStats}
-              showStats={showStats}
               />
           </div>
           <div id="pitch-line-def">
@@ -243,7 +242,6 @@ function Main(){
               beansCounter = {beansCounter}
               setStatsToShowIndex = {setStatsToShowIndex}
               setShowStats={setShowStats}
-              showStats={showStats}
             />
             <PlayerBean
               theSquad={theSquad}
@@ -262,7 +260,6 @@ function Main(){
               beansCounter = {beansCounter}
               setStatsToShowIndex = {setStatsToShowIndex}
               setShowStats={setShowStats}
-              showStats={showStats}
             />
             <PlayerBean
               theSquad={theSquad}
@@ -281,7 +278,6 @@ function Main(){
               beansCounter = {beansCounter}
               setStatsToShowIndex = {setStatsToShowIndex}
               setShowStats={setShowStats}
-              showStats={showStats}
             />
             <PlayerBean
               theSquad={theSquad}
@@ -300,7 +296,6 @@ function Main(){
               beansCounter = {beansCounter}
               setStatsToShowIndex = {setStatsToShowIndex}
               setShowStats={setShowStats}
-              showStats={showStats}
             />
             <PlayerBean
               theSquad={theSquad}
@@ -319,7 +314,6 @@ function Main(){
               beansCounter = {beansCounter}
               setStatsToShowIndex = {setStatsToShowIndex}
               setShowStats={setShowStats}
-              showStats={showStats}
             />
           </div>
           <div id="pitch-line-mid">
@@ -340,7 +334,6 @@ function Main(){
               beansCounter = {beansCounter}
               setStatsToShowIndex = {setStatsToShowIndex}
               setShowStats={setShowStats}
-              showStats={showStats}
             />
             <PlayerBean
               theSquad={theSquad}
@@ -359,7 +352,6 @@ function Main(){
               beansCounter = {beansCounter}
               setStatsToShowIndex = {setStatsToShowIndex}
               setShowStats={setShowStats}
-              showStats={showStats}
             />
             <PlayerBean
               theSquad={theSquad}
@@ -378,7 +370,6 @@ function Main(){
               beansCounter = {beansCounter}
               setStatsToShowIndex = {setStatsToShowIndex}
               setShowStats={setShowStats}
-              showStats={showStats}
             />
             <PlayerBean
               theSquad={theSquad}
@@ -397,7 +388,6 @@ function Main(){
               beansCounter = {beansCounter}
               setStatsToShowIndex = {setStatsToShowIndex}
               setShowStats={setShowStats}
-              showStats={showStats}
             />
             <PlayerBean
               theSquad={theSquad}
@@ -416,7 +406,6 @@ function Main(){
               beansCounter = {beansCounter}
               setStatsToShowIndex = {setStatsToShowIndex}
               setShowStats={setShowStats}
-              showStats={showStats}
             />
           </div>
           <div id="pitch-line-fwd">
@@ -437,7 +426,6 @@ function Main(){
               beansCounter = {beansCounter}
               setStatsToShowIndex = {setStatsToShowIndex}
               setShowStats={setShowStats}
-              showStats={showStats}
             />
             <PlayerBean
               theSquad={theSquad}
@@ -456,7 +444,6 @@ function Main(){
               beansCounter = {beansCounter}
               setStatsToShowIndex = {setStatsToShowIndex}
               setShowStats={setShowStats}
-              showStats={showStats}
             />
             <PlayerBean
               theSquad={theSquad}
@@ -475,7 +462,6 @@ function Main(){
               beansCounter = {beansCounter}
               setStatsToShowIndex = {setStatsToShowIndex}
               setShowStats={setShowStats}
-              showStats={showStats}
             />
           </div>
         </div>
@@ -490,7 +476,6 @@ function Main(){
             clubCounters = {clubCounters}
             positionCounters = {positionCounters}
             clubCounterSetters = {clubCounterSetters}
-            positionCounters = {positionCounters}
             setTemporarySquad = {setTemporarySquad}
             setBeansCounter = {setBeansCounter}
             beansCounter = {beansCounter}
@@ -523,7 +508,6 @@ function Main(){
                   beansCounter = {beansCounter}
                   setStatsToShowIndex = {setStatsToShowIndex}
                   setShowStats={setShowStats}
-                  showStats={showStats}
                 />
                 <PlayerBean
                   theSquad={theSquad}
@@ -541,8 +525,7 @@ function Main(){
                   setBeansCounter = {setBeansCounter}
                   beansCounter = {beansCounter}
                   setStatsToShowIndex = {setStatsToShowIndex}
-                  setShowStats={setShowStats}
-                  showStats={showStats}
+                  setShowStats={setShowStats}  
                 />
                 <PlayerBean
                   theSquad={theSquad}
@@ -561,7 +544,6 @@ function Main(){
                   beansCounter = {beansCounter}
                   setStatsToShowIndex = {setStatsToShowIndex}
                   setShowStats={setShowStats}
-                  showStats={showStats}
                 />
                 <PlayerBean
                   theSquad={theSquad}
@@ -580,7 +562,6 @@ function Main(){
                   beansCounter = {beansCounter}
                   setStatsToShowIndex = {setStatsToShowIndex}
                   setShowStats={setShowStats}
-                  showStats={showStats}
                 />
           </div>
         </div>
@@ -595,7 +576,6 @@ function Main(){
           balance = {balance}
           setBalance = {setBalance}
           clubCounters = {clubCounters}
-          positionCounters = {positionCounters}
           clubCounterSetters = {clubCounterSetters}
           positionCounters = {positionCounters}
           setTemporarySquad = {setTemporarySquad}

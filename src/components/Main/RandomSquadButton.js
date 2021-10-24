@@ -128,7 +128,6 @@ const RandomSquadButton = (props)=>{
         let tempVenCounter = 0
 
         const updateLimits = (player) => {
-            console.log("zatrudniono")
             switch(player.club){
                 case "Atalanta": tempAtaCounter++
                     break;
@@ -189,7 +188,6 @@ const RandomSquadButton = (props)=>{
         const isWithinLimits = (player) => {
             let isWithinClubLimits = false;
             let isOnNeededPosition = false;
-            console.log(player)
             switch(player.club){
                 case "Atalanta" : 
                     if(tempAtaCounter < 3){ isWithinClubLimits =  true }
@@ -331,8 +329,11 @@ const RandomSquadButton = (props)=>{
         else{
             infiniteLoopPrevention = 0
             while(totalPlayersNeededNumber > 0 && infiniteLoopPrevention < 500){
-                
-                newPlayer = players.filter(player => player.price >= clubTotalValue - moneySpent -1 && player.price <= clubTotalValue - moneySpent)[Math.floor(Math.random()*players.filter(player => player.price >= clubTotalValue - moneySpent -1 && player.price <= clubTotalValue - moneySpent).length)]
+                const mostExpensiveAffordablePlayers = players.filter(player => 
+                    player.price >= clubTotalValue - moneySpent -1 && 
+                    player.price <= clubTotalValue - moneySpent)
+                newPlayer = mostExpensiveAffordablePlayers[Math.floor(Math.random()*mostExpensiveAffordablePlayers.length)]
+
                 if(isWithinLimits(newPlayer)){
                     updateLimits(newPlayer)
                     moneySpent = moneySpent + newPlayer.price

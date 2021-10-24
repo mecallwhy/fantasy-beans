@@ -13,10 +13,10 @@ const Schedule = (props) => {
           <div id="schedule-matchday">
             <h2>Kolejka {matchdayIndex+1}.</h2>
             {matchdayIndex > 0 && <button id="schedule-matchday-prev-button" onClick={()=>{setMatchdayIndex(matchdayIndex-1)}}>
-                <img src={leftArrow}></img>
+                <img src={leftArrow} alt="left"></img>
               </button>}
             {matchdayIndex < 37 && <button id="schedule-matchday-next-button" onClick={()=>{setMatchdayIndex(matchdayIndex+1)}}>
-                <img src={rightArrow}></img>
+                <img src={rightArrow} alt="right"></img>
               </button>}
           </div>
           

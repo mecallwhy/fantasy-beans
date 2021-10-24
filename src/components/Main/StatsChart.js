@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {Line} from "react-chartjs-2"
 import players from "./Players.js";
 import close from "./images/close.png";
@@ -30,6 +30,8 @@ const StatsChart = (props) => {
                   break;
       case "Fwd": position='Napastnik'
                   positionColor='rgba(209, 3, 3)'
+                  break;
+      default:
                   break;
     }
       switch(players[statsToShowIndex].club){
@@ -137,6 +139,7 @@ const StatsChart = (props) => {
           <img 
             id="stats-close-img" 
             src={close}
+            alt="close"
             onClick={()=>{setShowStats(false)}}></img>
           <div 
             id="chart-container">

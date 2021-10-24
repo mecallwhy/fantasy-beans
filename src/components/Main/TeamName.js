@@ -1,7 +1,6 @@
 import React from "react"
 import { useState } from "react/cjs/react.development";
 import save from "./images/save.png";
-import pencil from "./images/pencil.png";
 
 const TeamName = (props) => {
 
@@ -21,7 +20,7 @@ const TeamName = (props) => {
             setRenameActive(false)
         }
         else if(newName.length > 25){
-            alert("Ta nazwa jest deko za długa. Kibice Cię znienawidzą jak będą pisać przyśpiewki.")
+            alert("Ta nazwa jest trochę za długa. Kibice Cię znienawidzą, kiedy będą pisać przyśpiewki.")
         }
         else if(newName.length < 1){
             alert("Nazwa musi mieć przynajmniej jeden znak.")

@@ -20,8 +20,7 @@ export const PlayerBean = (props) => {
     setBeansCounter,
     beansCounter,
     setStatsToShowIndex,
-    setShowStats,
-    showStats
+    setShowStats
   } = props;
   const {
     ataCounter,
