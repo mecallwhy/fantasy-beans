@@ -238,6 +238,7 @@
     align-self: center;
     justify-self: center;
     height: 70%;
+    transition-duration: 300ms;
   }
   .position-marker-def{
     grid-column: 1/2;
@@ -246,8 +247,8 @@
     align-self: center;
     justify-self: center;
     height: 70%;
+    transition-duration: 300ms;
   }
-  
   .position-marker-mid{
     grid-column: 1/2;
     background-color: rgba(0, 25, 167);
@@ -255,8 +256,8 @@
     align-self: center;
     justify-self: center;
     height: 70%;
+    transition-duration: 300ms;
   }
-  
   .position-marker-fwd{
     grid-column: 1/2;
     background-color: rgb(253, 1, 1);
@@ -264,6 +265,14 @@
     align-self: center;
     justify-self: center;
     height: 70%;
+    transition-duration: 300ms;
+  }
+  .market-player:hover .position-marker-gk,
+  .market-player:hover .position-marker-def,
+  .market-player:hover .position-marker-mid,
+  .market-player:hover .position-marker-fwd{
+    height: 130%;
+    transition-duration: 300ms;
   }
   .second-name{
     font-weight: bold;
@@ -285,10 +294,6 @@
     grid-column: 4/5;
     justify-self: end;
   }
-  .price-btn:disabled{
-    background-color: #646464;
-    color: #d8d8d8;
-  }
   .club-name{
     font-family: 'Exo 2', sans-serif;
     font-size: 13px;
@@ -304,7 +309,6 @@
     align-self: end;
     text-align: center;
     padding: 4px 0 4px 0;
-   
   }
   .club-name-atalanta{
     color: white;

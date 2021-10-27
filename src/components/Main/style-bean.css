@@ -266,7 +266,9 @@
   background: var(--second-color);
   transition-duration: 300ms;
 }
-
+.hoverable{
+  transition-duration: 300ms;
+}
 .hoverable:hover{
   transition-duration: 300ms;
   transform: scale(1.6);

@@ -9,7 +9,9 @@ button{
     cursor: pointer;
 }
 button:disabled{
-    cursor: default;
+    cursor: default !important;
+    background-color: #646464 !important;
+    color: #d8d8d8 !important;
 }
 #main-grid{
     display: grid;
@@ -157,6 +159,7 @@ button:disabled{
     align-self: center;
 }
 .team-data-formation-button-clicked{
+    transition-duration: 300ms;
     font-family: 'Exo 2', sans-serif;
     background-color: var(--first-color);
     color: var(--second-color);
@@ -287,6 +290,7 @@ button:disabled{
     }
     .team-data-formation-button, 
     .team-data-formation-button-clicked{
+        transition-duration: 300ms;
         width: 75%;
         height: 40px;
     }
@@ -435,6 +439,7 @@ button:disabled{
     }
     .team-data-formation-button,
     .team-data-formation-button-clicked{
+        transition-duration: 300ms;
         width: 99% !important;
         border-radius: 0 !important;
         margin: 0 !important;

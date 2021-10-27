@@ -129,7 +129,9 @@ function Main(){
             renameActive= {renameActive}
             setRenameActive= {setRenameActive}/>
           <h2 id="team-data-balance-status">{balance}/{clubTotalValue}K</h2>
-          <button id="team-data-save-button">Zapisz</button>
+          <button 
+            id="team-data-save-button"
+            disabled={beansCounter !== 15 && true}>Zapisz</button>
           <div id="team-data-formations">
             <FormationButton
               id={"formation-button-first"}
