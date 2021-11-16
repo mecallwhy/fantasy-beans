@@ -8,7 +8,7 @@
 }
 #stats-container{
     border-radius: 10px;
-    background-color: var(--second-color);
+    background-color: $secondary-color;
     height: 530px;
     width: 650px;
     margin: 3% auto 3% auto;
@@ -76,84 +76,84 @@
     border-radius: 5px;
 }
 .stats-club-Ata{
-    color: white;
-    background-color: #1E71B8ee;
+    color: rgb(255, 255, 255);
+    background-color: rgb(30, 112, 184);
 }
 .stats-club-Bol{
-    color: #1A2F48;
-    background-color: #a21c25ee;
+    color: rgb(26, 47, 72);
+    background-color: rgb(162, 28, 37);
 }
 .stats-club-Cag{
-    color: white;
-    background-color: #002350ee;
+    color: rgb(255, 255, 255);
+    background-color: rgb(0, 35, 80);
 }
 .stats-club-Emp{
-    color: white;
-    background-color: #00579Cee;
+    color: rgb(255, 255, 255);
+    background-color: rgb(0, 87, 156);
 }
 .stats-club-Fio{
-    color: white;
-    background-color: #482E92ee;
+    color: rgb(255, 255, 255);
+    background-color: rgb(72, 46, 146);
 }
 .stats-club-Gen{
-    color: #FFD400;
-    background-color: #AD1919ee;
+    color: rgb(255, 212, 0);
+    background-color: rgb(173, 25, 25);
 }
 .stats-club-Hel{
-    color: #FFE74A;
-    background-color: #005395ee;
+    color: rgb(255, 231, 74);
+    background-color: rgb(0, 83, 149);
 }
 .stats-club-Int{
-    color: white;
-    background-color: #010E80ee;
+    color: rgb(255, 255, 255);
+    background-color: rgb(1, 14, 128);
 }
 .stats-club-Juv{
-    color: white;
-    background-color: black;
+    color: rgb(255, 255, 255);
+    background-color: rgb(0, 0, 0);
 }
 .stats-club-Laz{
-    color: black;
-    background-color: #87D8F7ee;
+    color: rgb(0, 0, 0);
+    background-color: rgb(135, 216, 247);
 }
 .stats-club-Mil{
-    color: black;
-    background-color: #FB090Bee;
+    color: rgb(0, 0, 0);
+    background-color: rgb(251, 9, 11);
 }
 .stats-club-Nap{
-    color: white;
-    background-color: #12A0D7ee;
+    color: rgb(255, 255, 255);
+    background-color: rgb(18, 160, 215);
 }
 .stats-club-Rom{
-    color: #F0BC42;
-    background-color: #8E1F2Fee;
+    color: rgb(240, 188, 66);
+    background-color: rgb(142, 31, 47);
 }
 .stats-club-Sal{
-    color: white;
-    background-color: rgba(79, 18, 17);
+    color: rgb(255, 255, 255);
+    background-color: rgb(79, 18, 17);
 }
 .stats-club-Sam{
-     color: white;
-    background-color: rgba(27, 84, 151);
+     color: rgb(255, 255, 255);
+    background-color: rgb(27, 84, 151);
 }
 .stats-club-Sas{
-    color: black;
-    background-color: rgba(0, 167, 82);
+    color: rgb(0, 0, 0);
+    background-color: rgb(0, 167, 82);
 }
 .stats-club-Spe{
-    color: black;
-    background-color: white;
+    color: rgb(0, 0, 0);
+    background-color: rgb(255, 255, 255);
 }
 .stats-club-Tor{
-    color: white;
-    background-color: #8A1E03;
+    color: rgb(255, 255, 255);
+    background-color: rgb(138, 30, 3);
 }
 .stats-club-Udi{
-    color: white;
+    color: rgb(255, 255, 255);
     background-color: rgb(49, 97, 135);
 }
 .stats-club-Ven{
     color: rgb(235, 214, 149);
-    background-color: black;
+    background-color: rgb(0, 0, 0);
 }
 #chart-container{
     height: 300px;

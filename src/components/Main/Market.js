@@ -271,18 +271,6 @@ const Market = (props) => {
                   onClick={()=>{sortChangeHandler("surname", false)}}>wg nazwiska (Z-A)
                 </button>
               </li>}
-              {/* {showSortingMenu && <li>
-                <button id="club-descending-button" 
-                  className={sortParameter === "club" && sortDirectionAscending ? "market-sort-button-active" : "market-sort-button"} 
-                  onClick={()=>{sortChangeHandler("club", true)}}>wg klubu (A-Z)
-                </button>
-              </li>}
-              {showSortingMenu && <li>
-                <button id="club-descending-button" 
-                  className={sortParameter === "club" && !sortDirectionAscending ? "market-sort-button-active" : "market-sort-button"} 
-                  onClick={()=>{sortChangeHandler("club", false)}}>wg klubu (Z-A)
-                </button>
-              </li>} */}
             </ul>
             {!showSortingMenu && <button id="market-reset-button" 
               onClick={()=>{resetFilters()}}>reset filtrów

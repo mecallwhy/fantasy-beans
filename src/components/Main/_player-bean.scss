@@ -1,0 +1,263 @@
+.player-bean{
+    height: 75px;
+    width: 58px;
+    border-radius: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto 1.7em auto;
+    padding: .5vw;
+    font-weight: bold;
+    align-items: center;
+    justify-items: center;
+    background-size: contain !important;
+    background-position: center !important;
+  }
+  
+  .player-bean-blank{
+      color: white;
+      opacity: .5;
+      background: url(./images/blank.jpg);
+  }
+  
+  .player-bean-atalanta{
+      color: white;
+      background: url(./images/atalanta.jpg);
+    }
+    .player-bean-bologna{
+      color: white;
+      background: url(./images/bologna.jpg);
+    }
+    .player-bean-cagliari{
+      color: white;
+      background: url(./images/cagliari.jpg);
+    }
+    .player-bean-empoli{
+      color: white;
+      background: url(./images/empoli.jpg);
+    }
+    .player-bean-fiorentina{
+      color: white;
+      background: url(./images/fiorentina.jpg);
+    }
+    .player-bean-genoa{
+      color: #FFD400;
+      background: url(./images/genoa.jpg);
+    }
+    .player-bean-hellas{
+      color: #FFE74A;
+      background: url(./images/hellas.jpg);
+    }
+    .player-bean-inter{
+      color: white;
+      background: url(./images/inter.jpg);
+    }
+    .player-bean-juventus{
+      color: white;
+      background: url(./images/juventus.jpg);
+        
+        .player-bean-surname{
+            background-color: black;
+        }
+    }
+    .player-bean-lazio{
+      color: black;
+      background: url(./images/lazio.jpg);
+    }
+    .player-bean-milan{
+      color: white;
+      background: url(./images/milan.jpg);
+    }
+    .player-bean-napoli{
+      color: black;
+      background: url(./images/napoli.jpg);
+    }
+    .player-bean-roma{
+      color: black;
+      background: url(./images/roma.jpg);
+      background-size: auto !important;
+    }
+    .player-bean-salernitana{
+      color: white;
+      background: url(./images/salernitana.jpg);
+    }
+    .player-bean-sampdoria{
+      color: black;
+      background: url(./images/sampdoria.jpg);
+
+      .player-bean-number{
+        background-color: white;
+      }
+      .player-bean-surname{
+        z-index: 100;
+      }
+    }
+
+    .player-bean-sassuolo{
+      color: white;
+      background: url(./images/sassuolo.jpg);
+    }
+    .player-bean-spezia{
+      color: black;
+      background-color: white;
+    }
+    .player-bean-torino{
+      color: white;
+      background: url(./images/torino.jpg);
+    }
+    .player-bean-udinese{
+      color: white;
+      background-image: linear-gradient(to bottom, rgb(49, 97, 135) 20%, rgb(17, 206, 202) 50%)
+    }
+    .player-bean-venezia{
+      color: rgb(235, 214, 149);
+      background-color: black;
+    }
+  
+  .player-bean-surname{
+      border-radius: 5px;
+      text-transform: uppercase;
+      white-space: nowrap;
+      text-align: center;
+      grid-column: 1/3;
+      grid-row: 1/2;
+  }
+  .player-bean-number{
+      font-size: 38px;
+      grid-column: 1/3;
+      grid-row: 2/3;
+  }
+  .player-bean-points{
+      font-size: .77em;
+      grid-column: 1/2;
+      grid-row: 3/4;
+  }
+  .player-bean-price{
+      font-size: .77em;
+      grid-column: 2/3;
+      grid-row: 3/4;
+  }
+  .player-bean-btn-stats{
+      grid-column: 1/3;
+      grid-row: 2/3;
+      background-color: #d8d8d8ce;
+      color: black;
+      text-transform: uppercase;
+      border: 0;
+      border-radius: 5px 5px 0 0;
+      height: 100%;
+      width: 100%;
+      border: 1px solid black;
+      display: none;
+      font-size: .8em;
+      font-family: 'Exo 2', sans-serif
+  }
+  .player-bean-btn-switch-small{
+      grid-column: 1/2;
+      grid-row: 3/4;
+      background-color: #d8d8d8ce;
+      color: black;
+      text-transform: uppercase;
+      border: 0;
+      border-radius: 0 0 0 5px;
+      height: 100%;
+      width: 100%;
+      border: 1px solid black;
+      display: none;
+      font-size: .8em;
+  }
+  .player-bean-btn-switch-big{
+      grid-column: 1/3;
+      grid-row: 2/4;
+      background: none;
+      height: 120%;
+      width: 90%;
+      z-index: 99;
+      display: none;
+      border: none;
+      border-radius: 50%;
+      padding: 0;
+      font-size: .8em;
+  }
+  .player-bean-btn-eliminate{
+      grid-column: 2/3;
+      grid-row: 3/4;
+      background-color: #d8d8d8ce;
+      color: black;
+      text-transform: uppercase;
+      border: 0;
+      border-radius: 0 0 5px 0;
+      height: 100%;
+      width: 100%;
+      border: 1px solid black;
+      display: none;
+      font-size: .8em;
+  }
+  .switch-img-small{
+    width: 100%;
+  }
+  .switch-img{
+    width: 100%;
+    animation: rotation 1s ease-in-out infinite;
+  }
+  .eliminate-img{
+    width: 100%;
+  }
+  .switchable{
+    .player-bean-number,
+    .player-bean-points,
+    .player-bean-price,
+    .player-bean-btn-switch-big{
+        display: none;
+    }
+    .player-bean-btn-switch-big{
+        display: block;
+    }
+  }
+
+  .faded{
+    opacity: .5
+  }
+  @keyframes rotation{
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(359deg);
+    }
+  }
+  
+  .player-bean-btn-stats:hover{
+    background: $secondary-color;
+    transition-duration: 300ms;
+  }
+  .player-bean-btn-switch-small:hover{
+    background: $secondary-color;
+    transition-duration: 300ms;
+  }
+  .player-bean-btn-eliminate:hover{
+    background: $secondary-color;
+    transition-duration: 300ms;
+  }
+
+  .hoverable{
+    transition-duration: 300ms;
+  }
+  .hoverable:hover{
+    transition-duration: 300ms;
+    transform: scale(1.6);
+
+    .player-bean-number,
+    .player-bean-points,
+    .player-bean-price{
+        display: none;
+    }
+    .player-bean-btn-stats,
+    .player-bean-btn-switch-small,
+    .player-bean-btn-eliminate{  
+        display: block;
+    }
+  }
+  
+  .extra-bean{
+    display: none;
+  }

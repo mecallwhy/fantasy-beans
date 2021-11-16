@@ -1,9 +1,5 @@
 import React, { useState } from "react";
-import "./style-main.css";
-import "./style-bean.css";
-import "./style-market.css";
-import "./style-schedule.css";
-import "./style-stats.css";
+import "./style.css"
 
 import PlayerBean from "./PlayerBean.js";
 import Market from "./Market.js";
@@ -23,7 +19,7 @@ function Main(){
   const [playerToSwitchIndex, setPlayerToSwitchIndex] = useState(0)
   const [beansCounter, setBeansCounter] = useState(0)
   const [matchdayIndex, setMatchdayIndex] = useState(0)
-  const [teamName, setTeamName] = useState("FC Team")
+  const [teamname, setTeamName] = useState("FC Team")
   const [renameActive, setRenameActive] = useState(false)
   const [statsToShowIndex, setStatsToShowIndex] = useState(0)
   const [showStats, setShowStats] = useState(false)
@@ -54,7 +50,7 @@ function Main(){
   const [defendersCounter, setDefendersCounter] = useState(0)
   const [midfieldersCounter, setMidfieldersCounter] = useState(0)
   const [forwardsCounter, setForwardsCounter] = useState(0)
-
+  
   const clubCounters = {
     ataCounter,
     bolCounter,
@@ -120,19 +116,19 @@ function Main(){
         </div>
       </div>
       <div id="pitch-img-container">
-        <div id="team-data">
-          <h5 id="team-data-teamName-info">Zespół:</h5>
-          <h5 id="team-data-balance-status-info">Stan konta/wartość klubu:</h5>
+        <div id="teamdata">
+          <h5 id="teamdata-teamname-info">Zespół:</h5>
+          <h5 id="teamdata-balance-status-info">Stan konta/wartość klubu:</h5>
           <TeamName 
-            teamName= {teamName}
+            teamname= {teamname}
             setTeamName= {setTeamName}
             renameActive= {renameActive}
             setRenameActive= {setRenameActive}/>
-          <h2 id="team-data-balance-status">{balance}/{clubTotalValue}K</h2>
+          <h2 id="teamdata-balance-status">{balance}/{clubTotalValue}K</h2>
           <button 
-            id="team-data-save-button"
+            id="teamdata-save-button"
             disabled={beansCounter !== 15 && true}>Zapisz</button>
-          <div id="team-data-formations">
+          <div id="teamdata-formations">
             <FormationButton
               id={"formation-button-first"}
               theSquad={theSquad}

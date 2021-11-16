@@ -140,7 +140,7 @@ const FormationButton = (props) => {
   return (
     <button
       id={id}
-      className={formationIndex === newFormationIndex ? "team-data-formation-button-clicked" : "team-data-formation-button"}
+      className={formationIndex === newFormationIndex ? "teamdata-formation-button-clicked" : "teamdata-formation-button"}
       onClick={() => {
         changeFormation();
       }}

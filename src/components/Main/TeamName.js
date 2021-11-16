@@ -4,7 +4,7 @@ import save from "./images/save.png";
 
 const TeamName = (props) => {
 
-    const {teamName,
+    const {teamname,
         setTeamName,
         renameActive,
         setRenameActive} = props
@@ -29,10 +29,10 @@ const TeamName = (props) => {
     if(renameActive){
         return (
             <form 
-              id="team-data-teamName-container"
+              id="teamdata-teamname-container"
               onSubmit={()=>{handleRename()}}>
               <input
-                id="team-data-rename-input"
+                id="teamdata-rename-input"
                 type="text"
                 placeholder="NOWA NAZWA"
                 value={newName}
@@ -45,7 +45,7 @@ const TeamName = (props) => {
               </input>
               <button
                 type="submit"
-                id="team-data-rename-save-button"
+                id="teamdata-rename-save-button"
                 >
                 <img src={save} alt=""></img>
               </button>
@@ -54,15 +54,15 @@ const TeamName = (props) => {
     }
     else{
         return (
-            <div id="team-data-teamName-container">
+            <div id="teamdata-teamname-container">
               <h2 
                 onClick={()=>{setRenameActive(true)}}
-                id="team-data-teamName"
+                id="teamdata-teamname"
                 style={
-                    teamName.length < 12 ? {fontSize: "24px"} :
-                    inRange(teamName.length, 12, 17) ? {fontSize: "22px"} :
+                    teamname.length < 12 ? {fontSize: "24px"} :
+                    inRange(teamname.length, 12, 17) ? {fontSize: "22px"} :
                     {fontSize: "16px"}}>
-                {teamName}
+                {teamname}
               </h2>
             </div>
         )

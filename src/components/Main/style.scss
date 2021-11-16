@@ -1,0 +1,254 @@
+@import 'config';
+@import 'stats';
+@import 'player-bean';
+@import 'schedule';
+@import 'market';
+
+body{
+    color: #000000;
+    font-family: 'Exo 2', sans-serif;
+    margin: 0;
+    --first-color: #1a1a1a;
+    --second-color: #d8d8d8;
+}
+button{
+    cursor: pointer;
+}
+button:disabled{
+    cursor: default !important;
+    background-color: #646464 !important;
+    color: #d8d8d8 !important;
+}
+#main-grid{
+    display: grid;
+    height: 100%;
+    width: 100%;
+    grid-template-columns: minmax(auto, 1350px);
+    grid-template-rows: 110px minmax(35vw, 740px) 140px;
+    grid-column-gap: 1vw;
+}
+#menu-img-container{
+    grid-column: 1/2;
+    grid-row: 1/2;
+    background-position-x: center;
+    background-position-y: center;
+}
+
+#market-small-screen,
+#schedule-small-screen{
+    display: none;
+}
+#menu{
+    height: 100%;
+    background-image: linear-gradient(to right, #0e0e0e 20%, #4d4d4d);
+    display: grid;
+    grid-template-columns: 50% 15% 15% 15% 5%;
+}
+#main-title{
+    grid-column: 1/2;
+    margin: auto auto auto 40px;
+    color: var(--second-color);
+    cursor: pointer;
+    white-space: nowrap;
+}
+.main-button{
+    text-align: center;
+    margin: auto;
+    color: var(--second-color);
+    cursor: pointer;
+}
+#main-button1{
+    grid-column: 2/3;
+}
+#main-button2{
+    grid-column: 3/4;
+}
+#main-button3{
+    grid-column: 4/5;
+}
+#teamdata{
+    background-image: url(./images/tło6.png);
+    grid-column: 2/3;
+    grid-row: 1/2;
+    padding: 7px;
+    border-radius: 10px;
+    border: none;
+    display: grid;
+    grid-template-columns: 15% 22% 37% 26%;
+    grid-template-rows: 27px 36px 27px 55px;
+
+    h5{
+        text-align: center;
+        align-self: center;
+        margin: 0;
+    }
+    #teamdata-balance-status{
+        grid-column: 3/4;
+        grid-row: 2/4;
+        margin: 0;
+        text-align: center;
+        align-self: center;
+    }
+    #teamdata-teamname-container{
+        grid-column: 1/3;
+        grid-row: 2/4;
+        text-align: center;
+        align-self: center;
+    }
+    #teamdata-teamname-container img{
+        height: 16px;
+    }
+    #teamdata-rename-save-button{
+        margin-left: 5px;
+        border: none;
+        background: none;
+    }
+    #teamdata-rename-input{
+        font-family: 'Exo 2', sans-serif;
+        width: 150px;
+        padding: 0;
+        background: none;
+        border: 3px solid black;
+        border-radius: 10px;
+        outline:none;
+    }
+    #teamdata-rename-input::-webkit-input-placeholder {
+        font-size: 20px;
+        text-align: center;
+    }
+    #teamdata-balance-status-info{
+        grid-column: 3/4;
+        grid-row: 1/3;
+    }
+    #teamdata-teamname{
+        cursor: pointer;
+    }
+    #teamdata-teamname-info{
+        grid-column: 1/3;
+        grid-row: 1/3;
+    }
+    #teamdata-formations{
+        grid-row: 4/5;
+        grid-column: 1/5;
+        padding: 0 11px 0 10px;
+        display: grid;
+        grid-template-columns: auto auto auto auto auto auto auto;
+        align-items: center;
+    }
+    %formationButton{
+        font-family: 'Exo 2', sans-serif;
+        font-weight: bold;
+        padding: 0;
+        margin: 0;
+        border: none;
+        border-radius: 5px;
+        margin-left: 2px;
+        height: 30px;
+        width: 60px;
+        text-align: center;
+        justify-self: center;
+        align-self: center;
+    }
+    .teamdata-formation-button{
+        @extend %formationButton;
+        background-color: $secondary-color;
+        color: $primary-color;
+    }
+    .teamdata-formation-button-clicked{
+        @extend %formationButton;
+        transition-duration: 300ms;
+        background-color: $primary-color;
+        color: $secondary-color;
+    }
+    #teamdata-save-button{
+        font-family: 'Exo 2', sans-serif;
+        background-color: var(--first-color);
+        color: var(--second-color);
+        grid-column: 4/5;
+        grid-row: 1/4;
+        font-weight: bold;
+        font-size: 24px;
+        padding: 0;
+        margin: 0;
+        border: none;
+        border-radius: 10px;
+        margin-left: 2px;
+        height: 83px;
+        width: 120px;
+        text-align: center;
+        justify-self: center;
+        align-self: center;
+    }
+    
+}
+
+#pitch-img-container{
+    grid-column: 1/2;
+    grid-row: 2/3;
+    background-image: url(./images/stadium3.jpg);
+    background-position-x: center;
+    background-position-y: bottom;
+    display: grid;
+    grid-template-columns: 22% 55% 22%;
+    grid-template-rows: 159px auto;
+    grid-column-gap: .5%;
+    padding: 10px;
+}
+
+#pitch{
+    font-family: 'Exo 2', sans-serif;
+    font-size: 1em;
+    grid-column: 2/3;
+    grid-row: 2/3;
+    display: grid;
+    grid-template-rows: 25% 25% 25% 25%;
+    padding: 14% 0 0 0;
+
+    %pitchLine {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-evenly;
+    }
+    #pitch-line-gk{
+        @extend %pitchLine;
+        grid-row: 4/5;
+    }
+    #pitch-line-def{
+        @extend %pitchLine;
+        grid-row: 3/4;
+    }
+    #pitch-line-mid{
+        @extend %pitchLine;
+        grid-row: 2/3;
+    }
+    #pitch-line-fwd{
+        @extend %pitchLine;
+        grid-row: 1/2;
+    }
+}
+
+#bench-img-container{
+    grid-column: 1/2;
+    grid-row: 3/4;
+    background-position-x: center;
+    background-position-y: center;
+}
+#bench-gradient-container{
+    padding: 0 10px 0 10px;
+    background-image: linear-gradient(to right, #000000, #4d4d4d, #000000);
+    display: grid;
+    grid-template-columns: minmax(100px, 20vw) minmax(450px, 55vw) minmax(150px, 22vw);
+    height: 100%;
+}
+#bench{
+    grid-column: 2/3;
+    display: flex;
+    flex-direction: row;
+    align-self: center;
+    justify-content: space-around;
+}
+
+@import 'responsive1180';
+@import 'responsive700';
+@import 'responsive450';

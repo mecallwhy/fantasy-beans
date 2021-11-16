@@ -1,0 +1,1993 @@
+@charset "UTF-8";
+#stats-blur {
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.596);
+  -webkit-backdrop-filter: blur(5px);
+          backdrop-filter: blur(5px);
+  z-index: 999;
+  position: fixed;
+}
+
+#stats-container {
+  border-radius: 10px;
+  background-color: #d8d8d8;
+  height: 530px;
+  width: 650px;
+  margin: 3% auto 3% auto;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 25px 400px 200px 25px;
+      grid-template-columns: 25px 400px 200px 25px;
+  -ms-grid-rows: 61px 145px 300px;
+      grid-template-rows: 61px 145px 300px;
+}
+
+#stats-fullname {
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 1;
+  grid-column: 2/3;
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 1;
+  grid-row: 1/2;
+  margin: 0;
+  -ms-flex-item-align: end;
+      -ms-grid-row-align: end;
+      align-self: end;
+}
+
+#stats-points {
+  font-size: larger;
+  font-weight: bold;
+  list-style: none;
+  padding: 0;
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 1;
+  grid-column: 2/3;
+  -ms-grid-row: 2;
+  -ms-grid-row-span: 1;
+  grid-row: 2/3;
+}
+
+#stats-points li {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 50% 50%;
+      grid-template-columns: 50% 50%;
+  font-weight: lighter;
+  font-size: large;
+}
+
+#stats-container h1 span {
+  font-weight: lighter;
+}
+
+#stats-points li {
+  font-weight: lighter;
+  font-size: large;
+}
+
+#stats-position {
+  color: white;
+  margin: 0;
+  height: 30px;
+  width: 120px;
+  margin-top: 10px;
+  padding: 6px 2px 0 0;
+  border-radius: 5px;
+  -ms-grid-column: 3;
+  -ms-grid-column-span: 1;
+  grid-column: 3/4;
+  -ms-grid-row: 2;
+  -ms-grid-row-span: 1;
+  grid-row: 2/3;
+  text-align: center;
+  -ms-grid-column-align: end;
+      justify-self: end;
+}
+
+#stats-close-img {
+  height: 20px;
+  -ms-grid-column: 4;
+  -ms-grid-column-span: 1;
+  grid-column: 4/5;
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 1;
+  grid-row: 1/2;
+  margin-top: 5px;
+  cursor: pointer;
+}
+
+#stats-club {
+  -ms-grid-column: 3;
+  -ms-grid-column-span: 1;
+  grid-column: 3/4;
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 1;
+  grid-row: 1/2;
+  -ms-grid-column-align: end;
+      justify-self: end;
+  -ms-flex-item-align: end;
+      -ms-grid-row-align: end;
+      align-self: end;
+  text-align: center;
+  margin: 0;
+  height: 30px;
+  width: 190px;
+  padding: 6px 2px 0 0;
+  border-radius: 5px;
+}
+
+.stats-club-Ata {
+  color: white;
+  background-color: #1e70b8;
+}
+
+.stats-club-Bol {
+  color: #1a2f48;
+  background-color: #a21c25;
+}
+
+.stats-club-Cag {
+  color: white;
+  background-color: #002350;
+}
+
+.stats-club-Emp {
+  color: white;
+  background-color: #00579c;
+}
+
+.stats-club-Fio {
+  color: white;
+  background-color: #482e92;
+}
+
+.stats-club-Gen {
+  color: #ffd400;
+  background-color: #ad1919;
+}
+
+.stats-club-Hel {
+  color: #ffe74a;
+  background-color: #005395;
+}
+
+.stats-club-Int {
+  color: white;
+  background-color: #010e80;
+}
+
+.stats-club-Juv {
+  color: white;
+  background-color: black;
+}
+
+.stats-club-Laz {
+  color: black;
+  background-color: #87d8f7;
+}
+
+.stats-club-Mil {
+  color: black;
+  background-color: #fb090b;
+}
+
+.stats-club-Nap {
+  color: white;
+  background-color: #12a0d7;
+}
+
+.stats-club-Rom {
+  color: #f0bc42;
+  background-color: #8e1f2f;
+}
+
+.stats-club-Sal {
+  color: white;
+  background-color: #4f1211;
+}
+
+.stats-club-Sam {
+  color: white;
+  background-color: #1b5497;
+}
+
+.stats-club-Sas {
+  color: black;
+  background-color: #00a752;
+}
+
+.stats-club-Spe {
+  color: black;
+  background-color: white;
+}
+
+.stats-club-Tor {
+  color: white;
+  background-color: #8a1e03;
+}
+
+.stats-club-Udi {
+  color: white;
+  background-color: #316187;
+}
+
+.stats-club-Ven {
+  color: #ebd695;
+  background-color: black;
+}
+
+#chart-container {
+  height: 300px;
+  width: 600px;
+  margin: 0;
+  padding: 0;
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 2;
+  grid-column: 2/4;
+  -ms-grid-row: 3;
+  -ms-grid-row-span: 1;
+  grid-row: 3/4;
+}
+
+.player-bean {
+  height: 75px;
+  width: 58px;
+  border-radius: 20px;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+  -ms-grid-rows: auto 1.7em auto;
+      grid-template-rows: auto 1.7em auto;
+  padding: .5vw;
+  font-weight: bold;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  justify-items: center;
+  background-size: contain !important;
+  background-position: center !important;
+}
+
+.player-bean-blank {
+  color: white;
+  opacity: .5;
+  background: url(./images/blank.jpg);
+}
+
+.player-bean-atalanta {
+  color: white;
+  background: url(./images/atalanta.jpg);
+}
+
+.player-bean-bologna {
+  color: white;
+  background: url(./images/bologna.jpg);
+}
+
+.player-bean-cagliari {
+  color: white;
+  background: url(./images/cagliari.jpg);
+}
+
+.player-bean-empoli {
+  color: white;
+  background: url(./images/empoli.jpg);
+}
+
+.player-bean-fiorentina {
+  color: white;
+  background: url(./images/fiorentina.jpg);
+}
+
+.player-bean-genoa {
+  color: #FFD400;
+  background: url(./images/genoa.jpg);
+}
+
+.player-bean-hellas {
+  color: #FFE74A;
+  background: url(./images/hellas.jpg);
+}
+
+.player-bean-inter {
+  color: white;
+  background: url(./images/inter.jpg);
+}
+
+.player-bean-juventus {
+  color: white;
+  background: url(./images/juventus.jpg);
+}
+
+.player-bean-juventus .player-bean-surname {
+  background-color: black;
+}
+
+.player-bean-lazio {
+  color: black;
+  background: url(./images/lazio.jpg);
+}
+
+.player-bean-milan {
+  color: white;
+  background: url(./images/milan.jpg);
+}
+
+.player-bean-napoli {
+  color: black;
+  background: url(./images/napoli.jpg);
+}
+
+.player-bean-roma {
+  color: black;
+  background: url(./images/roma.jpg);
+  background-size: auto !important;
+}
+
+.player-bean-salernitana {
+  color: white;
+  background: url(./images/salernitana.jpg);
+}
+
+.player-bean-sampdoria {
+  color: black;
+  background: url(./images/sampdoria.jpg);
+}
+
+.player-bean-sampdoria .player-bean-number {
+  background-color: white;
+}
+
+.player-bean-sampdoria .player-bean-surname {
+  z-index: 100;
+}
+
+.player-bean-sassuolo {
+  color: white;
+  background: url(./images/sassuolo.jpg);
+}
+
+.player-bean-spezia {
+  color: black;
+  background-color: white;
+}
+
+.player-bean-torino {
+  color: white;
+  background: url(./images/torino.jpg);
+}
+
+.player-bean-udinese {
+  color: white;
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(20%, #316187), color-stop(50%, #11ceca));
+  background-image: linear-gradient(to bottom, #316187 20%, #11ceca 50%);
+}
+
+.player-bean-venezia {
+  color: #ebd695;
+  background-color: black;
+}
+
+.player-bean-surname {
+  border-radius: 5px;
+  text-transform: uppercase;
+  white-space: nowrap;
+  text-align: center;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
+  grid-column: 1/3;
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 1;
+  grid-row: 1/2;
+}
+
+.player-bean-number {
+  font-size: 38px;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
+  grid-column: 1/3;
+  -ms-grid-row: 2;
+  -ms-grid-row-span: 1;
+  grid-row: 2/3;
+}
+
+.player-bean-points {
+  font-size: .77em;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 1;
+  grid-column: 1/2;
+  -ms-grid-row: 3;
+  -ms-grid-row-span: 1;
+  grid-row: 3/4;
+}
+
+.player-bean-price {
+  font-size: .77em;
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 1;
+  grid-column: 2/3;
+  -ms-grid-row: 3;
+  -ms-grid-row-span: 1;
+  grid-row: 3/4;
+}
+
+.player-bean-btn-stats {
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
+  grid-column: 1/3;
+  -ms-grid-row: 2;
+  -ms-grid-row-span: 1;
+  grid-row: 2/3;
+  background-color: #d8d8d8ce;
+  color: black;
+  text-transform: uppercase;
+  border: 0;
+  border-radius: 5px 5px 0 0;
+  height: 100%;
+  width: 100%;
+  border: 1px solid black;
+  display: none;
+  font-size: .8em;
+  font-family: 'Exo 2', sans-serif;
+}
+
+.player-bean-btn-switch-small {
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 1;
+  grid-column: 1/2;
+  -ms-grid-row: 3;
+  -ms-grid-row-span: 1;
+  grid-row: 3/4;
+  background-color: #d8d8d8ce;
+  color: black;
+  text-transform: uppercase;
+  border: 0;
+  border-radius: 0 0 0 5px;
+  height: 100%;
+  width: 100%;
+  border: 1px solid black;
+  display: none;
+  font-size: .8em;
+}
+
+.player-bean-btn-switch-big {
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
+  grid-column: 1/3;
+  -ms-grid-row: 2;
+  -ms-grid-row-span: 2;
+  grid-row: 2/4;
+  background: none;
+  height: 120%;
+  width: 90%;
+  z-index: 99;
+  display: none;
+  border: none;
+  border-radius: 50%;
+  padding: 0;
+  font-size: .8em;
+}
+
+.player-bean-btn-eliminate {
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 1;
+  grid-column: 2/3;
+  -ms-grid-row: 3;
+  -ms-grid-row-span: 1;
+  grid-row: 3/4;
+  background-color: #d8d8d8ce;
+  color: black;
+  text-transform: uppercase;
+  border: 0;
+  border-radius: 0 0 5px 0;
+  height: 100%;
+  width: 100%;
+  border: 1px solid black;
+  display: none;
+  font-size: .8em;
+}
+
+.switch-img-small {
+  width: 100%;
+}
+
+.switch-img {
+  width: 100%;
+  -webkit-animation: rotation 1s ease-in-out infinite;
+          animation: rotation 1s ease-in-out infinite;
+}
+
+.eliminate-img {
+  width: 100%;
+}
+
+.switchable .player-bean-number,
+.switchable .player-bean-points,
+.switchable .player-bean-price,
+.switchable .player-bean-btn-switch-big {
+  display: none;
+}
+
+.switchable .player-bean-btn-switch-big {
+  display: block;
+}
+
+.faded {
+  opacity: .5;
+}
+
+@-webkit-keyframes rotation {
+  from {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(359deg);
+            transform: rotate(359deg);
+  }
+}
+
+@keyframes rotation {
+  from {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(359deg);
+            transform: rotate(359deg);
+  }
+}
+
+.player-bean-btn-stats:hover {
+  background: #d8d8d8;
+  -webkit-transition-duration: 300ms;
+          transition-duration: 300ms;
+}
+
+.player-bean-btn-switch-small:hover {
+  background: #d8d8d8;
+  -webkit-transition-duration: 300ms;
+          transition-duration: 300ms;
+}
+
+.player-bean-btn-eliminate:hover {
+  background: #d8d8d8;
+  -webkit-transition-duration: 300ms;
+          transition-duration: 300ms;
+}
+
+.hoverable {
+  -webkit-transition-duration: 300ms;
+          transition-duration: 300ms;
+}
+
+.hoverable:hover {
+  -webkit-transition-duration: 300ms;
+          transition-duration: 300ms;
+  -webkit-transform: scale(1.6);
+          transform: scale(1.6);
+}
+
+.hoverable:hover .player-bean-number,
+.hoverable:hover .player-bean-points,
+.hoverable:hover .player-bean-price {
+  display: none;
+}
+
+.hoverable:hover .player-bean-btn-stats,
+.hoverable:hover .player-bean-btn-switch-small,
+.hoverable:hover .player-bean-btn-eliminate {
+  display: block;
+}
+
+.extra-bean {
+  display: none;
+}
+
+#schedule-wide-screen {
+  text-align: center;
+  padding: 0 10px 0 10px;
+  height: 720px;
+  background-image: url(./images/tło6.png);
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 1;
+  grid-column: 1/2;
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 2;
+  grid-row: 1/3;
+  border-radius: 10px;
+}
+
+#schedule-wide-screen h2 {
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 1;
+  grid-column: 2/3;
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 1;
+  grid-row: 1/2;
+  -ms-grid-column-align: center;
+      justify-self: center;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  margin: 0;
+}
+
+#schedule-wide-screen h3 {
+  color: #d8d8d8;
+  background-color: #1a1a1a;
+  border-radius: 5px 5px 0 0;
+  margin-top: 8px;
+}
+
+#schedule-matchday {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 18% 64% 18%;
+      grid-template-columns: 18% 64% 18%;
+  -ms-grid-rows: 60px;
+      grid-template-rows: 60px;
+}
+
+#schedule-matchday-prev-button, #schedule-matchday-next-button {
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 1;
+  grid-row: 1/2;
+  background: none;
+  padding: 0;
+  border: none;
+  border-radius: 5px;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  text-align: center;
+}
+
+#schedule-matchday-prev-button img, #schedule-matchday-next-button img {
+  height: 25px;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  -ms-grid-column-align: center;
+      justify-self: center;
+}
+
+#schedule-matchday-prev-button {
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 1;
+  grid-column: 1/2;
+  -ms-grid-column-align: right;
+      justify-self: right;
+}
+
+#schedule-matchday-next-button {
+  -ms-grid-column: 3;
+  -ms-grid-column-span: 1;
+  grid-column: 3/4;
+  -ms-grid-column-align: left;
+      justify-self: left;
+}
+
+.schedule-match-list {
+  list-style: none;
+  border-radius: 5px;
+  background-color: #d8d8d8;
+  margin: 0;
+  padding: 0 0 5px 0;
+}
+
+.schedule-match {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: minmax(75px, 1fr) minmax(40px, 60px) minmax(75px, 1fr);
+      grid-template-columns: minmax(75px, 1fr) minmax(40px, 60px) minmax(75px, 1fr);
+  width: 100%;
+  height: 25px;
+  margin: 10px 0 10px 0;
+}
+
+.schedule-match-result {
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 1;
+  grid-column: 2/3;
+  text-align: center;
+}
+
+.schedule-match-host {
+  border-radius: 5px;
+  text-align: right;
+  font-weight: bold;
+}
+
+.schedule-match-guest {
+  border-radius: 5px;
+  text-align: left;
+  font-weight: bold;
+}
+
+#market-wide-screen {
+  background-image: url(./images/tło6.png);
+  -ms-grid-column: 3;
+  -ms-grid-column-span: 1;
+  grid-column: 3/4;
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 2;
+  grid-row: 1/3;
+  border-radius: 10px;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: 150px auto auto;
+      grid-template-rows: 150px auto auto;
+}
+
+#market-wide-screen h1 {
+  display: none;
+}
+
+#search {
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 1;
+  grid-row: 1/2;
+  height: 145px;
+  margin: 7px 7px 7px 7px;
+  text-align: center;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 25% 25% 25% 25%;
+      grid-template-columns: 25% 25% 25% 25%;
+  -ms-grid-rows: 27px 25px 36px 55px;
+      grid-template-rows: 27px 25px 36px 55px;
+}
+
+#market-search-bar, #market-reset-button, .market-random-squad-button, .market-sort-button-active, .market-sort-button {
+  font-family: 'Exo 2', sans-serif;
+  border: none;
+  padding: 0;
+  font-weight: bold;
+  border-radius: 5px;
+  -ms-grid-column-align: center;
+      justify-self: center;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+}
+
+#market-search-bar {
+  outline-style: none;
+  background: #d8d8d8;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 4;
+  grid-column: 1/5;
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 1;
+  grid-row: 1/2;
+  width: 88%;
+  padding: 2px;
+}
+
+#market-reset-button {
+  background-color: #1a1a1a;
+  color: #d8d8d8;
+  -ms-grid-column: 3;
+  -ms-grid-column-span: 2;
+  grid-column: 3/5;
+  -ms-grid-row: 3;
+  -ms-grid-row-span: 1;
+  grid-row: 3/4;
+  height: 30px;
+  width: 81%;
+}
+
+.market-random-squad-button {
+  background-color: #1a1a1a;
+  color: #d8d8d8;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
+  grid-column: 1/3;
+  -ms-grid-row: 3;
+  -ms-grid-row-span: 1;
+  grid-row: 3/4;
+  height: 30px;
+  width: 81%;
+}
+
+#market-sorting-menu-opener {
+  -ms-grid-row: 2;
+  -ms-grid-row-span: 1;
+  grid-row: 2/3;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 4;
+  grid-column: 1/5;
+  margin: 0;
+  height: 20px;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+}
+
+#sorting-menu {
+  -ms-grid-row: 2;
+  -ms-grid-row-span: 1;
+  grid-row: 2/3;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 4;
+  grid-column: 1/5;
+  position: relative;
+  list-style: none;
+  height: 10px;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+#sorting-menu li {
+  z-index: 100;
+}
+
+.market-sort-button-active {
+  border-radius: 0;
+  background-color: #1a1a1a;
+  color: #d8d8d8;
+  margin: 0;
+  height: 20px;
+  width: 90%;
+}
+
+.market-sort-button {
+  border-radius: 0;
+  background-color: #d8d8d8;
+  color: #1a1a1a;
+  margin: 0;
+  height: 20px;
+  width: 90%;
+}
+
+#surname-descending-button {
+  border-radius: 0 0 5px 5px;
+}
+
+#market-position-filters {
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 4;
+  grid-column: 1/5;
+  -ms-grid-row: 4;
+  -ms-grid-row-span: 1;
+  grid-row: 4/5;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.border-element {
+  -ms-grid-column-align: center;
+      justify-self: center;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  height: 35px;
+  width: 35px;
+  border-radius: 50%;
+}
+
+#gk-filter-border-element {
+  background: -webkit-gradient(linear, right top, left bottom, from(#ffae00), to(#d89400));
+  background: linear-gradient(to left bottom, #ffae00, #d89400);
+}
+
+#def-filter-border-element {
+  background: -webkit-gradient(linear, right top, left bottom, from(#00ff2a), to(#00a70e));
+  background: linear-gradient(to left bottom, #00ff2a, #00a70e);
+}
+
+#mid-filter-border-element {
+  background: -webkit-gradient(linear, right top, left bottom, from(#2600ff), to(#00106b));
+  background: linear-gradient(to left bottom, #2600ff, #00106b);
+}
+
+#fwd-filter-border-element {
+  background: -webkit-gradient(linear, right top, left bottom, from(red), to(#8d0000));
+  background: linear-gradient(to left bottom, red, #8d0000);
+}
+
+.market-filter-button {
+  -ms-grid-column-align: center;
+      justify-self: center;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  margin: 5px;
+  padding: 0;
+  height: 25px;
+  width: 25px;
+  border: none;
+  font-family: 'Exo 2', sans-serif;
+  font-weight: bolder;
+  font-size: 10px;
+  border-radius: 50%;
+}
+
+#gk-filter-button {
+  color: #c0b300;
+  background-color: none;
+}
+
+#def-filter-button {
+  color: #00a70e;
+  background-color: none;
+}
+
+#mid-filter-button {
+  color: #0019a7;
+  background-color: none;
+}
+
+#fwd-filter-button {
+  color: #d10303;
+  background-color: none;
+}
+
+#page-toggle-bar-bottom {
+  justify-self: center;
+  -ms-flex-item-align: center;
+      align-self: center;
+  -ms-grid-row: 3;
+  -ms-grid-row-span: 1;
+  grid-row: 3/4;
+  width: 80%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.page-toggle-button {
+  background-color: #d8d8d8;
+  color: #1a1a1a;
+  font-weight: bold;
+  font-family: 'Exo 2', sans-serif;
+  height: 30px;
+  width: 20px;
+  padding: 0;
+  border-radius: 5px;
+  border: none;
+}
+
+#market-list {
+  -ms-grid-row: 2;
+  -ms-grid-row-span: 1;
+  grid-row: 2/3;
+  -webkit-padding-start: 0;
+          padding-inline-start: 0;
+  margin-top: 0;
+  height: 433px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  list-style: none;
+}
+
+.market-player {
+  font-size: 1.10em;
+  white-space: nowrap;
+  padding: 6px 6px 6px 0;
+  margin: 7px 7px 7px 3px;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 5% 55% 20% 20%;
+      grid-template-columns: 5% 55% 20% 20%;
+  border-radius: 5px;
+}
+
+.invisible {
+  display: none;
+}
+
+.market-player-label {
+  padding: 6px;
+  margin: 7px;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 10px 8fr 3fr 2fr;
+      grid-template-columns: 10px 8fr 3fr 2fr;
+}
+
+.second-name-label {
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 1;
+  grid-column: 2/3;
+}
+
+.club-name-label {
+  -ms-grid-column: 3;
+  -ms-grid-column-span: 1;
+  grid-column: 3/4;
+}
+
+.price-label {
+  -ms-grid-column: 4;
+  -ms-grid-column-span: 1;
+  grid-column: 4/5;
+}
+
+.position-marker-gk {
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 1;
+  grid-column: 1/2;
+  background-color: #db9003;
+  width: 4px;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  -ms-grid-column-align: center;
+      justify-self: center;
+  height: 70%;
+  -webkit-transition-duration: 300ms;
+          transition-duration: 300ms;
+}
+
+.position-marker-def {
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 1;
+  grid-column: 1/2;
+  background-color: #11cc00;
+  width: 4px;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  -ms-grid-column-align: center;
+      justify-self: center;
+  height: 70%;
+  -webkit-transition-duration: 300ms;
+          transition-duration: 300ms;
+}
+
+.position-marker-mid {
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 1;
+  grid-column: 1/2;
+  background-color: #0019a7;
+  width: 4px;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  -ms-grid-column-align: center;
+      justify-self: center;
+  height: 70%;
+  -webkit-transition-duration: 300ms;
+          transition-duration: 300ms;
+}
+
+.position-marker-fwd {
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 1;
+  grid-column: 1/2;
+  background-color: #fd0101;
+  width: 4px;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  -ms-grid-column-align: center;
+      justify-self: center;
+  height: 70%;
+  -webkit-transition-duration: 300ms;
+          transition-duration: 300ms;
+}
+
+.market-player:hover .position-marker-gk,
+.market-player:hover .position-marker-def,
+.market-player:hover .position-marker-mid,
+.market-player:hover .position-marker-fwd {
+  height: 130%;
+  -webkit-transition-duration: 300ms;
+          transition-duration: 300ms;
+}
+
+.second-name {
+  font-weight: bold;
+  font-size: 18px;
+  cursor: pointer;
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 1;
+  grid-column: 2/3;
+  width: 115px;
+}
+
+.price-btn {
+  font-family: 'Exo 2', sans-serif;
+  background-color: #1a1a1a;
+  color: #d8d8d8;
+  font-weight: bold;
+  width: 38px;
+  height: 25px;
+  padding: 0;
+  border: none;
+  border-radius: 5px;
+  -ms-grid-column: 4;
+  -ms-grid-column-span: 1;
+  grid-column: 4/5;
+  -ms-grid-column-align: end;
+      justify-self: end;
+}
+
+.club-name {
+  font-family: 'Exo 2', sans-serif;
+  font-size: 13px;
+  font-weight: bold;
+  width: 38px;
+  height: 17px;
+  margin: 0;
+  border: none;
+  border-radius: 5px;
+  -ms-grid-column: 3;
+  -ms-grid-column-span: 1;
+  grid-column: 3/4;
+  cursor: default;
+  -ms-grid-column-align: end;
+      justify-self: end;
+  -ms-flex-item-align: end;
+      -ms-grid-row-align: end;
+      align-self: end;
+  text-align: center;
+  padding: 4px 0 4px 0;
+}
+
+.club-name-atalanta {
+  color: white;
+  background-color: #1E71B8;
+}
+
+.club-name-bologna {
+  color: #1A2F48;
+  background-color: #A21C26;
+}
+
+.club-name-cagliari {
+  color: #AD002A;
+  background-color: #002350;
+}
+
+.club-name-empoli {
+  color: white;
+  background-color: #00579C;
+}
+
+.club-name-fiorentina {
+  color: white;
+  background-color: #482E92;
+}
+
+.club-name-genoa {
+  color: #FFD400;
+  background-color: #AD1919;
+}
+
+.club-name-hellas {
+  color: #FFE74A;
+  background-color: #005395;
+}
+
+.club-name-inter {
+  color: white;
+  background-color: #010E80;
+}
+
+.club-name-juventus {
+  color: white;
+  background-color: black;
+}
+
+.club-name-lazio {
+  color: white;
+  background-color: #87D8F7;
+}
+
+.club-name-milan {
+  color: black;
+  background-color: #FB090B;
+}
+
+.club-name-napoli {
+  color: white;
+  background-color: #12A0D7;
+}
+
+.club-name-roma {
+  color: #F0BC42;
+  background-color: #8E1F2F;
+}
+
+.club-name-salernitana {
+  color: white;
+  background-color: #4f1211;
+}
+
+.club-name-sampdoria {
+  color: white;
+  background-color: #1b5497;
+}
+
+.club-name-sassuolo {
+  color: black;
+  background-color: #00a752;
+}
+
+.club-name-spezia {
+  color: black;
+  background-color: white;
+}
+
+.club-name-torino {
+  color: white;
+  background-color: #8A1E03;
+}
+
+.club-name-udinese {
+  color: white;
+  background-color: #316187;
+}
+
+.club-name-venezia {
+  color: #ebd695;
+  background-color: black;
+}
+
+body {
+  color: #000000;
+  font-family: 'Exo 2', sans-serif;
+  margin: 0;
+  --first-color: #1a1a1a;
+  --second-color: #d8d8d8;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: default !important;
+  background-color: #646464 !important;
+  color: #d8d8d8 !important;
+}
+
+#main-grid {
+  display: -ms-grid;
+  display: grid;
+  height: 100%;
+  width: 100%;
+  -ms-grid-columns: minmax(auto, 1350px);
+      grid-template-columns: minmax(auto, 1350px);
+  -ms-grid-rows: 110px minmax(35vw, 740px) 140px;
+      grid-template-rows: 110px minmax(35vw, 740px) 140px;
+  grid-column-gap: 1vw;
+}
+
+#menu-img-container {
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 1;
+  grid-column: 1/2;
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 1;
+  grid-row: 1/2;
+  background-position-x: center;
+  background-position-y: center;
+}
+
+#market-small-screen,
+#schedule-small-screen {
+  display: none;
+}
+
+#menu {
+  height: 100%;
+  background-image: -webkit-gradient(linear, left top, right top, color-stop(20%, #0e0e0e), to(#4d4d4d));
+  background-image: linear-gradient(to right, #0e0e0e 20%, #4d4d4d);
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 50% 15% 15% 15% 5%;
+      grid-template-columns: 50% 15% 15% 15% 5%;
+}
+
+#main-title {
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 1;
+  grid-column: 1/2;
+  margin: auto auto auto 40px;
+  color: var(--second-color);
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.main-button {
+  text-align: center;
+  margin: auto;
+  color: var(--second-color);
+  cursor: pointer;
+}
+
+#main-button1 {
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 1;
+  grid-column: 2/3;
+}
+
+#main-button2 {
+  -ms-grid-column: 3;
+  -ms-grid-column-span: 1;
+  grid-column: 3/4;
+}
+
+#main-button3 {
+  -ms-grid-column: 4;
+  -ms-grid-column-span: 1;
+  grid-column: 4/5;
+}
+
+#teamdata {
+  background-image: url(./images/tło6.png);
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 1;
+  grid-column: 2/3;
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 1;
+  grid-row: 1/2;
+  padding: 7px;
+  border-radius: 10px;
+  border: none;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 15% 22% 37% 26%;
+      grid-template-columns: 15% 22% 37% 26%;
+  -ms-grid-rows: 27px 36px 27px 55px;
+      grid-template-rows: 27px 36px 27px 55px;
+}
+
+#teamdata h5 {
+  text-align: center;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  margin: 0;
+}
+
+#teamdata #teamdata-balance-status {
+  -ms-grid-column: 3;
+  -ms-grid-column-span: 1;
+  grid-column: 3/4;
+  -ms-grid-row: 2;
+  -ms-grid-row-span: 2;
+  grid-row: 2/4;
+  margin: 0;
+  text-align: center;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+}
+
+#teamdata #teamdata-teamname-container {
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
+  grid-column: 1/3;
+  -ms-grid-row: 2;
+  -ms-grid-row-span: 2;
+  grid-row: 2/4;
+  text-align: center;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+}
+
+#teamdata #teamdata-teamname-container img {
+  height: 16px;
+}
+
+#teamdata #teamdata-rename-save-button {
+  margin-left: 5px;
+  border: none;
+  background: none;
+}
+
+#teamdata #teamdata-rename-input {
+  font-family: 'Exo 2', sans-serif;
+  width: 150px;
+  padding: 0;
+  background: none;
+  border: 3px solid black;
+  border-radius: 10px;
+  outline: none;
+}
+
+#teamdata #teamdata-rename-input::-webkit-input-placeholder {
+  font-size: 20px;
+  text-align: center;
+}
+
+#teamdata #teamdata-balance-status-info {
+  -ms-grid-column: 3;
+  -ms-grid-column-span: 1;
+  grid-column: 3/4;
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 2;
+  grid-row: 1/3;
+}
+
+#teamdata #teamdata-teamname {
+  cursor: pointer;
+}
+
+#teamdata #teamdata-teamname-info {
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
+  grid-column: 1/3;
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 2;
+  grid-row: 1/3;
+}
+
+#teamdata #teamdata-formations {
+  -ms-grid-row: 4;
+  -ms-grid-row-span: 1;
+  grid-row: 4/5;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 4;
+  grid-column: 1/5;
+  padding: 0 11px 0 10px;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: auto auto auto auto auto auto auto;
+      grid-template-columns: auto auto auto auto auto auto auto;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#teamdata .teamdata-formation-button, #teamdata .teamdata-formation-button-clicked {
+  font-family: 'Exo 2', sans-serif;
+  font-weight: bold;
+  padding: 0;
+  margin: 0;
+  border: none;
+  border-radius: 5px;
+  margin-left: 2px;
+  height: 30px;
+  width: 60px;
+  text-align: center;
+  -ms-grid-column-align: center;
+      justify-self: center;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+}
+
+#teamdata .teamdata-formation-button {
+  background-color: #d8d8d8;
+  color: #1a1a1a;
+}
+
+#teamdata .teamdata-formation-button-clicked {
+  -webkit-transition-duration: 300ms;
+          transition-duration: 300ms;
+  background-color: #1a1a1a;
+  color: #d8d8d8;
+}
+
+#teamdata #teamdata-save-button {
+  font-family: 'Exo 2', sans-serif;
+  background-color: var(--first-color);
+  color: var(--second-color);
+  -ms-grid-column: 4;
+  -ms-grid-column-span: 1;
+  grid-column: 4/5;
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 3;
+  grid-row: 1/4;
+  font-weight: bold;
+  font-size: 24px;
+  padding: 0;
+  margin: 0;
+  border: none;
+  border-radius: 10px;
+  margin-left: 2px;
+  height: 83px;
+  width: 120px;
+  text-align: center;
+  -ms-grid-column-align: center;
+      justify-self: center;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+}
+
+#pitch-img-container {
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 1;
+  grid-column: 1/2;
+  -ms-grid-row: 2;
+  -ms-grid-row-span: 1;
+  grid-row: 2/3;
+  background-image: url(./images/stadium3.jpg);
+  background-position-x: center;
+  background-position-y: bottom;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 22% 55% 22%;
+      grid-template-columns: 22% 55% 22%;
+  -ms-grid-rows: 159px auto;
+      grid-template-rows: 159px auto;
+  grid-column-gap: .5%;
+  padding: 10px;
+}
+
+#pitch {
+  font-family: 'Exo 2', sans-serif;
+  font-size: 1em;
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 1;
+  grid-column: 2/3;
+  -ms-grid-row: 2;
+  -ms-grid-row-span: 1;
+  grid-row: 2/3;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: 25% 25% 25% 25%;
+      grid-template-rows: 25% 25% 25% 25%;
+  padding: 14% 0 0 0;
+}
+
+#pitch #pitch-line-gk, #pitch #pitch-line-def, #pitch #pitch-line-mid, #pitch #pitch-line-fwd {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+}
+
+#pitch #pitch-line-gk {
+  -ms-grid-row: 4;
+  -ms-grid-row-span: 1;
+  grid-row: 4/5;
+}
+
+#pitch #pitch-line-def {
+  -ms-grid-row: 3;
+  -ms-grid-row-span: 1;
+  grid-row: 3/4;
+}
+
+#pitch #pitch-line-mid {
+  -ms-grid-row: 2;
+  -ms-grid-row-span: 1;
+  grid-row: 2/3;
+}
+
+#pitch #pitch-line-fwd {
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 1;
+  grid-row: 1/2;
+}
+
+#bench-img-container {
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 1;
+  grid-column: 1/2;
+  -ms-grid-row: 3;
+  -ms-grid-row-span: 1;
+  grid-row: 3/4;
+  background-position-x: center;
+  background-position-y: center;
+}
+
+#bench-gradient-container {
+  padding: 0 10px 0 10px;
+  background-image: -webkit-gradient(linear, left top, right top, from(#000000), color-stop(#4d4d4d), to(#000000));
+  background-image: linear-gradient(to right, #000000, #4d4d4d, #000000);
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: minmax(100px, 20vw) minmax(450px, 55vw) minmax(150px, 22vw);
+      grid-template-columns: minmax(100px, 20vw) minmax(450px, 55vw) minmax(150px, 22vw);
+  height: 100%;
+}
+
+#bench {
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 1;
+  grid-column: 2/3;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-item-align: center;
+      align-self: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+@media screen and (max-width: 1180px) {
+  #teamdata-save-button {
+    height: 60px !important;
+    width: 90% !important;
+  }
+  #main-grid {
+    display: -ms-grid;
+    display: grid;
+    height: 100%;
+    width: 100%;
+    -ms-grid-columns: 35% 65%;
+        grid-template-columns: 35% 65%;
+    -ms-grid-rows: 110px minmax(35vw, 740px) 140px 950px;
+        grid-template-rows: 110px minmax(35vw, 740px) 140px 950px;
+    grid-column-gap: 1vw;
+  }
+  #pitch-img-container,
+  #bench-img-container,
+  #menu-img-container {
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 2;
+    grid-column: 1/3;
+    -ms-grid-columns: 100%;
+        grid-template-columns: 100%;
+  }
+  #pitch,
+  #teamdata {
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 1;
+    grid-column: 1/2;
+  }
+  .teamdata-formation-button,
+  .teamdata-formation-button-clicked {
+    -webkit-transition-duration: 300ms;
+            transition-duration: 300ms;
+    width: 75%;
+    height: 40px;
+  }
+  #bench-gradient-container {
+    -ms-grid-columns: 100%;
+        grid-template-columns: 100%;
+  }
+  #bench {
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 1;
+    grid-column: 1/2;
+  }
+  #small-screen-background-container {
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 2;
+    grid-column: 1/3;
+    -ms-grid-row: 4;
+    -ms-grid-row-span: 1;
+    grid-row: 4/5;
+    background-image: -webkit-gradient(linear, left top, right top, from(#000000), color-stop(#4d4d4d), to(#000000));
+    background-image: linear-gradient(to right, #000000, #4d4d4d, #000000);
+    padding: 2%;
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: minmax(255px, 45%) minmax(250px, 60%);
+        grid-template-columns: minmax(255px, 45%) minmax(250px, 60%);
+    -ms-grid-rows: 870px;
+        grid-template-rows: 870px;
+    grid-column-gap: 1%;
+  }
+  #schedule-wide-screen,
+  #market-wide-screen {
+    display: none !important;
+  }
+  #schedule-small-screen {
+    display: block;
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 1;
+    grid-column: 1/2;
+    -ms-grid-row: 1;
+    -ms-grid-row-span: 1;
+    grid-row: 1/2;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 10px;
+    padding: 10px;
+    text-align: center;
+  }
+  #schedule-small-screen h2 {
+    -ms-grid-column: 2;
+    -ms-grid-column-span: 1;
+    grid-column: 2/3;
+    -ms-grid-row: 1;
+    -ms-grid-row-span: 1;
+    grid-row: 1/2;
+    -ms-grid-column-align: center;
+        justify-self: center;
+    -ms-flex-item-align: center;
+        -ms-grid-row-align: center;
+        align-self: center;
+    margin: 0;
+  }
+  #schedule-small-screen h3 {
+    background-color: #1a1a1a;
+    border-radius: 5px 5px 0 0;
+    margin-top: 8px;
+    font-size: 21px;
+    color: #d8d8d8;
+  }
+  .schedule-match {
+    -ms-grid-columns: minmax(75px, 1fr) minmax(40px, 80px) minmax(75px, 1fr) !important;
+        grid-template-columns: minmax(75px, 1fr) minmax(40px, 80px) minmax(75px, 1fr) !important;
+    height: 38px !important;
+    font-size: 18px;
+    margin: 8px 0 8px 0 !important;
+  }
+  #market-small-screen {
+    -ms-grid-column: 2;
+    -ms-grid-column-span: 1;
+    grid-column: 2/3;
+    -ms-grid-row: 1;
+    -ms-grid-row-span: 1;
+    grid-row: 1/2;
+    width: 100%;
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-rows: 90px 215px auto auto;
+        grid-template-rows: 90px 215px auto auto;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 10px;
+  }
+  #market-small-screen h1 {
+    -ms-grid-row: 1;
+    -ms-grid-row-span: 1;
+    grid-row: 1/2;
+    text-align: center;
+    margin-top: 31px;
+  }
+  #search {
+    -ms-grid-row: 2 !important;
+    -ms-grid-row-span: 1 !important;
+    grid-row: 2/3 !important;
+    height: 205px !important;
+    -ms-grid-rows: 47px 47px 56px 55px !important;
+        grid-template-rows: 47px 47px 56px 55px !important;
+  }
+  #market-list {
+    -ms-grid-row: 3 !important;
+    -ms-grid-row-span: 1 !important;
+    grid-row: 3/4 !important;
+  }
+  #page-toggle-bar-bottom {
+    -ms-grid-row: 4 !important;
+    -ms-grid-row-span: 1 !important;
+    grid-row: 4/5 !important;
+  }
+  .market-sort-button,
+  .market-sort-button-active,
+  .market-random-squad-button,
+  #market-reset-button,
+  #market-search-bar {
+    font-size: 16px !important;
+    height: 35px !important;
+    width: 80% !important;
+  }
+  .market-sort-button,
+  .market-sort-button-active,
+  #market-sorting-menu-opener {
+    width: 90% !important;
+  }
+  #market-sorting-menu-opener {
+    margin: 8px 0 0 0 !important;
+  }
+  #market-search-bar {
+    padding: 0 !important;
+    width: 90% !important;
+    height: 35px !important;
+  }
+  .market-player {
+    height: 30px !important;
+    margin: 2px 7px 2px 3px !important;
+    -ms-grid-columns: 5% 50% 30% 15% !important;
+        grid-template-columns: 5% 50% 30% 15% !important;
+  }
+  .market-player-label {
+    -ms-grid-columns: 3.5% 50% 30% 16% !important;
+        grid-template-columns: 3.5% 50% 30% 16% !important;
+    margin: 2px 7px 2px 3px !important;
+    text-align: end;
+  }
+  .second-name-label {
+    text-align: start;
+  }
+  .second-name {
+    font-size: 20px !important;
+  }
+  .club-name {
+    width: 100% !important;
+    padding-top: 8px !important;
+    height: 18px !important;
+  }
+  .price-btn {
+    height: 30px !important;
+    width: 50px !important;
+  }
+  .club-name-label {
+    text-align: center;
+  }
+  .page-toggle-button {
+    height: 45px !important;
+    width: 30px !important;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  #main-grid {
+    -ms-grid-rows: 110px minmax(35vw, 740px) 140px 920px 920p;
+        grid-template-rows: 110px minmax(35vw, 740px) 140px 920px 920p;
+  }
+  #small-screen-background-container {
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 2;
+    grid-column: 1/3;
+    -ms-grid-row: 4;
+    -ms-grid-row-span: 2;
+    grid-row: 4/6;
+    -ms-grid-columns: 100%;
+        grid-template-columns: 100%;
+    -ms-grid-rows: 950px 950px;
+        grid-template-rows: 950px 950px;
+    grid-row-gap: 20px;
+  }
+  #schedule-small-screen {
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 1;
+    grid-column: 1/2;
+    -ms-grid-row: 2;
+    -ms-grid-row-span: 1;
+    grid-row: 2/3;
+  }
+  #schedule-small-screen h2 {
+    -ms-grid-column: 2;
+    -ms-grid-column-span: 1;
+    grid-column: 2/3;
+    -ms-grid-row: 1;
+    -ms-grid-row-span: 1;
+    grid-row: 1/2;
+    -ms-grid-column-align: center;
+        justify-self: center;
+    -ms-flex-item-align: center;
+        -ms-grid-row-align: center;
+        align-self: center;
+    margin: 0;
+  }
+  #market-small-screen {
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 1;
+    grid-column: 1/2;
+    -ms-grid-row: 1;
+    -ms-grid-row-span: 1;
+    grid-row: 1/2;
+  }
+  .teamdata-formation-button,
+  .teamdata-formation-button-clicked {
+    -webkit-transition-duration: 300ms;
+            transition-duration: 300ms;
+    width: 99% !important;
+    border-radius: 0 !important;
+    margin: 0 !important;
+  }
+  #teamdata-formations {
+    padding: 0 !important;
+  }
+  #formation-button-first {
+    border-radius: 5px 0 0 5px !important;
+  }
+  #formation-button-last {
+    border-radius: 0 5px 5px 0 !important;
+  }
+  #stats-container {
+    height: 90vh !important;
+    width: 80vw !important;
+    margin: 1fr auto 1fr auto !important;
+    -ms-grid-columns: 5% 50% 1fr 25px !important;
+        grid-template-columns: 5% 50% 1fr 25px !important;
+    -ms-grid-rows: 100px 15% 1fr 40% !important;
+        grid-template-rows: 100px 15% 1fr 40% !important;
+  }
+  #stats-fullname {
+    -ms-grid-row: 1 !important;
+    -ms-grid-row-span: 1 !important;
+    grid-row: 1/2 !important;
+    -ms-grid-column: 2 !important;
+    -ms-grid-column-span: 2 !important;
+    grid-column: 2/4 !important;
+    -ms-flex-item-align: baseline !important;
+        align-self: baseline !important;
+    margin-top: 20px !important;
+  }
+  #stats-position {
+    margin: 0 !important;
+    -ms-grid-column-align: start !important;
+        justify-self: start !important;
+    -ms-flex-item-align: start !important;
+        -ms-grid-row-align: start !important;
+        align-self: start !important;
+    margin-top: 40px !important;
+    -ms-grid-row: 2 !important;
+    -ms-grid-row-span: 1 !important;
+    grid-row: 2/3 !important;
+    -ms-grid-column: 2 !important;
+    -ms-grid-column-span: 2 !important;
+    grid-column: 2/4 !important;
+  }
+  #stats-club {
+    width: minmax(50px 50%) !important;
+    -ms-grid-row: 2 !important;
+    -ms-grid-row-span: 1 !important;
+    grid-row: 2/3 !important;
+    -ms-grid-column: 2 !important;
+    -ms-grid-column-span: 2 !important;
+    grid-column: 2/4 !important;
+    -ms-grid-column-align: start !important;
+        justify-self: start !important;
+    -ms-flex-item-align: start !important;
+        -ms-grid-row-align: start !important;
+        align-self: start !important;
+  }
+  #stats-points {
+    -ms-grid-column: 2 !important;
+    -ms-grid-column-span: 2 !important;
+    grid-column: 2/4 !important;
+    -ms-grid-row: 3 !important;
+    -ms-grid-row-span: 1 !important;
+    grid-row: 3/4 !important;
+  }
+  #stats-points li {
+    -ms-grid-columns: 75% 25% !important;
+        grid-template-columns: 75% 25% !important;
+  }
+  #chart-container {
+    width: 100% !important;
+    max-height: 100% !important;
+    -ms-grid-row: 4 !important;
+    -ms-grid-row-span: 1 !important;
+    grid-row: 4/5 !important;
+    -ms-grid-column: 1 !important;
+    -ms-grid-column-span: 4 !important;
+    grid-column: 1/5 !important;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  #stats-close-img {
+    margin-top: 10px !important;
+    height: 25px !important;
+  }
+  #stats-container {
+    height: 100% !important;
+    width: 100% !important;
+    margin: 0 !important;
+    border-radius: 0 !important;
+    -ms-grid-columns: 5% 50% 1fr 35px !important;
+        grid-template-columns: 5% 50% 1fr 35px !important;
+    -ms-grid-rows: 100px 15% 1fr 40% !important;
+        grid-template-rows: 100px 15% 1fr 40% !important;
+  }
+}
+/*# sourceMappingURL=style.css.map */
