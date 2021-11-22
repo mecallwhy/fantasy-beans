@@ -7,6 +7,15 @@
           backdrop-filter: blur(5px);
   z-index: 999;
   position: fixed;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 #stats-container {
@@ -14,7 +23,6 @@
   background-color: #d8d8d8;
   height: 530px;
   width: 650px;
-  margin: 3% auto 3% auto;
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 25px 400px 200px 25px;
@@ -1338,7 +1346,128 @@ button:disabled {
   grid-column: 4/5;
 }
 
+#teamdata-scrolled #teamdata-formations .teamdata-formation-button, #teamdata-scrolled #teamdata-formations .teamdata-formation-button-clicked, #teamdata .teamdata-formation-button, #teamdata .teamdata-formation-button-clicked {
+  font-family: 'Exo 2', sans-serif;
+  font-weight: bold;
+  padding: 0;
+  margin: 0;
+  border: none;
+  border-radius: 5px;
+  margin-left: 2px;
+  height: 30px;
+  width: 60px;
+  text-align: center;
+  -ms-grid-column-align: center;
+      justify-self: center;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+}
+
+@-webkit-keyframes slide-from-above {
+  0% {
+    -webkit-transform: translateY(-100px);
+            transform: translateY(-100px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translate(0px);
+            transform: translate(0px);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-from-above {
+  0% {
+    -webkit-transform: translateY(-100px);
+            transform: translateY(-100px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translate(0px);
+            transform: translate(0px);
+    opacity: 1;
+  }
+}
+
+#teamdata-scrolled {
+  -webkit-animation: slide-from-above 200ms ease;
+          animation: slide-from-above 200ms ease;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 10px;
+  background-image: url(./images/tło6.png);
+  width: 55px;
+  height: 270px;
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 1;
+  grid-column: 2/3;
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 1;
+  grid-row: 1/2;
+  padding: 7px;
+  border-radius: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+#teamdata-scrolled #teamdata-save-button {
+  font-family: 'Exo 2', sans-serif;
+  background-color: var(--first-color);
+  color: var(--second-color);
+  font-weight: bold;
+  border: none;
+  border-radius: 5px !important;
+  height: 30px;
+  width: 60px;
+  border-radius: 10px;
+  text-align: center;
+  -ms-grid-column-align: center;
+      justify-self: center;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+}
+
+#teamdata-scrolled #teamdata-formations {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+#teamdata-scrolled #teamdata-formations .teamdata-formation-button {
+  margin: 2px 0;
+  background-color: #d8d8d8;
+  color: #1a1a1a;
+}
+
+#teamdata-scrolled #teamdata-formations .teamdata-formation-button-clicked {
+  margin: 2px 0;
+  -webkit-transition-duration: 300ms;
+          transition-duration: 300ms;
+  background-color: #1a1a1a;
+  color: #d8d8d8;
+}
+
+#teamdata-scrolled h5,
+#teamdata-scrolled #teamdata-balance-status,
+#teamdata-scrolled #teamdata-teamname-container {
+  display: none;
+}
+
 #teamdata {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 10px;
   background-image: url(./images/tło6.png);
   -ms-grid-column: 2;
   -ms-grid-column-span: 1;
@@ -1456,24 +1585,6 @@ button:disabled {
           align-items: center;
 }
 
-#teamdata .teamdata-formation-button, #teamdata .teamdata-formation-button-clicked {
-  font-family: 'Exo 2', sans-serif;
-  font-weight: bold;
-  padding: 0;
-  margin: 0;
-  border: none;
-  border-radius: 5px;
-  margin-left: 2px;
-  height: 30px;
-  width: 60px;
-  text-align: center;
-  -ms-grid-column-align: center;
-      justify-self: center;
-  -ms-flex-item-align: center;
-      -ms-grid-row-align: center;
-      align-self: center;
-}
-
 #teamdata .teamdata-formation-button {
   background-color: #d8d8d8;
   color: #1a1a1a;
@@ -1517,9 +1628,6 @@ button:disabled {
   -ms-grid-column: 1;
   -ms-grid-column-span: 1;
   grid-column: 1/2;
-  -ms-grid-row: 2;
-  -ms-grid-row-span: 1;
-  grid-row: 2/3;
   background-image: url(./images/stadium3.jpg);
   background-position-x: center;
   background-position-y: bottom;
@@ -1654,10 +1762,15 @@ button:disabled {
         grid-template-columns: 100%;
   }
   #pitch,
+  #teamdata-scrolled,
   #teamdata {
     -ms-grid-column: 1;
     -ms-grid-column-span: 1;
     grid-column: 1/2;
+  }
+  #teamdata-scrolled #teamdata-save-button {
+    height: 30px !important;
+    width: 60px !important;
   }
   .teamdata-formation-button,
   .teamdata-formation-button-clicked {
@@ -1884,21 +1997,21 @@ button:disabled {
     -ms-grid-row-span: 1;
     grid-row: 1/2;
   }
-  .teamdata-formation-button,
-  .teamdata-formation-button-clicked {
+  #teamdata .teamdata-formation-button,
+  #teamdata .teamdata-formation-button-clicked {
     -webkit-transition-duration: 300ms;
             transition-duration: 300ms;
     width: 99% !important;
     border-radius: 0 !important;
     margin: 0 !important;
   }
-  #teamdata-formations {
+  #teamdata #teamdata-formations {
     padding: 0 !important;
   }
-  #formation-button-first {
+  #teamdata #formation-button-first {
     border-radius: 5px 0 0 5px !important;
   }
-  #formation-button-last {
+  #teamdata #formation-button-last {
     border-radius: 0 5px 5px 0 !important;
   }
   #stats-container {
@@ -1971,6 +2084,10 @@ button:disabled {
     -ms-grid-column: 1 !important;
     -ms-grid-column-span: 4 !important;
     grid-column: 1/5 !important;
+  }
+  canvas {
+    min-height: 100%;
+    max-height: 100%;
   }
 }
 

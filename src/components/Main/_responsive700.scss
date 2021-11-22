@@ -25,22 +25,25 @@
         grid-column: 1/2;
         grid-row: 1/2;
     }
-    .teamdata-formation-button,
-    .teamdata-formation-button-clicked{
-        transition-duration: 300ms;
-        width: 99% !important;
-        border-radius: 0 !important;
-        margin: 0 !important;
+    #teamdata{
+        .teamdata-formation-button,
+        .teamdata-formation-button-clicked{
+            transition-duration: 300ms;
+            width: 99% !important;
+            border-radius: 0 !important;
+            margin: 0 !important;
+        }
+        #teamdata-formations{
+            padding: 0 !important;
+        }
+        #formation-button-first{
+            border-radius: 5px 0 0 5px !important;
+        }
+        #formation-button-last{
+            border-radius: 0 5px 5px 0 !important;
+        }
     }
-    #teamdata-formations{
-        padding: 0 !important;
-    }
-    #formation-button-first{
-        border-radius: 5px 0 0 5px !important;
-    }
-    #formation-button-last{
-        border-radius: 0 5px 5px 0 !important;
-    }
+    
     
     #stats-container{
         height: 90vh !important;
@@ -82,5 +85,10 @@
         max-height: 100% !important;
         grid-row: 4/5 !important;
         grid-column: 1/5 !important;
+    }
+    
+    canvas{
+        min-height: 100%;
+        max-height: 100%;
     }
 }

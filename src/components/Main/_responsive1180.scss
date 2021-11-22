@@ -19,8 +19,16 @@
         grid-template-columns: 100%;
     }
     #pitch, 
+    #teamdata-scrolled,
     #teamdata{
         grid-column: 1/2;
+    }
+    #teamdata-scrolled{
+        #teamdata-save-button{
+        
+        height: 30px !important;
+        width: 60px !important;        
+        }
     }
     .teamdata-formation-button, 
     .teamdata-formation-button-clicked{

@@ -24,6 +24,7 @@ function Main(){
   const [statsToShowIndex, setStatsToShowIndex] = useState(0)
   const [showStats, setShowStats] = useState(false)
   const matchdaysPlayed = 0
+  const [teamDataID, setTeamDataID] = useState("teamdata")
 
   const [ataCounter, setAtaCounter] = useState(0)
   const [bolCounter, setBolCounter] = useState(0)
@@ -116,7 +117,16 @@ function Main(){
         </div>
       </div>
       <div id="pitch-img-container">
-        <div id="teamdata">
+        <div id={teamDataID}>
+          {window.addEventListener('scroll', ()=>{
+            const scrolled = window.scrollY;
+            if (scrolled > 200){
+              setTeamDataID("teamdata-scrolled")
+            }
+            else{
+              setTeamDataID("teamdata")
+            }
+          })}
           <h5 id="teamdata-teamname-info">Zespół:</h5>
           <h5 id="teamdata-balance-status-info">Stan konta/wartość klubu:</h5>
           <TeamName 

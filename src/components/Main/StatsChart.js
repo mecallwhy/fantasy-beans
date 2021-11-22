@@ -162,7 +162,7 @@ const StatsChart = (props) => {
                   fill: origin,
                   borderColor: chartColor,
                   backgroundColor: chartColor,
-                  tension: 0.1,
+                  tension: 0.5,
                   label: 'punkty',
                   data: [
                     players[statsToShowIndex].matchday1Points, 
