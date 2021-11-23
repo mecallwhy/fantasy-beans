@@ -29,6 +29,7 @@ const Market = (props) => {
   const [marketPageIndex2, setMarketPageIndex2] = useState(10)
   const [playersToMap, setPlayersToMap] = useState(players)
   const [visibleMarketPage, setVisibleMarketPage] = useState(1)
+  const [marketListID, setMarketListID] = useState("market-list")
 
   const handleStats = (player)=>{
     setStatsToShowIndex(parseInt(player.btnId.slice(-7,-4)))
@@ -94,9 +95,23 @@ const Market = (props) => {
 
   const handlePageToggle = (marketPageIndex1, marketPageIndex2, pageNum) => {
     if(pageNum !== 0 && !inRange(playersToMap.length, (pageNum-2)*10, (pageNum-1)*10)){
-      setMarketPageIndex1(marketPageIndex1)
-      setMarketPageIndex2(marketPageIndex2)
-      setVisibleMarketPage(pageNum)
+      if(visibleMarketPage>pageNum){
+        setMarketListID("market-list-right")
+        setTimeout( () => {
+          setMarketListID("market-list")
+        }, 400)
+      }
+      if(visibleMarketPage<pageNum){
+        setMarketListID("market-list-left")
+        setTimeout( () => {
+          setMarketListID("market-list")
+        }, 400)
+      }
+      setTimeout( () => {
+        setMarketPageIndex1(marketPageIndex1)
+        setMarketPageIndex2(marketPageIndex2)
+        setVisibleMarketPage(pageNum)
+      } , 200);
     }
   }
 
@@ -357,7 +372,7 @@ const Market = (props) => {
           </div>
         </div>}
       </div>
-      <ul id="market-list">
+      <ul id={marketListID}>
         <li className="market-player-label">
           <span className="second-name-label">nazwisko</span>
           <span className="club-name-label">klub</span>
