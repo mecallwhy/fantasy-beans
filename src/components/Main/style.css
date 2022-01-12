@@ -647,7 +647,6 @@
   background: none;
   padding: 0;
   border: none;
-  border-radius: 5px;
   -ms-flex-item-align: center;
       -ms-grid-row-align: center;
       align-self: center;
@@ -727,8 +726,8 @@
   border-radius: 10px;
   display: -ms-grid;
   display: grid;
-  -ms-grid-rows: 150px auto auto;
-      grid-template-rows: 150px auto auto;
+  -ms-grid-rows: 20% 70% 10%;
+      grid-template-rows: 20% 70% 10%;
 }
 
 #market-wide-screen h1 {
@@ -965,16 +964,51 @@
       justify-content: space-around;
 }
 
-.page-toggle-button {
-  background-color: #d8d8d8;
-  color: #1a1a1a;
-  font-weight: bold;
-  font-family: 'Exo 2', sans-serif;
-  height: 30px;
-  width: 20px;
+#page-toggle-bar-bottom #page-toggle-slide {
+  background-color: inherit;
+  height: 26px;
+  -webkit-appearance: none;
+  margin: 10px 10px 13px 10px;
+  width: 100%;
+}
+
+#page-toggle-bar-bottom #page-toggle-slide::-webkit-slider-thumb {
+  height: 20px;
+  width: 13px;
+  border-radius: 7px;
+  background: black;
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -3.5px;
+}
+
+#page-toggle-bar-bottom #page-toggle-slide::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 13px;
+  cursor: pointer;
+  -webkit-box-shadow: 0px 0px 0px #000000;
+          box-shadow: 0px 0px 0px #000000;
+  background: #ffffff;
+  border-radius: 25px;
+}
+
+#page-toggle-bar-bottom .page-toggle-button {
+  background: none;
   padding: 0;
-  border-radius: 5px;
   border: none;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  text-align: center;
+}
+
+#page-toggle-bar-bottom .page-toggle-button img {
+  height: 25px;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  -ms-grid-column-align: center;
+      justify-self: center;
 }
 
 @-webkit-keyframes slide-left {
@@ -1067,7 +1101,7 @@
   grid-row: 2/3;
   -webkit-padding-start: 0;
           padding-inline-start: 0;
-  margin-top: 0;
+  margin: 0;
   height: 100%;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -1955,8 +1989,8 @@ button:disabled {
     width: 100%;
     display: -ms-grid;
     display: grid;
-    -ms-grid-rows: 90px 215px auto auto;
-        grid-template-rows: 90px 215px auto auto;
+    -ms-grid-rows: 10% 25% 55% 10%;
+        grid-template-rows: 10% 25% 55% 10%;
     background-color: rgba(255, 255, 255, 0.5);
     border-radius: 10px;
   }

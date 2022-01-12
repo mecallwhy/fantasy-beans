@@ -3,7 +3,6 @@ import recycle2 from "./images/recycle2.png";
 import recycle from "./images/recycle.png";
 import eliminate from "./images/eliminate.png";
 
-
 export const PlayerBean = (props) => {
   const {theSquad,
     squadIndex,
@@ -72,7 +71,6 @@ export const PlayerBean = (props) => {
     midfieldersCounter, setMidfieldersCounter,
     forwardsCounter, setForwardsCounter
   } = positionCounters
-
 
   const eliminatePlayer = () => {
     

@@ -1,4 +1,4 @@
-let player0 = {
+const player0 = {
     id:"", 
     pointSystemId:"", 
     btnId:"", 
@@ -15,7 +15,7 @@ let player0 = {
     overallPoints:"",
     recentMatchdayPoints:"",
 }
-let player1 = {
+const player1 = {
     id:"", 
     pointSystemId:"", 
     btnId:"", 
@@ -32,7 +32,7 @@ let player1 = {
     overallPoints:"",
     recentMatchdayPoints:""
 }
-let player2 = {
+const player2 = {
     id:"", 
     pointSystemId:"", 
     btnId:"", 
@@ -49,7 +49,7 @@ let player2 = {
     overallPoints:"",
     recentMatchdayPoints:""
 }
-let player3 = {
+const player3 = {
     id:"", 
     pointSystemId:"", 
     btnId:"",  
@@ -66,7 +66,7 @@ let player3 = {
     overallPoints:"",
     recentMatchdayPoints:""
 }
-let player4 = {
+const player4 = {
     id:"", 
     pointSystemId:"", 
     btnId:"",  
@@ -83,7 +83,7 @@ let player4 = {
     overallPoints:"",
     recentMatchdayPoints:""
 }
-let player5 = {
+const player5 = {
     id:"", 
     pointSystemId:"", 
     btnId:"",
@@ -100,7 +100,7 @@ let player5 = {
     overallPoints:"",
     recentMatchdayPoints:""
 }
-let player6 = {
+const player6 = {
     id:"", 
     pointSystemId:"", 
     btnId:"",  
@@ -117,7 +117,7 @@ let player6 = {
     overallPoints:"",
     recentMatchdayPoints:""
 }
-let player7 = {
+const player7 = {
     id:"", 
     pointSystemId:"", 
     btnId:"",  
@@ -134,7 +134,7 @@ let player7 = {
     overallPoints:"",
     recentMatchdayPoints:""
 }
-let player8 = {
+const player8 = {
     id:"", 
     pointSystemId:"", 
     btnId:"",  
@@ -151,7 +151,7 @@ let player8 = {
     overallPoints:"",
     recentMatchdayPoints:""
 }
-let player9 = {
+const player9 = {
     id:"", 
     pointSystemId:"", 
     btnId:"",  
@@ -168,7 +168,7 @@ let player9 = {
     overallPoints:"",
     recentMatchdayPoints:""
 }
-let player10 = {
+const player10 = {
     id:"", 
     pointSystemId:"", 
     btnId:"",  
@@ -185,7 +185,7 @@ let player10 = {
     overallPoints:"",
     recentMatchdayPoints:""
 }
-let player11 = {
+const player11 = {
     id:"", 
     pointSystemId:"", 
     btnId:"",  
@@ -202,7 +202,7 @@ let player11 = {
     overallPoints:"",
     recentMatchdayPoints:""
 }
-let player12 = {
+const player12 = {
     id:"", 
     pointSystemId:"", 
     btnId:"",  
@@ -219,7 +219,7 @@ let player12 = {
     overallPoints:"",
     recentMatchdayPoints:""
 }
-let player13 = {
+const player13 = {
     id:"", 
     pointSystemId:"", 
     btnId:"",  
@@ -236,7 +236,7 @@ let player13 = {
     overallPoints:"",
     recentMatchdayPoints:""
 }
-let player14 = {
+const player14 = {
     id:"", 
     pointSystemId:"", 
     btnId:"",  
@@ -253,7 +253,7 @@ let player14 = {
     overallPoints:"",
     recentMatchdayPoints:""
 }
-let player15 = {
+const player15 = {
     id:"", 
     pointSystemId:"", 
     btnId:"",  
@@ -270,7 +270,7 @@ let player15 = {
     overallPoints:"",
     recentMatchdayPoints:""
 }
-let player16 = {
+const player16 = {
     id:"", 
     pointSystemId:"", 
     btnId:"",  
@@ -287,7 +287,7 @@ let player16 = {
     overallPoints:"",
     recentMatchdayPoints:""
 }
-let player17 = {
+const player17 = {
     id:"", 
     pointSystemId:"", 
     btnId:"",  
@@ -305,7 +305,7 @@ let player17 = {
     recentMatchdayPoints:""
 }
 
-let theSquad = [
+const theSquad = [
   player0,
   player1, 
   player2, 

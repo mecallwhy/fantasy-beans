@@ -1,13 +1,15 @@
-import React, { useEffect, useState} from "react"
+import React, { useEffect, useState} from "react";
 import players from "./Players";
 import formations from "./formations.js"
-import PageToggleButton from "./PageToggleButton.js";
 import RandomSquadButton from "./RandomSquadButton.js";
+import rightArrow from "./images/right-arrow.png";
+import leftArrow from "./images/left-arrow.png";
 
 const Market = (props) => {
 
   const {
     id,
+    setTheSquad,
     theSquad, 
     formationIndex, 
     disabledButtons, 
@@ -93,21 +95,20 @@ const Market = (props) => {
     return numberToCheck >= min && numberToCheck <= max;
   }
 
-  const handlePageToggle = (marketPageIndex1, marketPageIndex2, pageNum) => {
+  const handlePageToggle = (pageNum) => {
+    const marketPageIndex1 = pageNum*10-10
+    const marketPageIndex2 = pageNum*10
     if(pageNum !== 0 && !inRange(playersToMap.length, (pageNum-2)*10, (pageNum-1)*10)){
       if(visibleMarketPage>pageNum){
         setMarketListID("market-list-right")
-        setTimeout( () => {
-          setMarketListID("market-list")
-        }, 400)
       }
       if(visibleMarketPage<pageNum){
         setMarketListID("market-list-left")
-        setTimeout( () => {
-          setMarketListID("market-list")
-        }, 400)
       }
-      setTimeout( () => {
+      setTimeout(() => {
+        setMarketListID("market-list")
+      }, 400)
+      setTimeout(() => {
         setMarketPageIndex1(marketPageIndex1)
         setMarketPageIndex2(marketPageIndex2)
         setVisibleMarketPage(pageNum)
@@ -209,7 +210,7 @@ const Market = (props) => {
   }
 
   const handleHirePlayer = (btnId, price) => {
-    setTemporarySquad(hirePlayer(
+    setTheSquad(hirePlayer(
       btnId,
       price, 
       formationIndex, 
@@ -380,62 +381,21 @@ const Market = (props) => {
         </li>
         {listOfPlayers}</ul>
       <div id="page-toggle-bar-bottom">
-          { <button className="page-toggle-button" onClick={()=>{handlePageToggle(marketPageIndex1-10, marketPageIndex2-10, visibleMarketPage-1)}}>-</button>}
-          <PageToggleButton playersToMap={playersToMap} visibleMarketPage={visibleMarketPage} handlePageToggle={handlePageToggle} pageBtnNum={1}/>
-          <PageToggleButton playersToMap={playersToMap} visibleMarketPage={visibleMarketPage} handlePageToggle={handlePageToggle} pageBtnNum={2}/>
-          <PageToggleButton playersToMap={playersToMap} visibleMarketPage={visibleMarketPage} handlePageToggle={handlePageToggle} pageBtnNum={3}/>
-          <PageToggleButton playersToMap={playersToMap} visibleMarketPage={visibleMarketPage} handlePageToggle={handlePageToggle} pageBtnNum={4}/>
-          <PageToggleButton playersToMap={playersToMap} visibleMarketPage={visibleMarketPage} handlePageToggle={handlePageToggle} pageBtnNum={5}/>
-          <PageToggleButton playersToMap={playersToMap} visibleMarketPage={visibleMarketPage} handlePageToggle={handlePageToggle} pageBtnNum={6}/>
-          <PageToggleButton playersToMap={playersToMap} visibleMarketPage={visibleMarketPage} handlePageToggle={handlePageToggle} pageBtnNum={7}/>
-          <PageToggleButton playersToMap={playersToMap} visibleMarketPage={visibleMarketPage} handlePageToggle={handlePageToggle} pageBtnNum={8}/>
-          <PageToggleButton playersToMap={playersToMap} visibleMarketPage={visibleMarketPage} handlePageToggle={handlePageToggle} pageBtnNum={9}/>
-          <PageToggleButton playersToMap={playersToMap} visibleMarketPage={visibleMarketPage} handlePageToggle={handlePageToggle} pageBtnNum={10}/>
-          <PageToggleButton playersToMap={playersToMap} visibleMarketPage={visibleMarketPage} handlePageToggle={handlePageToggle} pageBtnNum={11}/>
-          <PageToggleButton playersToMap={playersToMap} visibleMarketPage={visibleMarketPage} handlePageToggle={handlePageToggle} pageBtnNum={12}/>
-          <PageToggleButton playersToMap={playersToMap} visibleMarketPage={visibleMarketPage} handlePageToggle={handlePageToggle} pageBtnNum={13}/>
-          <PageToggleButton playersToMap={playersToMap} visibleMarketPage={visibleMarketPage} handlePageToggle={handlePageToggle} pageBtnNum={14}/>
-          <PageToggleButton playersToMap={playersToMap} visibleMarketPage={visibleMarketPage} handlePageToggle={handlePageToggle} pageBtnNum={15}/>
-          <PageToggleButton playersToMap={playersToMap} visibleMarketPage={visibleMarketPage} handlePageToggle={handlePageToggle} pageBtnNum={16}/>
-          <PageToggleButton playersToMap={playersToMap} visibleMarketPage={visibleMarketPage} handlePageToggle={handlePageToggle} pageBtnNum={17}/>
-          <PageToggleButton playersToMap={playersToMap} visibleMarketPage={visibleMarketPage} handlePageToggle={handlePageToggle} pageBtnNum={18}/>
-          <PageToggleButton playersToMap={playersToMap} visibleMarketPage={visibleMarketPage} handlePageToggle={handlePageToggle} pageBtnNum={19}/>
-          <PageToggleButton playersToMap={playersToMap} visibleMarketPage={visibleMarketPage} handlePageToggle={handlePageToggle} pageBtnNum={20}/>
-          <PageToggleButton playersToMap={playersToMap} visibleMarketPage={visibleMarketPage} handlePageToggle={handlePageToggle} pageBtnNum={21}/>
-          <PageToggleButton playersToMap={playersToMap} visibleMarketPage={visibleMarketPage} handlePageToggle={handlePageToggle} pageBtnNum={22}/>
-          <PageToggleButton playersToMap={playersToMap} visibleMarketPage={visibleMarketPage} handlePageToggle={handlePageToggle} pageBtnNum={23}/>
-          <PageToggleButton playersToMap={playersToMap} visibleMarketPage={visibleMarketPage} handlePageToggle={handlePageToggle} pageBtnNum={24}/>
-          <PageToggleButton playersToMap={playersToMap} visibleMarketPage={visibleMarketPage} handlePageToggle={handlePageToggle} pageBtnNum={25}/>
-          <PageToggleButton playersToMap={playersToMap} visibleMarketPage={visibleMarketPage} handlePageToggle={handlePageToggle} pageBtnNum={26}/>
-          <PageToggleButton playersToMap={playersToMap} visibleMarketPage={visibleMarketPage} handlePageToggle={handlePageToggle} pageBtnNum={27}/>
-          <PageToggleButton playersToMap={playersToMap} visibleMarketPage={visibleMarketPage} handlePageToggle={handlePageToggle} pageBtnNum={28}/>
-          <PageToggleButton playersToMap={playersToMap} visibleMarketPage={visibleMarketPage} handlePageToggle={handlePageToggle} pageBtnNum={29}/>
-          <PageToggleButton playersToMap={playersToMap} visibleMarketPage={visibleMarketPage} handlePageToggle={handlePageToggle} pageBtnNum={30}/>
-          <PageToggleButton playersToMap={playersToMap} visibleMarketPage={visibleMarketPage} handlePageToggle={handlePageToggle} pageBtnNum={31}/>
-          <PageToggleButton playersToMap={playersToMap} visibleMarketPage={visibleMarketPage} handlePageToggle={handlePageToggle} pageBtnNum={32}/>
-          <PageToggleButton playersToMap={playersToMap} visibleMarketPage={visibleMarketPage} handlePageToggle={handlePageToggle} pageBtnNum={33}/>
-          <PageToggleButton playersToMap={playersToMap} visibleMarketPage={visibleMarketPage} handlePageToggle={handlePageToggle} pageBtnNum={34}/>
-          <PageToggleButton playersToMap={playersToMap} visibleMarketPage={visibleMarketPage} handlePageToggle={handlePageToggle} pageBtnNum={35}/>
-          <PageToggleButton playersToMap={playersToMap} visibleMarketPage={visibleMarketPage} handlePageToggle={handlePageToggle} pageBtnNum={36}/>
-          <PageToggleButton playersToMap={playersToMap} visibleMarketPage={visibleMarketPage} handlePageToggle={handlePageToggle} pageBtnNum={37}/>
-          <PageToggleButton playersToMap={playersToMap} visibleMarketPage={visibleMarketPage} handlePageToggle={handlePageToggle} pageBtnNum={38}/>
-          <PageToggleButton playersToMap={playersToMap} visibleMarketPage={visibleMarketPage} handlePageToggle={handlePageToggle} pageBtnNum={39}/>
-          <PageToggleButton playersToMap={playersToMap} visibleMarketPage={visibleMarketPage} handlePageToggle={handlePageToggle} pageBtnNum={40}/>
-          <PageToggleButton playersToMap={playersToMap} visibleMarketPage={visibleMarketPage} handlePageToggle={handlePageToggle} pageBtnNum={41}/>
-          <PageToggleButton playersToMap={playersToMap} visibleMarketPage={visibleMarketPage} handlePageToggle={handlePageToggle} pageBtnNum={42}/>
-          <PageToggleButton playersToMap={playersToMap} visibleMarketPage={visibleMarketPage} handlePageToggle={handlePageToggle} pageBtnNum={43}/>
-          <PageToggleButton playersToMap={playersToMap} visibleMarketPage={visibleMarketPage} handlePageToggle={handlePageToggle} pageBtnNum={44}/>
-          <PageToggleButton playersToMap={playersToMap} visibleMarketPage={visibleMarketPage} handlePageToggle={handlePageToggle} pageBtnNum={45}/>
-          <PageToggleButton playersToMap={playersToMap} visibleMarketPage={visibleMarketPage} handlePageToggle={handlePageToggle} pageBtnNum={46}/>
-          <PageToggleButton playersToMap={playersToMap} visibleMarketPage={visibleMarketPage} handlePageToggle={handlePageToggle} pageBtnNum={47}/>
-          <PageToggleButton playersToMap={playersToMap} visibleMarketPage={visibleMarketPage} handlePageToggle={handlePageToggle} pageBtnNum={48}/>
-          <PageToggleButton playersToMap={playersToMap} visibleMarketPage={visibleMarketPage} handlePageToggle={handlePageToggle} pageBtnNum={49}/>
-          <PageToggleButton playersToMap={playersToMap} visibleMarketPage={visibleMarketPage} handlePageToggle={handlePageToggle} pageBtnNum={50}/>
-          <PageToggleButton playersToMap={playersToMap} visibleMarketPage={visibleMarketPage} handlePageToggle={handlePageToggle} pageBtnNum={51}/>
-          <PageToggleButton playersToMap={playersToMap} visibleMarketPage={visibleMarketPage} handlePageToggle={handlePageToggle} pageBtnNum={52}/>
-          <PageToggleButton playersToMap={playersToMap} visibleMarketPage={visibleMarketPage} handlePageToggle={handlePageToggle} pageBtnNum={53}/>
-          { <button className="page-toggle-button" onClick={()=>{handlePageToggle(marketPageIndex1+10, marketPageIndex2+10, visibleMarketPage+1)}}>+</button>}
-        </div>
+          <button className="page-toggle-button" onClick={()=>{handlePageToggle(visibleMarketPage-1)}}>
+            <img src={leftArrow} alt="left"></img>
+          </button>
+          <input 
+            id="page-toggle-slide"
+            type="range"
+            min={1}
+            max={Math.ceil(playersToMap.length/10)}
+            value={visibleMarketPage}
+            onChange={(e)=>handlePageToggle(parseInt(e.target.value))}>
+          </input>
+          <button className="page-toggle-button" onClick={()=>{handlePageToggle(visibleMarketPage+1)}}>
+            <img src={rightArrow} alt="right"></img>
+          </button>
+      </div>
     </div>
   )
 }
@@ -783,7 +743,9 @@ const assignDataToSquad = (
   theSquad[squadPositionIndex].overallPoints = players[marketIndex].overallPoints
   theSquad[squadPositionIndex].recentMatchdayPoints = players[marketIndex].recentMatchdayPoints
   
-  return [...theSquad];
+  return [...theSquad]
+
+  
 }
 
 export default Market

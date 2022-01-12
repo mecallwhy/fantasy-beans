@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import "./style.css"
+import "./style.css";
 
 import PlayerBean from "./PlayerBean.js";
 import Market from "./Market.js";
 import FormationButton from "./FormationButton.js";
-import theSquadInitial from "./theSquad";
+import theSquadInitial from "./theSquad.js";
 import Schedule from "./Schedule.js";
 import TeamName from "./TeamName.js";
 import StatsChart from "./StatsChart";
@@ -475,6 +475,7 @@ function Main(){
         </div>
           <Market
             id={"market-wide-screen"}
+            setTheSquad={setTheSquad}
             theSquad={theSquad}
             formationIndex={formationIndex}
             disabledButtons={disabledButtons} 
