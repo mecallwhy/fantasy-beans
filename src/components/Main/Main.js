@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./style.css";
+import "./styles/style.css";
 
 import PlayerBean from "./PlayerBean.js";
 import Market from "./Market.js";

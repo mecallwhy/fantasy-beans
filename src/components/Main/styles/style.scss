@@ -95,7 +95,7 @@ button:disabled{
     animation: slide-from-above 200ms ease;
     position: sticky;
     top: 10px;
-    background-image: url(./images/tło6.png);
+    background-image: url(../images/tło6.png);
     width: 55px;
     height: 270px;
     grid-column: 2/3;
@@ -148,7 +148,7 @@ button:disabled{
 #teamdata{
     position: sticky;
     top: 10px;
-    background-image: url(./images/tło6.png);
+    background-image: url(../images/tło6.png);
     grid-column: 2/3;
     grid-row: 1/2;
     padding: 7px;
@@ -252,7 +252,7 @@ button:disabled{
 
 #pitch-img-container{
     grid-column: 1/2;
-    background-image: url(./images/stadium3.jpg);
+    background-image: url(../images/stadium3.jpg);
     background-position-x: center;
     background-position-y: bottom;
     display: grid;
