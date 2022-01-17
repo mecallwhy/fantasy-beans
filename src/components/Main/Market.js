@@ -1,6 +1,5 @@
 import React, { useEffect, useState} from "react";
 import players from "./Players";
-import formations from "./formations.js"
 import RandomSquadButton from "./RandomSquadButton.js";
 import rightArrow from "./images/right-arrow.png";
 import leftArrow from "./images/left-arrow.png";
@@ -11,15 +10,13 @@ const Market = (props) => {
     id,
     setTheSquad,
     theSquad, 
-    formationIndex, 
     disabledButtons, 
     setDisabledButtons, 
-    balance, 
+    balance,
     setBalance, 
     clubCounters, 
     clubCounterSetters, 
     positionCounters,
-    setTemporarySquad,
     setBeansCounter,
     beansCounter,
     clubTotalValue,
@@ -213,7 +210,6 @@ const Market = (props) => {
     setTheSquad(hirePlayer(
       btnId,
       price, 
-      formationIndex, 
       disabledButtons, 
       setDisabledButtons, 
       balance, 
@@ -294,9 +290,8 @@ const Market = (props) => {
             {!showSortingMenu && <RandomSquadButton
               theSquad={theSquad}
               clubTotalValue={clubTotalValue}
-              formationIndex={formationIndex}
               setBalance = {setBalance}
-              setTemporarySquad = {setTemporarySquad}
+              setTheSquad={setTheSquad}
               setDisabledButtons={(data) => setDisabledButtons(data)}
               setBeansCounter = {setBeansCounter}
               positionCounters ={positionCounters}
@@ -403,7 +398,6 @@ const Market = (props) => {
 const hirePlayer = (
   btnId, 
   price, 
-  formationIndex, 
   disabledButtons, 
   setDisabledButtons, 
   balance, 
@@ -454,7 +448,7 @@ const hirePlayer = (
   let withinPositionLimit = false;
 
   let classNameToPass
-  if(price <= balance){
+    if(price <= balance){
       withinBudget = true;
     }
     else{
@@ -575,53 +569,53 @@ const hirePlayer = (
               if(theSquad[0].id === ""){
                 return assignDataToSquad(btnId, 0, classNameToPass, theSquad, clubCounters, clubCounterSetters)
               }
-              else if(theSquad[14].id === ""){
-                return assignDataToSquad(btnId, formations[formationIndex].gk2, classNameToPass, theSquad, clubCounters, clubCounterSetters)
+              else if(theSquad[1].id === ""){
+                return assignDataToSquad(btnId, 1, classNameToPass, theSquad, clubCounters, clubCounterSetters)
               }
               break;
             case "d": setDefendersCounter(defendersCounter+1);
-              if(theSquad[1].id === ""){
-                return assignDataToSquad(btnId, 1, classNameToPass, theSquad, clubCounters, clubCounterSetters)
-              }
-              else if(theSquad[2].id === ""){
+              if(theSquad[2].id === ""){
                 return assignDataToSquad(btnId, 2, classNameToPass, theSquad, clubCounters, clubCounterSetters)
               }
               else if(theSquad[3].id === ""){
                 return assignDataToSquad(btnId, 3, classNameToPass, theSquad, clubCounters, clubCounterSetters)
               }
-              else if(theSquad[formations[formationIndex].def4].id === ""){
-                return assignDataToSquad(btnId, formations[formationIndex].def4, classNameToPass, theSquad, clubCounters, clubCounterSetters)
+              else if(theSquad[4].id === ""){
+                return assignDataToSquad(btnId, 4, classNameToPass, theSquad, clubCounters, clubCounterSetters)
               }
-              else if(theSquad[formations[formationIndex].def5].id === ""){
-                return assignDataToSquad(btnId, formations[formationIndex].def5, classNameToPass, theSquad, clubCounters, clubCounterSetters)
+              else if(theSquad[5].id === ""){
+                return assignDataToSquad(btnId, 5, classNameToPass, theSquad, clubCounters, clubCounterSetters)
+              }
+              else if(theSquad[6].id === ""){
+                return assignDataToSquad(btnId, 6, classNameToPass, theSquad, clubCounters, clubCounterSetters)
               }
               break;
             case "m": setMidfieldersCounter(midfieldersCounter+1);
-              if(theSquad[6].id === ""){
-                return assignDataToSquad(btnId, 6, classNameToPass, theSquad, clubCounters, clubCounterSetters)
-              }
-              else if(theSquad[7].id === ""){
+              if(theSquad[7].id === ""){
                 return assignDataToSquad(btnId, 7, classNameToPass, theSquad, clubCounters, clubCounterSetters)
               }
               else if(theSquad[8].id === ""){
                 return assignDataToSquad(btnId, 8, classNameToPass, theSquad, clubCounters, clubCounterSetters)
               }
-              else if(theSquad[formations[formationIndex].mid4].id === ""){
-                return assignDataToSquad(btnId, formations[formationIndex].mid4, classNameToPass, theSquad, clubCounters, clubCounterSetters)
+              else if(theSquad[9].id === ""){
+                return assignDataToSquad(btnId, 9, classNameToPass, theSquad, clubCounters, clubCounterSetters)
               }
-              else if(theSquad[formations[formationIndex].mid5].id === ""){
-                return assignDataToSquad(btnId, formations[formationIndex].mid5, classNameToPass, theSquad, clubCounters, clubCounterSetters)
+              else if(theSquad[10].id === ""){
+                return assignDataToSquad(btnId, 10, classNameToPass, theSquad, clubCounters, clubCounterSetters)
+              }
+              else if(theSquad[11].id === ""){
+                return assignDataToSquad(btnId, 11, classNameToPass, theSquad, clubCounters, clubCounterSetters)
               }
               break;
             case "f": setForwardsCounter(forwardsCounter+1);
-              if(theSquad[11].id === ""){
-                return assignDataToSquad(btnId, 11, classNameToPass, theSquad, clubCounters, clubCounterSetters)
+              if(theSquad[12].id === ""){
+                return assignDataToSquad(btnId, 12, classNameToPass, theSquad, clubCounters, clubCounterSetters)
               }
-              else if(theSquad[formations[formationIndex].fwd2].id === ""){
-                return assignDataToSquad(btnId, formations[formationIndex].fwd2, classNameToPass, theSquad, clubCounters, clubCounterSetters)
+              else if(theSquad[13].id === ""){
+                return assignDataToSquad(btnId, 13, classNameToPass, theSquad, clubCounters, clubCounterSetters)
               }
-              else if(theSquad[formations[formationIndex].fwd3].id === ""){
-                return assignDataToSquad(btnId, formations[formationIndex].fwd3, classNameToPass, theSquad, clubCounters, clubCounterSetters)
+              else if(theSquad[14].id === ""){
+                return assignDataToSquad(btnId, 14, classNameToPass, theSquad, clubCounters, clubCounterSetters)
               }
               break;
             default: return
@@ -698,50 +692,54 @@ const assignDataToSquad = (
     break;
     case "Gen": setGenCounter(genCounter+1);
     break;
-    case "Hel":  setHelCounter(helCounter+1);
+    case "Hel": setHelCounter(helCounter+1);
     break;
-    case "Int":  setIntCounter(intCounter+1);
+    case "Int": setIntCounter(intCounter+1);
     break;
-    case "Juv":  setJuvCounter(juvCounter+1);
+    case "Juv": setJuvCounter(juvCounter+1);
     break;
-    case "Laz":  setLazCounter(lazCounter+1);
+    case "Laz": setLazCounter(lazCounter+1);
     break;
-    case "Mil":  setMilCounter(milCounter+1);
+    case "Mil": setMilCounter(milCounter+1);
     break;
-    case "Nap":  setNapCounter(napCounter+1);
+    case "Nap": setNapCounter(napCounter+1);
     break;
-    case "Rom":  setRomCounter(romCounter+1);
+    case "Rom": setRomCounter(romCounter+1);
     break;
-    case "Sal":  setSalCounter(salCounter+1);
+    case "Sal": setSalCounter(salCounter+1);
     break;
-    case "Sam":  setSamCounter(samCounter+1);
+    case "Sam": setSamCounter(samCounter+1);
     break;
-    case "Sas":  setSasCounter(sasCounter+1);
+    case "Sas": setSasCounter(sasCounter+1);
     break;
-    case "Spe":  setSpeCounter(speCounter+1);
+    case "Spe": setSpeCounter(speCounter+1);
     break;
-    case "Tor":  setTorCounter(torCounter+1);
+    case "Tor": setTorCounter(torCounter+1);
     break;
-    case "Udi":  setUdiCounter(udiCounter+1);
+    case "Udi": setUdiCounter(udiCounter+1);
     break;
-    case "Ven":  setVenCounter(venCounter+1);
+    case "Ven": setVenCounter(venCounter+1);
     break;
     default: return
   }
 
-  theSquad[squadPositionIndex].btnId = btnId
-  theSquad[squadPositionIndex].className2 = classNameToPass
-  theSquad[squadPositionIndex].className3 = "hoverable"
-  theSquad[squadPositionIndex].id = players[marketIndex].id
-  theSquad[squadPositionIndex].pointSystemId = players[marketIndex].pointSystemId
-  theSquad[squadPositionIndex].name = players[marketIndex].name
-  theSquad[squadPositionIndex].surname = players[marketIndex].surname
-  theSquad[squadPositionIndex].shirtNumber = players[marketIndex].shirtNumber
-  theSquad[squadPositionIndex].position = players[marketIndex].position
-  theSquad[squadPositionIndex].club = players[marketIndex].club
-  theSquad[squadPositionIndex].price = players[marketIndex].price
-  theSquad[squadPositionIndex].overallPoints = players[marketIndex].overallPoints
-  theSquad[squadPositionIndex].recentMatchdayPoints = players[marketIndex].recentMatchdayPoints
+  theSquad[squadPositionIndex] = {
+    id: players[marketIndex].id, 
+    pointSystemId: players[marketIndex].pointSystemId, 
+    btnId: btnId, 
+    className1: "player-bean",
+    className2: classNameToPass,
+    className3: "hoverable",
+    className4: "",
+    name: players[marketIndex].name,
+    surname: players[marketIndex].surname, 
+    shirtNumber: players[marketIndex].shirtNumber, 
+    position: players[marketIndex].position, 
+    club: players[marketIndex].club, 
+    price: players[marketIndex].price,
+    overallPoints: players[marketIndex].overallPoints,
+    recentMatchdayPoints: players[marketIndex].recentMatchdayPoints,
+}
   
   return [...theSquad]
 

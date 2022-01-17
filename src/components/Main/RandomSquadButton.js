@@ -1,15 +1,14 @@
 import React from "react"
 import players from "./Players";
-import formations from "./formations.js";
+import { playerBlank } from "./theSquad";
 
 const RandomSquadButton = (props)=>{
 
     const {
         theSquad,
         clubTotalValue,
-        formationIndex, 
-        setBalance, 
-        setTemporarySquad, 
+        setBalance,
+        setTheSquad, 
         setDisabledButtons, 
         setBeansCounter, 
         positionCounters,
@@ -44,26 +43,8 @@ const RandomSquadButton = (props)=>{
         } = positionCounters 
 
     const clearTheSquad = () => {
-        for(let i = 0; i <= 17; i++){
-            if(theSquad[i].className2 !== "extra-bean"){
-                theSquad[i] = {
-                    id: "",
-                    pointSystemId: "",
-                    btnId: "",
-                    className1: "player-bean",
-                    className2: "player-bean-blank",
-                    className3: "",
-                    className4: "",
-                    name: "",
-                    surname: "",
-                    shirtNumber: "",
-                    position: "",
-                    club: "",
-                    price: "",
-                    overallPoints: "",
-                    recentMatchdayPoints: "",
-                }
-            }
+        for(let i = 0; i <= 14; i++){
+            theSquad[i] = playerBlank
         }
         return theSquad
     }
@@ -431,53 +412,53 @@ const RandomSquadButton = (props)=>{
                           if(theSquad[0].id === ""){
                             assignDataToSquad(btnId, 0, classNameToPass, theSquad)
                           }
-                          else if(theSquad[14].id === ""){
-                            assignDataToSquad(btnId, formations[formationIndex].gk2, classNameToPass, theSquad)
+                          else if(theSquad[1].id === ""){
+                            assignDataToSquad(btnId, 1, classNameToPass, theSquad)
                           }
                           break;
                         case "Def":
-                          if(theSquad[1].id === ""){
-                            assignDataToSquad(btnId, 1, classNameToPass, theSquad)
-                          }
-                          else if(theSquad[2].id === ""){
+                          if(theSquad[2].id === ""){
                             assignDataToSquad(btnId, 2, classNameToPass, theSquad)
                           }
                           else if(theSquad[3].id === ""){
                             assignDataToSquad(btnId, 3, classNameToPass, theSquad)
                           }
-                          else if(theSquad[formations[formationIndex].def4].id === ""){
-                            assignDataToSquad(btnId, formations[formationIndex].def4, classNameToPass, theSquad)
+                          else if(theSquad[4].id === ""){
+                            assignDataToSquad(btnId, 4, classNameToPass, theSquad)
                           }
-                          else if(theSquad[formations[formationIndex].def5].id === ""){
-                            assignDataToSquad(btnId, formations[formationIndex].def5, classNameToPass, theSquad)
+                          else if(theSquad[5].id === ""){
+                            assignDataToSquad(btnId, 5, classNameToPass, theSquad)
+                          }
+                          else if(theSquad[6].id === ""){
+                            assignDataToSquad(btnId, 6, classNameToPass, theSquad)
                           }
                           break;
                         case "Mid":
-                          if(theSquad[6].id === ""){
-                            assignDataToSquad(btnId, 6, classNameToPass, theSquad)
-                          }
-                          else if(theSquad[7].id === ""){
+                          if(theSquad[7].id === ""){
                             assignDataToSquad(btnId, 7, classNameToPass, theSquad)
                           }
                           else if(theSquad[8].id === ""){
                             assignDataToSquad(btnId, 8, classNameToPass, theSquad)
                           }
-                          else if(theSquad[formations[formationIndex].mid4].id === ""){
-                            assignDataToSquad(btnId, formations[formationIndex].mid4, classNameToPass, theSquad)
+                          else if(theSquad[9].id === ""){
+                            assignDataToSquad(btnId, 9, classNameToPass, theSquad)
                           }
-                          else if(theSquad[formations[formationIndex].mid5].id === ""){
-                            assignDataToSquad(btnId, formations[formationIndex].mid5, classNameToPass, theSquad)
+                          else if(theSquad[10].id === ""){
+                            assignDataToSquad(btnId, 10, classNameToPass, theSquad)
+                          }
+                          else if(theSquad[11].id === ""){
+                            assignDataToSquad(btnId, 11, classNameToPass, theSquad)
                           }
                           break;
                         case "Fwd":
-                          if(theSquad[11].id === ""){
-                            assignDataToSquad(btnId, 11, classNameToPass, theSquad)
+                          if(theSquad[12].id === ""){
+                            assignDataToSquad(btnId, 12, classNameToPass, theSquad)
                           }
-                          else if(theSquad[formations[formationIndex].fwd2].id === ""){
-                            assignDataToSquad(btnId, formations[formationIndex].fwd2, classNameToPass, theSquad)
+                          else if(theSquad[13].id === ""){
+                            assignDataToSquad(btnId, 13, classNameToPass, theSquad)
                           }
-                          else if(theSquad[formations[formationIndex].fwd3].id === ""){
-                            assignDataToSquad(btnId, formations[formationIndex].fwd3, classNameToPass, theSquad)
+                          else if(theSquad[14].id === ""){
+                            assignDataToSquad(btnId, 14, classNameToPass, theSquad)
                           }
                           break;
                         default: return
@@ -495,21 +476,25 @@ const RandomSquadButton = (props)=>{
         ) => {
         let marketIndex = parseInt(btnId.slice(-7,-4))
         
-        theSquad[squadPositionIndex].btnId = btnId
-        theSquad[squadPositionIndex].className2 = classNameToPass
-        theSquad[squadPositionIndex].className3 = "hoverable"
-        theSquad[squadPositionIndex].id = players[marketIndex].id
-        theSquad[squadPositionIndex].pointSystemId = players[marketIndex].pointSystemId
-        theSquad[squadPositionIndex].name = players[marketIndex].name
-        theSquad[squadPositionIndex].surname = players[marketIndex].surname
-        theSquad[squadPositionIndex].shirtNumber = players[marketIndex].shirtNumber
-        theSquad[squadPositionIndex].position = players[marketIndex].position
-        theSquad[squadPositionIndex].club = players[marketIndex].club
-        theSquad[squadPositionIndex].price = players[marketIndex].price
-        theSquad[squadPositionIndex].overallPoints = players[marketIndex].overallPoints
-        theSquad[squadPositionIndex].recentMatchdayPoints = players[marketIndex].recentMatchdayPoints
+        theSquad[squadPositionIndex] = {
+            id: players[marketIndex].id, 
+            pointSystemId: players[marketIndex].pointSystemId, 
+            btnId: btnId, 
+            className1: "player-bean",
+            className2: classNameToPass,
+            className3: "hoverable",
+            className4: "",
+            name: players[marketIndex].name,
+            surname: players[marketIndex].surname, 
+            shirtNumber: players[marketIndex].shirtNumber, 
+            position: players[marketIndex].position, 
+            club: players[marketIndex].club, 
+            price: players[marketIndex].price,
+            overallPoints: players[marketIndex].overallPoints,
+            recentMatchdayPoints: players[marketIndex].recentMatchdayPoints,
+        }
 
-        setTemporarySquad([...theSquad])
+        setTheSquad([...theSquad])
     }
 
     return (

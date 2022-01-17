@@ -4,7 +4,7 @@ import "./styles/style.css";
 import PlayerBean from "./PlayerBean.js";
 import Market from "./Market.js";
 import FormationButton from "./FormationButton.js";
-import theSquadInitial from "./theSquad.js";
+import {theSquadInitial} from "./theSquad.js";
 import Schedule from "./Schedule.js";
 import TeamName from "./TeamName.js";
 import StatsChart from "./StatsChart";
@@ -15,7 +15,6 @@ function Main(){
   const [disabledButtons, setDisabledButtons] = useState([])
   const [balance, setBalance] = useState(170)
   const [clubTotalValue, setClubTotalValue] = useState(170)
-  const [temporarySquad, setTemporarySquad] = useState(theSquad)
   const [playerToSwitchIndex, setPlayerToSwitchIndex] = useState(0)
   const [beansCounter, setBeansCounter] = useState(0)
   const [matchdayIndex, setMatchdayIndex] = useState(0)
@@ -25,7 +24,26 @@ function Main(){
   const [showStats, setShowStats] = useState(false)
   const matchdaysPlayed = 0
   const [teamDataID, setTeamDataID] = useState("teamdata")
-
+  const [formation, setFormation] = useState([
+          0,
+          2,
+          3,
+          4,
+          5,
+          "extraBean",
+          7,
+          8,
+          9,
+          10,
+          "extraBean",
+          12,
+          13,
+          "extraBean",
+          1,
+          6,
+          11,
+          14
+  ])
   const [ataCounter, setAtaCounter] = useState(0)
   const [bolCounter, setBolCounter] = useState(0)
   const [cagCounter, setCagCounter] = useState(0)
@@ -51,6 +69,7 @@ function Main(){
   const [defendersCounter, setDefendersCounter] = useState(0)
   const [midfieldersCounter, setMidfieldersCounter] = useState(0)
   const [forwardsCounter, setForwardsCounter] = useState(0)
+  
   
   const clubCounters = {
     ataCounter,
@@ -102,6 +121,23 @@ function Main(){
     midfieldersCounter, setMidfieldersCounter,
     forwardsCounter, setForwardsCounter
   }
+  const playerBeanProps = {
+    theSquad,
+    disabledButtons,
+    setDisabledButtons,
+    balance,
+    setBalance,
+    clubCounters,
+    clubCounterSetters,
+    setTheSquad,
+    positionCounters,
+    playerToSwitchIndex,
+    setPlayerToSwitchIndex,
+    setBeansCounter,
+    beansCounter,
+    setStatsToShowIndex,
+    setShowStats,
+  }
   return (
     <div id="main-grid">
       {showStats && <StatsChart 
@@ -111,9 +147,6 @@ function Main(){
       <div id="menu-img-container">
         <div id="menu">
           <h1 id="main-title">FANTASY BEANS</h1>
-          {/* <h2 className="main-button" id="main-button1">ZESPÓŁ</h2>   //Uzupełnić po dodaniu backendu
-          <h2 className="main-button" id="main-button2">LIGI</h2>
-          <h2 className="main-button" id="main-button3">STATYSTYKI</h2> */}
         </div>
       </div>
       <div id="pitch-img-container">
@@ -141,335 +174,125 @@ function Main(){
           <div id="teamdata-formations">
             <FormationButton
               id={"formation-button-first"}
-              theSquad={theSquad}
-              formationIndex={formationIndex}
-              newFormation={"4-4-2"}
+              setFormation={setFormation}
+              formationName={"4-4-2"}
               newFormationIndex={0}
-              setFormationIndex = {(data) => setFormationIndex(data)}
-              temporarySquad = {temporarySquad}
-              setTemporarySquad = {setTemporarySquad}
+              formationIndex={formationIndex}
+              setFormationIndex={setFormationIndex}
             />
             <FormationButton
               id={""}
-              theSquad={theSquad}
-              formationIndex={formationIndex}
-              newFormation={"4-3-3"}
+              setFormation={setFormation}
+              formationName={"4-3-3"}
               newFormationIndex={1}
-              setFormationIndex={(data) => setFormationIndex(data)}
-              temporarySquad ={temporarySquad}
-              setTemporarySquad = {setTemporarySquad}
+              formationIndex={formationIndex}
+              setFormationIndex={setFormationIndex}
             />
             <FormationButton
               id={""}
-              theSquad={theSquad}
-              formationIndex={formationIndex}
-              newFormation={"4-5-1"}
+              setFormation={setFormation}
+              formationName={"4-5-1"}
               newFormationIndex={2}
-              setFormationIndex={(data) => setFormationIndex(data)}
-              temporarySquad ={temporarySquad}
-              setTemporarySquad = {setTemporarySquad}
+              formationIndex={formationIndex}
+              setFormationIndex={setFormationIndex}
             />
             <FormationButton
               id={""}
-              theSquad={theSquad}
-              formationIndex={formationIndex}
-              newFormation={"5-4-1"}
+              setFormation={setFormation}
+              formationName={"5-4-1"}
               newFormationIndex={3}
-              setFormationIndex={(data) => setFormationIndex(data)}
-              temporarySquad ={temporarySquad}
-              setTemporarySquad = {setTemporarySquad}
+              formationIndex={formationIndex}
+              setFormationIndex={setFormationIndex}
             />
             <FormationButton
               id={""}
-              theSquad={theSquad}
-              formationIndex={formationIndex}
-              newFormation={"5-3-2"}
+              setFormation={setFormation}
+              formationName={"5-3-2"}
               newFormationIndex={4}
-              setFormationIndex={(data) => setFormationIndex(data)}
-              temporarySquad ={temporarySquad}
-              setTemporarySquad = {setTemporarySquad}
+              formationIndex={formationIndex}
+              setFormationIndex={setFormationIndex}
             />
             <FormationButton
               id={""}
-              theSquad={theSquad}
-              formationIndex={formationIndex}
-              newFormation={"3-5-2"}
+              setFormation={setFormation}
+              formationName={"3-5-2"}
               newFormationIndex={5}
-              setFormationIndex={(data) => setFormationIndex(data)}
-              temporarySquad ={temporarySquad}
-              setTemporarySquad = {setTemporarySquad}
+              formationIndex={formationIndex}
+              setFormationIndex={setFormationIndex}
             />
             <FormationButton
               id={"formation-button-last"}
-              theSquad={theSquad}
-              formationIndex={formationIndex}
-              newFormation={"3-4-3"}
+              setFormation={setFormation}
+              formationName={"3-4-3"}
               newFormationIndex={6}
-              setFormationIndex={(data) => setFormationIndex(data)}
-              temporarySquad ={temporarySquad}
-              setTemporarySquad = {setTemporarySquad}
+              formationIndex={formationIndex}
+              setFormationIndex={setFormationIndex}
             />
           </div>
         </div>
         <div id="pitch">
           <div id="pitch-line-gk">
             <PlayerBean
-              theSquad={theSquad}
-              squadIndex={0}
-              disabledButtons={disabledButtons} 
-              setDisabledButtons={(data) => setDisabledButtons(data)}
-              balance = {balance}
-              setBalance = {setBalance}
-              clubCounters = {clubCounters}
-              clubCounterSetters = {clubCounterSetters}
-              setTemporarySquad = {setTemporarySquad}
-              positionCounters = {positionCounters}
-              playerToSwitchIndex = {playerToSwitchIndex}
-              setPlayerToSwitchIndex = {setPlayerToSwitchIndex}
-              setBeansCounter = {setBeansCounter}
-              beansCounter = {beansCounter}
-              setStatsToShowIndex = {setStatsToShowIndex}
-              setShowStats={setShowStats}
+              squadIndex={formation[0]}
+              playerBeanProps = {playerBeanProps}
               />
           </div>
           <div id="pitch-line-def">
             <PlayerBean
-              theSquad={theSquad}
-              squadIndex={1}
-              disabledButtons={disabledButtons} 
-              setDisabledButtons={(data) => setDisabledButtons(data)}
-              balance = {balance}
-              setBalance = {setBalance}
-              clubCounters = {clubCounters}
-              clubCounterSetters = {clubCounterSetters}
-              setTemporarySquad = {setTemporarySquad}
-              positionCounters = {positionCounters}
-              playerToSwitchIndex = {playerToSwitchIndex}
-              setPlayerToSwitchIndex = {setPlayerToSwitchIndex}
-              setBeansCounter = {setBeansCounter}
-              beansCounter = {beansCounter}
-              setStatsToShowIndex = {setStatsToShowIndex}
-              setShowStats={setShowStats}
+              squadIndex={formation[1]}
+              playerBeanProps = {playerBeanProps}
             />
             <PlayerBean
-              theSquad={theSquad}
-              squadIndex={2}
-              disabledButtons={disabledButtons} 
-              setDisabledButtons={(data) => setDisabledButtons(data)}
-              balance = {balance}
-              setBalance = {setBalance}
-              clubCounters = {clubCounters}
-              clubCounterSetters = {clubCounterSetters}
-              setTemporarySquad = {setTemporarySquad}
-              positionCounters = {positionCounters}
-              playerToSwitchIndex = {playerToSwitchIndex}
-              setPlayerToSwitchIndex = {setPlayerToSwitchIndex}
-              setBeansCounter = {setBeansCounter}
-              beansCounter = {beansCounter}
-              setStatsToShowIndex = {setStatsToShowIndex}
-              setShowStats={setShowStats}
+              squadIndex={formation[2]}
+              playerBeanProps = {playerBeanProps}
             />
             <PlayerBean
-              theSquad={theSquad}
-              squadIndex={3}
-              disabledButtons={disabledButtons} 
-              setDisabledButtons={(data) => setDisabledButtons(data)}
-              balance = {balance}
-              setBalance = {setBalance}
-              clubCounters = {clubCounters}
-              clubCounterSetters = {clubCounterSetters}
-              setTemporarySquad = {setTemporarySquad}
-              positionCounters = {positionCounters}
-              playerToSwitchIndex = {playerToSwitchIndex}
-              setPlayerToSwitchIndex = {setPlayerToSwitchIndex}
-              setBeansCounter = {setBeansCounter}
-              beansCounter = {beansCounter}
-              setStatsToShowIndex = {setStatsToShowIndex}
-              setShowStats={setShowStats}
+              squadIndex={formation[3]}
+              playerBeanProps = {playerBeanProps}
             />
             <PlayerBean
-              theSquad={theSquad}
-              squadIndex={4}
-              disabledButtons={disabledButtons} 
-              setDisabledButtons={(data) => setDisabledButtons(data)}
-              balance = {balance}
-              setBalance = {setBalance}
-              clubCounters = {clubCounters}
-              clubCounterSetters = {clubCounterSetters}
-              setTemporarySquad = {setTemporarySquad}
-              positionCounters = {positionCounters}
-              playerToSwitchIndex = {playerToSwitchIndex}
-              setPlayerToSwitchIndex = {setPlayerToSwitchIndex}
-              setBeansCounter = {setBeansCounter}
-              beansCounter = {beansCounter}
-              setStatsToShowIndex = {setStatsToShowIndex}
-              setShowStats={setShowStats}
+              squadIndex={formation[4]}
+              playerBeanProps = {playerBeanProps}
             />
             <PlayerBean
-              theSquad={theSquad}
-              squadIndex={5}
-              disabledButtons={disabledButtons} 
-              setDisabledButtons={(data) => setDisabledButtons(data)}
-              balance = {balance}
-              setBalance = {setBalance}
-              clubCounters = {clubCounters}
-              clubCounterSetters = {clubCounterSetters}
-              setTemporarySquad = {setTemporarySquad}
-              positionCounters = {positionCounters}
-              playerToSwitchIndex = {playerToSwitchIndex}
-              setPlayerToSwitchIndex = {setPlayerToSwitchIndex}
-              setBeansCounter = {setBeansCounter}
-              beansCounter = {beansCounter}
-              setStatsToShowIndex = {setStatsToShowIndex}
-              setShowStats={setShowStats}
+              squadIndex={formation[5]}
+              playerBeanProps = {playerBeanProps}
             />
           </div>
           <div id="pitch-line-mid">
             <PlayerBean
-              theSquad={theSquad}
-              squadIndex={6}
-              disabledButtons={disabledButtons} 
-              setDisabledButtons={(data) => setDisabledButtons(data)}
-              balance = {balance}
-              setBalance = {setBalance}
-              clubCounters = {clubCounters}
-              clubCounterSetters = {clubCounterSetters}
-              setTemporarySquad = {setTemporarySquad}
-              positionCounters = {positionCounters}
-              playerToSwitchIndex = {playerToSwitchIndex}
-              setPlayerToSwitchIndex = {setPlayerToSwitchIndex}
-              setBeansCounter = {setBeansCounter}
-              beansCounter = {beansCounter}
-              setStatsToShowIndex = {setStatsToShowIndex}
-              setShowStats={setShowStats}
+              squadIndex={formation[6]}
+              playerBeanProps = {playerBeanProps}
             />
             <PlayerBean
-              theSquad={theSquad}
-              squadIndex={7}
-              disabledButtons={disabledButtons} 
-              setDisabledButtons={(data) => setDisabledButtons(data)}
-              balance = {balance}
-              setBalance = {setBalance}
-              clubCounters = {clubCounters}
-              clubCounterSetters = {clubCounterSetters}
-              setTemporarySquad = {setTemporarySquad}
-              positionCounters = {positionCounters}
-              playerToSwitchIndex = {playerToSwitchIndex}
-              setPlayerToSwitchIndex = {setPlayerToSwitchIndex}
-              setBeansCounter = {setBeansCounter}
-              beansCounter = {beansCounter}
-              setStatsToShowIndex = {setStatsToShowIndex}
-              setShowStats={setShowStats}
+              squadIndex={formation[7]}
+              playerBeanProps = {playerBeanProps}
             />
             <PlayerBean
-              theSquad={theSquad}
-              squadIndex={8}
-              disabledButtons={disabledButtons} 
-              setDisabledButtons={(data) => setDisabledButtons(data)}
-              balance = {balance}
-              setBalance = {setBalance}
-              clubCounters = {clubCounters}
-              clubCounterSetters = {clubCounterSetters}
-              setTemporarySquad = {setTemporarySquad}
-              positionCounters = {positionCounters}
-              playerToSwitchIndex = {playerToSwitchIndex}
-              setPlayerToSwitchIndex = {setPlayerToSwitchIndex}
-              setBeansCounter = {setBeansCounter}
-              beansCounter = {beansCounter}
-              setStatsToShowIndex = {setStatsToShowIndex}
-              setShowStats={setShowStats}
+              squadIndex={formation[8]}
+              playerBeanProps = {playerBeanProps}
             />
             <PlayerBean
-              theSquad={theSquad}
-              squadIndex={9}
-              disabledButtons={disabledButtons} 
-              setDisabledButtons={(data) => setDisabledButtons(data)}
-              balance = {balance}
-              setBalance = {setBalance}
-              clubCounters = {clubCounters}
-              clubCounterSetters = {clubCounterSetters}
-              setTemporarySquad = {setTemporarySquad}
-              positionCounters = {positionCounters}
-              playerToSwitchIndex = {playerToSwitchIndex}
-              setPlayerToSwitchIndex = {setPlayerToSwitchIndex}
-              setBeansCounter = {setBeansCounter}
-              beansCounter = {beansCounter}
-              setStatsToShowIndex = {setStatsToShowIndex}
-              setShowStats={setShowStats}
+              squadIndex={formation[9]}
+              playerBeanProps = {playerBeanProps}
             />
             <PlayerBean
-              theSquad={theSquad}
-              squadIndex={10}
-              disabledButtons={disabledButtons} 
-              setDisabledButtons={(data) => setDisabledButtons(data)}
-              balance = {balance}
-              setBalance = {setBalance}
-              clubCounters = {clubCounters}
-              clubCounterSetters = {clubCounterSetters}
-              setTemporarySquad = {setTemporarySquad}
-              positionCounters = {positionCounters}
-              playerToSwitchIndex = {playerToSwitchIndex}
-              setPlayerToSwitchIndex = {setPlayerToSwitchIndex}
-              setBeansCounter = {setBeansCounter}
-              beansCounter = {beansCounter}
-              setStatsToShowIndex = {setStatsToShowIndex}
-              setShowStats={setShowStats}
+              squadIndex={formation[10]}
+              playerBeanProps = {playerBeanProps}
             />
           </div>
           <div id="pitch-line-fwd">
             <PlayerBean
-              theSquad={theSquad}
-              squadIndex={11}
-              disabledButtons={disabledButtons} 
-              setDisabledButtons={(data) => setDisabledButtons(data)}
-              balance = {balance}
-              setBalance = {setBalance}
-              clubCounters = {clubCounters}
-              clubCounterSetters = {clubCounterSetters}
-              setTemporarySquad = {setTemporarySquad}
-              positionCounters = {positionCounters}
-              playerToSwitchIndex = {playerToSwitchIndex}
-              setPlayerToSwitchIndex = {setPlayerToSwitchIndex}
-              setBeansCounter = {setBeansCounter}
-              beansCounter = {beansCounter}
-              setStatsToShowIndex = {setStatsToShowIndex}
-              setShowStats={setShowStats}
+              squadIndex={formation[11]}
+              playerBeanProps = {playerBeanProps}
             />
             <PlayerBean
-              theSquad={theSquad}
-              squadIndex={12}
-              disabledButtons={disabledButtons} 
-              setDisabledButtons={(data) => setDisabledButtons(data)}
-              balance = {balance}
-              setBalance = {setBalance}
-              clubCounters = {clubCounters}
-              clubCounterSetters = {clubCounterSetters}
-              setTemporarySquad = {setTemporarySquad}
-              positionCounters = {positionCounters}
-              playerToSwitchIndex = {playerToSwitchIndex}
-              setPlayerToSwitchIndex = {setPlayerToSwitchIndex}
-              setBeansCounter = {setBeansCounter}
-              beansCounter = {beansCounter}
-              setStatsToShowIndex = {setStatsToShowIndex}
-              setShowStats={setShowStats}
+              squadIndex={formation[12]}
+              playerBeanProps = {playerBeanProps}
             />
             <PlayerBean
-              theSquad={theSquad}
-              squadIndex={13}
-              disabledButtons={disabledButtons} 
-              setDisabledButtons={(data) => setDisabledButtons(data)}
-              balance = {balance}
-              setBalance = {setBalance}
-              clubCounters = {clubCounters}
-              clubCounterSetters = {clubCounterSetters}
-              setTemporarySquad = {setTemporarySquad}
-              positionCounters = {positionCounters}
-              playerToSwitchIndex = {playerToSwitchIndex}
-              setPlayerToSwitchIndex = {setPlayerToSwitchIndex}
-              setBeansCounter = {setBeansCounter}
-              beansCounter = {beansCounter}
-              setStatsToShowIndex = {setStatsToShowIndex}
-              setShowStats={setShowStats}
+              squadIndex={formation[13]}
+              playerBeanProps = {playerBeanProps}
             />
           </div>
         </div>
@@ -477,7 +300,6 @@ function Main(){
             id={"market-wide-screen"}
             setTheSquad={setTheSquad}
             theSquad={theSquad}
-            formationIndex={formationIndex}
             disabledButtons={disabledButtons} 
             setDisabledButtons={(data) => setDisabledButtons(data)}
             balance = {balance}
@@ -485,14 +307,13 @@ function Main(){
             clubCounters = {clubCounters}
             positionCounters = {positionCounters}
             clubCounterSetters = {clubCounterSetters}
-            setTemporarySquad = {setTemporarySquad}
             setBeansCounter = {setBeansCounter}
             beansCounter = {beansCounter}
             clubTotalValue ={clubTotalValue}
             setStatsToShowIndex={setStatsToShowIndex}
             setShowStats={setShowStats}
           />
-        <Schedule 
+        <Schedule
           id={"schedule-wide-screen"}    
           matchdayIndex={matchdayIndex}
           setMatchdayIndex={setMatchdayIndex}/>
@@ -501,76 +322,20 @@ function Main(){
         <div id="bench-gradient-container">
           <div id="bench">
                 <PlayerBean
-                  theSquad={theSquad}
-                  squadIndex={14}
-                  disabledButtons={disabledButtons} 
-                  setDisabledButtons={(data) => setDisabledButtons(data)}
-                  balance = {balance}
-                  setBalance = {setBalance}
-                  clubCounters = {clubCounters}
-                  clubCounterSetters = {clubCounterSetters}
-                  setTemporarySquad = {setTemporarySquad}
-                  positionCounters = {positionCounters}
-                  playerToSwitchIndex = {playerToSwitchIndex}
-                  setPlayerToSwitchIndex = {setPlayerToSwitchIndex}
-                  setBeansCounter = {setBeansCounter}
-                  beansCounter = {beansCounter}
-                  setStatsToShowIndex = {setStatsToShowIndex}
-                  setShowStats={setShowStats}
+                  squadIndex={formation[14]}
+                  playerBeanProps = {playerBeanProps}
                 />
                 <PlayerBean
-                  theSquad={theSquad}
-                  squadIndex={15}
-                  disabledButtons={disabledButtons} 
-                  setDisabledButtons={(data) => setDisabledButtons(data)}
-                  balance = {balance}
-                  setBalance = {setBalance}
-                  clubCounters = {clubCounters}
-                  clubCounterSetters = {clubCounterSetters}
-                  setTemporarySquad = {setTemporarySquad}
-                  positionCounters = {positionCounters}
-                  playerToSwitchIndex = {playerToSwitchIndex}
-                  setPlayerToSwitchIndex = {setPlayerToSwitchIndex}
-                  setBeansCounter = {setBeansCounter}
-                  beansCounter = {beansCounter}
-                  setStatsToShowIndex = {setStatsToShowIndex}
-                  setShowStats={setShowStats}  
+                  squadIndex={formation[15]}
+                  playerBeanProps = {playerBeanProps}
                 />
                 <PlayerBean
-                  theSquad={theSquad}
-                  squadIndex={16}
-                  disabledButtons={disabledButtons} 
-                  setDisabledButtons={(data) => setDisabledButtons(data)}
-                  balance = {balance}
-                  setBalance = {setBalance}
-                  clubCounters = {clubCounters}
-                  clubCounterSetters = {clubCounterSetters}
-                  setTemporarySquad = {setTemporarySquad}
-                  positionCounters = {positionCounters}
-                  playerToSwitchIndex = {playerToSwitchIndex}
-                  setPlayerToSwitchIndex = {setPlayerToSwitchIndex}
-                  setBeansCounter = {setBeansCounter}
-                  beansCounter = {beansCounter}
-                  setStatsToShowIndex = {setStatsToShowIndex}
-                  setShowStats={setShowStats}
+                  squadIndex={formation[16]}
+                  playerBeanProps = {playerBeanProps}
                 />
                 <PlayerBean
-                  theSquad={theSquad}
-                  squadIndex={17}
-                  disabledButtons={disabledButtons} 
-                  setDisabledButtons={(data) => setDisabledButtons(data)}
-                  balance = {balance}
-                  setBalance = {setBalance}
-                  clubCounters = {clubCounters}
-                  clubCounterSetters = {clubCounterSetters}
-                  setTemporarySquad = {setTemporarySquad}
-                  positionCounters = {positionCounters}
-                  playerToSwitchIndex = {playerToSwitchIndex}
-                  setPlayerToSwitchIndex = {setPlayerToSwitchIndex}
-                  setBeansCounter = {setBeansCounter}
-                  beansCounter = {beansCounter}
-                  setStatsToShowIndex = {setStatsToShowIndex}
-                  setShowStats={setShowStats}
+                  squadIndex={formation[17]}
+                  playerBeanProps = {playerBeanProps}
                 />
           </div>
         </div>
@@ -579,7 +344,6 @@ function Main(){
         <Market
           id={"market-small-screen"}
           theSquad={theSquad}
-          formationIndex={formationIndex}
           disabledButtons={disabledButtons} 
           setDisabledButtons={(data) => setDisabledButtons(data)}
           balance = {balance}
@@ -587,7 +351,6 @@ function Main(){
           clubCounters = {clubCounters}
           clubCounterSetters = {clubCounterSetters}
           positionCounters = {positionCounters}
-          setTemporarySquad = {setTemporarySquad}
           setBeansCounter = {setBeansCounter}
           beansCounter = {beansCounter}
           clubTotalValue ={clubTotalValue}

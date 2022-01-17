@@ -2,25 +2,31 @@ import React from "react";
 import recycle2 from "./images/recycle2.png";
 import recycle from "./images/recycle.png";
 import eliminate from "./images/eliminate.png";
+import { playerBlank } from "./theSquad";
 
 export const PlayerBean = (props) => {
-  const {theSquad,
-    squadIndex,
+  const {playerBeanProps,
+    squadIndex
+  } = props;
+
+  const {
+    theSquad,
     disabledButtons,
     setDisabledButtons,
     balance,
     setBalance,
-    clubCounters, 
+    clubCounters,
     clubCounterSetters,
-    setTemporarySquad,
+    setTheSquad,
     positionCounters,
     playerToSwitchIndex,
     setPlayerToSwitchIndex,
     setBeansCounter,
     beansCounter,
     setStatsToShowIndex,
-    setShowStats
-  } = props;
+    setShowStats,
+  } = playerBeanProps
+  
   const {
     ataCounter,
     bolCounter,
@@ -132,31 +138,16 @@ export const PlayerBean = (props) => {
       break;
       default: return
     }
-    theSquad[squadIndex] = {
-      id: "",
-      pointSystemId: "",
-      btnId: "",
-      className1: "player-bean",
-      className2: "player-bean-blank",
-      className3: "",
-      className4: "",
-      name: "",
-      surname: "",
-      shirtNumber: "",
-      position: "",
-      club: "",
-      price: "",
-      overallPoints: "",
-      recentMatchdayPoints: "",
-    };
+    theSquad[squadIndex] = playerBlank;
+
     setBeansCounter(beansCounter - 1)
     setBalance(Math.round(newBalance *10)/10)
     setDisabledButtons(newDisabledButtons)
-    setTemporarySquad([...theSquad])
+    setTheSquad([...theSquad])
   };
 
   const prepareToSwitch = () => {
-    for(let i = 0; i <= 17; i++){
+    for(let i = 0; i <= 14; i++){
       if(theSquad[i].position === theSquad[squadIndex].position){
         theSquad[i].className3 = "switchable"
       }
@@ -165,7 +156,7 @@ export const PlayerBean = (props) => {
       }
     }
     setPlayerToSwitchIndex(squadIndex)
-    setTemporarySquad([...theSquad])
+    setTheSquad([...theSquad])
   }
   const switchPlayers = () => {
 
@@ -173,7 +164,7 @@ export const PlayerBean = (props) => {
     theSquad[playerToSwitchIndex] = theSquad[squadIndex]
     theSquad[squadIndex] = temporarySlot
     
-    for(let i = 0; i <= 17; i++){
+    for(let i = 0; i <= 14; i++){
       if(theSquad[i].btnId !== ""){
         theSquad[i].className3 = "hoverable"
       }
@@ -181,7 +172,7 @@ export const PlayerBean = (props) => {
         theSquad[i].className3 = ""
       }
     }
-    setTemporarySquad([...theSquad])
+    setTheSquad([...theSquad])
   }
   const inRange = (numberToCheck, min, max) => {
     return numberToCheck >= min && numberToCheck <= max;
@@ -191,59 +182,62 @@ export const PlayerBean = (props) => {
     setShowStats(true)
   }
 
-  return (
-    <div
-      className={
-        theSquad[squadIndex].className1 + " " +
-        theSquad[squadIndex].className2 + " " +
-        theSquad[squadIndex].className3 + " " +
-        theSquad[squadIndex].className4
-      }>
-      <span
-        className="player-bean-surname"
-        style={inRange(theSquad[squadIndex].surname.length, 0, 4) ? {fontSize: ".95em"} : 
-              inRange(theSquad[squadIndex].surname.length, 5, 7) ? {fontSize: ".85em"} : 
-              {fontSize: ".65em"}}>
-        {theSquad[squadIndex].surname}
-      </span>
-      <span
-        className="player-bean-number">
-        {theSquad[squadIndex].shirtNumber}
-      </span>
-      <span 
-        className="player-bean-points">
-        {theSquad[squadIndex].overallPoints !== "" ? + theSquad[squadIndex].overallPoints + "p" : ""}
-      </span>
-      <span 
-        className="player-bean-price">
-        {theSquad[squadIndex].price !== "" ? theSquad[squadIndex].price + "K" : ""}
-        </span>
-      <button
-        className="player-bean-btn-stats"
-        onClick={()=>{handleStats()}}>Stats</button>
-      <button
-        className="player-bean-btn-switch-small"
-        onClick={() => {
-          prepareToSwitch();
-        }}>
-        <img className="switch-img-small" src={recycle2} alt=""></img>
-      </button>
-      <button className="player-bean-btn-switch-big" 
-        onClick={() => {
-          switchPlayers();
-        }}>
-        <img className="switch-img" src={recycle} alt=""></img>
-      </button>
-      <button
-        className="player-bean-btn-eliminate"
-        onClick={() => {
-          eliminatePlayer();
-        }}
-      >
-        <img className="eliminate-img" src={eliminate} alt=""></img>
-      </button>
-    </div>
-  );
+    return (
+      squadIndex !== "extraBean" ? <div
+       className={
+         theSquad[squadIndex].className1 + " " +
+         theSquad[squadIndex].className2 + " " +
+         theSquad[squadIndex].className3 + " " +
+         theSquad[squadIndex].className4
+       }>
+       <span
+         className="player-bean-surname"
+         style={inRange(theSquad[squadIndex].surname.length, 0, 4) ? {fontSize: ".95em"} : 
+               inRange(theSquad[squadIndex].surname.length, 5, 7) ? {fontSize: ".85em"} : 
+               {fontSize: ".65em"}}>
+         {theSquad[squadIndex].surname}
+       </span>
+       <span
+         className="player-bean-number">
+         {theSquad[squadIndex].shirtNumber}
+       </span>
+       <span 
+         className="player-bean-points">
+         {theSquad[squadIndex].overallPoints !== "" ? + theSquad[squadIndex].overallPoints + "p" : ""}
+       </span>
+       <span 
+         className="player-bean-price">
+         {theSquad[squadIndex].price !== "" ? theSquad[squadIndex].price + "K" : ""}
+         </span>
+       <button
+         className="player-bean-btn-stats"
+         onClick={()=>{handleStats()}}>Stats</button>
+       <button
+         className="player-bean-btn-switch-small"
+         onClick={() => {
+           prepareToSwitch();
+         }}>
+         <img className="switch-img-small" src={recycle2} alt=""></img>
+       </button>
+       <button className="player-bean-btn-switch-big" 
+         onClick={() => {
+           switchPlayers();
+         }}>
+         <img className="switch-img" src={recycle} alt=""></img>
+       </button>
+       <button
+         className="player-bean-btn-eliminate"
+         onClick={() => {
+           eliminatePlayer();
+         }}
+       >
+         <img className="eliminate-img" src={eliminate} alt=""></img>
+       </button>
+     </div>
+     :
+     null
+   );
+  
 };
 
 export default PlayerBean;
