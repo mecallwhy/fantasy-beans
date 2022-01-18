@@ -125,7 +125,6 @@ const StatsChart = (props) => {
           <h1 id="stats-fullname"><span>{players[statsToShowIndex].name}</span>{" " + players[statsToShowIndex].surname}</h1>
           <ul id="stats-points">Punkty:
             <li>ostatnia kolejka <span>{players[statsToShowIndex].recentMatchdayPoints} pkt</span></li>
-            {/* <li>forma</li>   Uzupełnić po dodaniu backendu: średnia z ostatnich pięciu meczy.*/}
             <li>średnia <span>{averagePointsPerMatch()} pkt</span></li>
             <li>łącznie <span>{players[statsToShowIndex].overallPoints} pkt</span></li>
           </ul>

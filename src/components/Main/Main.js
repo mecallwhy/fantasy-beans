@@ -12,18 +12,18 @@ import StatsChart from "./StatsChart";
 function Main(){
   const [theSquad, setTheSquad] = useState(theSquadInitial);
   const [formationIndex, setFormationIndex] = useState(0);
-  const [disabledButtons, setDisabledButtons] = useState([])
-  const [balance, setBalance] = useState(170)
-  const [clubTotalValue, setClubTotalValue] = useState(170)
-  const [playerToSwitchIndex, setPlayerToSwitchIndex] = useState(0)
-  const [beansCounter, setBeansCounter] = useState(0)
-  const [matchdayIndex, setMatchdayIndex] = useState(0)
-  const [teamname, setTeamName] = useState("FC Team")
-  const [renameActive, setRenameActive] = useState(false)
-  const [statsToShowIndex, setStatsToShowIndex] = useState(0)
-  const [showStats, setShowStats] = useState(false)
-  const matchdaysPlayed = 0
-  const [teamDataID, setTeamDataID] = useState("teamdata")
+  const [disabledButtons, setDisabledButtons] = useState([]);
+  const [balance, setBalance] = useState(170);
+  const [clubTotalValue, setClubTotalValue] = useState(170);
+  const [playerToSwitchIndex, setPlayerToSwitchIndex] = useState(0);
+  const [beansCounter, setBeansCounter] = useState(0);
+  const [matchdayIndex, setMatchdayIndex] = useState(0);
+  const [teamname, setTeamName] = useState("FC Team");
+  const [renameActive, setRenameActive] = useState(false);
+  const [statsToShowIndex, setStatsToShowIndex] = useState(0);
+  const [showStats, setShowStats] = useState(false);
+  const matchdaysPlayed = 0;
+  const [teamDataID, setTeamDataID] = useState("teamdata");
   const [formation, setFormation] = useState([
           0,
           2,
@@ -43,33 +43,32 @@ function Main(){
           6,
           11,
           14
-  ])
-  const [ataCounter, setAtaCounter] = useState(0)
-  const [bolCounter, setBolCounter] = useState(0)
-  const [cagCounter, setCagCounter] = useState(0)
-  const [empCounter, setEmpCounter] = useState(0)
-  const [fioCounter, setFioCounter] = useState(0)
-  const [genCounter, setGenCounter] = useState(0)
-  const [helCounter, setHelCounter] = useState(0)
-  const [intCounter, setIntCounter] = useState(0)
-  const [juvCounter, setJuvCounter] = useState(0)
-  const [lazCounter, setLazCounter] = useState(0)
-  const [milCounter, setMilCounter] = useState(0)
-  const [napCounter, setNapCounter] = useState(0)
-  const [romCounter, setRomCounter] = useState(0)
-  const [salCounter, setSalCounter] = useState(0)
-  const [samCounter, setSamCounter] = useState(0)
-  const [sasCounter, setSasCounter] = useState(0)
-  const [speCounter, setSpeCounter] = useState(0)
-  const [torCounter, setTorCounter] = useState(0)
-  const [udiCounter, setUdiCounter] = useState(0)
-  const [venCounter, setVenCounter] = useState(0)
+  ]);
+  const [ataCounter, setAtaCounter] = useState(0);
+  const [bolCounter, setBolCounter] = useState(0);
+  const [cagCounter, setCagCounter] = useState(0);
+  const [empCounter, setEmpCounter] = useState(0);
+  const [fioCounter, setFioCounter] = useState(0);
+  const [genCounter, setGenCounter] = useState(0);
+  const [helCounter, setHelCounter] = useState(0);
+  const [intCounter, setIntCounter] = useState(0);
+  const [juvCounter, setJuvCounter] = useState(0);
+  const [lazCounter, setLazCounter] = useState(0);
+  const [milCounter, setMilCounter] = useState(0);
+  const [napCounter, setNapCounter] = useState(0);
+  const [romCounter, setRomCounter] = useState(0);
+  const [salCounter, setSalCounter] = useState(0);
+  const [samCounter, setSamCounter] = useState(0);
+  const [sasCounter, setSasCounter] = useState(0);
+  const [speCounter, setSpeCounter] = useState(0);
+  const [torCounter, setTorCounter] = useState(0);
+  const [udiCounter, setUdiCounter] = useState(0);
+  const [venCounter, setVenCounter] = useState(0);
 
-  const [goalkeepersCounter, setGoalkeepersCounter] = useState(0)
-  const [defendersCounter, setDefendersCounter] = useState(0)
-  const [midfieldersCounter, setMidfieldersCounter] = useState(0)
-  const [forwardsCounter, setForwardsCounter] = useState(0)
-  
+  const [goalkeepersCounter, setGoalkeepersCounter] = useState(0);
+  const [defendersCounter, setDefendersCounter] = useState(0);
+  const [midfieldersCounter, setMidfieldersCounter] = useState(0);
+  const [forwardsCounter, setForwardsCounter] = useState(0);
   
   const clubCounters = {
     ataCounter,
@@ -91,7 +90,7 @@ function Main(){
     speCounter,
     torCounter,
     udiCounter,
-    venCounter}
+    venCounter};
 
     const clubCounterSetters = {
     setAtaCounter,
@@ -114,13 +113,13 @@ function Main(){
     setTorCounter,
     setUdiCounter,
     setVenCounter,
-    }
+    };
   const positionCounters = {
     goalkeepersCounter, setGoalkeepersCounter,
     defendersCounter, setDefendersCounter,
     midfieldersCounter, setMidfieldersCounter,
     forwardsCounter, setForwardsCounter
-  }
+  };
   const playerBeanProps = {
     theSquad,
     disabledButtons,
@@ -137,7 +136,7 @@ function Main(){
     beansCounter,
     setStatsToShowIndex,
     setShowStats,
-  }
+  };
   return (
     <div id="main-grid">
       {showStats && <StatsChart 
@@ -363,7 +362,6 @@ function Main(){
           setMatchdayIndex={setMatchdayIndex}
         />
       </div>
-      
     </div>
   );
 }

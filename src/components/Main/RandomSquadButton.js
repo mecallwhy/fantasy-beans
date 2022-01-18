@@ -170,8 +170,8 @@ const RandomSquadButton = (props)=>{
             let isWithinClubLimits = false;
             let isOnNeededPosition = false;
             switch(player.club){
-                case "Atalanta" : 
-                    if(tempAtaCounter < 3){ isWithinClubLimits =  true }
+                case "Atalanta" :
+                    if(tempAtaCounter < 3){ isWithinClubLimits = true }
                     break;
                 case "Bologna" :
                     if(tempBolCounter < 3){ isWithinClubLimits = true }
@@ -346,67 +346,50 @@ const RandomSquadButton = (props)=>{
 
                     switch(club){
                         case "Ata": setAtaCounter(tempAtaCounter);
-                        classNameToPass = "player-bean-atalanta"
                         break;
                         case "Bol": setBolCounter(tempBolCounter);
-                        classNameToPass = "player-bean-bologna"
                         break;
                         case "Cag": setCagCounter(tempCagCounter);
-                        classNameToPass = "player-bean-cagliari"
                         break;
                         case "Emp": setEmpCounter(tempEmpCounter);
-                        classNameToPass = "player-bean-empoli"
                         break;
                         case "Fio": setFioCounter(tempFioCounter);
-                        classNameToPass = "player-bean-fiorentina"
                         break;
                         case "Gen": setGenCounter(tempGenCounter);
-                        classNameToPass = "player-bean-genoa"
                         break;
                         case "Hel":  setHelCounter(tempHelCounter);
-                        classNameToPass = "player-bean-hellas"
                         break;
                         case "Int":  setIntCounter(tempIntCounter);
-                        classNameToPass = "player-bean-inter"
                         break;
                         case "Juv":  setJuvCounter(tempJuvCounter);
-                        classNameToPass = "player-bean-juventus"
                         break;
                         case "Laz":  setLazCounter(tempLazCounter);
-                        classNameToPass = "player-bean-lazio"
                         break;
                         case "Mil":  setMilCounter(tempMilCounter);
-                        classNameToPass = "player-bean-milan"
                         break;
                         case "Nap":  setNapCounter(tempNapCounter);
-                        classNameToPass = "player-bean-napoli"
                         break;
                         case "Rom":  setRomCounter(tempRomCounter);
-                        classNameToPass = "player-bean-roma"
                         break;
                         case "Sal":  setSalCounter(tempSalCounter);
-                        classNameToPass = "player-bean-salernitana"
                         break;
                         case "Sam":  setSamCounter(tempSamCounter);
-                        classNameToPass = "player-bean-sampdoria"
                         break;
                         case "Sas":  setSasCounter(tempSasCounter);
-                        classNameToPass = "player-bean-sassuolo"
                         break;
                         case "Spe":  setSpeCounter(tempSpeCounter);
-                        classNameToPass = "player-bean-spezia"
                         break;
                         case "Tor":  setTorCounter(tempTorCounter);
-                        classNameToPass = "player-bean-torino"
                         break;
                         case "Udi":  setUdiCounter(tempUdiCounter);
-                        classNameToPass = "player-bean-udinese"
                         break;
                         case "Ven":  setVenCounter(tempVenCounter);
-                        classNameToPass = "player-bean-venezia"
                         break;
                         default: return
-                      }
+                    }
+                    
+                    classNameToPass = "player-bean-" + club.toLowerCase()
+
                     switch(playersToHire[i].position){
                         case "Gk":
                           if(theSquad[0].id === ""){

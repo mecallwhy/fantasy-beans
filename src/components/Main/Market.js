@@ -3,6 +3,7 @@ import players from "./Players";
 import RandomSquadButton from "./RandomSquadButton.js";
 import rightArrow from "./images/right-arrow.png";
 import leftArrow from "./images/left-arrow.png";
+import { inRange } from "./utilities.js";
 
 const Market = (props) => {
 
@@ -44,42 +45,13 @@ const Market = (props) => {
   }
   
   const listOfPlayers = playersToMap.map((player) =>
-  <li key = {player.id} className={
-    player.position === "Gk" ? "market-player market-player-gk" : 
-    player.position === "Def" ? "market-player market-player-def" :
-    player.position === "Mid" ? "market-player market-player-mid" :
-    "market-player market-player-fwd"}>
-    <span className={
-      player.position === "Gk" ? "position-marker-gk" :
-      player.position === "Def" ? "position-marker-def" :
-      player.position === "Mid" ? "position-marker-mid" :
-      "position-marker-fwd"}></span>
+  <li key={player.id} className={"market-player market-player-" + player.position.toLowerCase()}>
+    <span className={"position-marker-" + player.position.toLowerCase()}></span>
     <span
       className="second-name"
       onClick={()=>{handleStats(player)}}>{player.surname}{player.name.slice(0,1) !== "" ? " " + player.name.slice(0,1) + '.' : ""} </span>
-    <h3 className={
-      player.club === "Atalanta" ? "club-name club-name-atalanta" :
-      player.club === "Bologna" ? "club-name club-name-bologna" :
-      player.club === "Cagliari" ? "club-name club-name-cagliari" :
-      player.club === "Empoli" ? "club-name club-name-empoli" :
-      player.club === "Fiorentina" ? "club-name club-name-fiorentina" :
-      player.club === "Genoa" ? "club-name club-name-genoa" :
-      player.club === "Hellas" ? "club-name club-name-hellas" :
-      player.club === "Inter" ? "club-name club-name-inter" :
-      player.club === "Juventus" ? "club-name club-name-juventus" :
-      player.club === "Lazio" ? "club-name club-name-lazio" :
-      player.club === "Milan" ? "club-name club-name-milan" :
-      player.club === "Napoli" ? "club-name club-name-napoli" :
-      player.club === "Roma" ? "club-name club-name-roma" :
-      player.club === "Salernitana" ? "club-name club-name-salernitana" :
-      player.club === "Sampdoria" ? "club-name club-name-sampdoria" :
-      player.club === "Sassuolo" ? "club-name club-name-sassuolo" :
-      player.club === "Spezia" ? "club-name club-name-spezia" :
-      player.club === "Torino" ? "club-name club-name-torino" :
-      player.club === "Udinese" ? "club-name club-name-udinese" :
-      "club-name club-name-venezia"
-      }>{clubNameVersion(player)}</h3>
-    <button 
+    <h3 className={"club-name club-name-"+player.club.toLowerCase()}>{clubNameVersion(player)}</h3>
+    <button
       disabled={disabledButtons.includes(player.btnId) ? true : false} 
       onClick={() => handleHirePlayer(player.btnId, player.price)} 
       className="price-btn" 
@@ -87,10 +59,6 @@ const Market = (props) => {
       {player.price + "K"}
     </button>
   </li>).slice(marketPageIndex1, marketPageIndex2);
-
-  const inRange = (numberToCheck, min, max) => {
-    return numberToCheck >= min && numberToCheck <= max;
-  }
 
   const handlePageToggle = (pageNum) => {
     const marketPageIndex1 = pageNum*10-10
@@ -397,10 +365,10 @@ const Market = (props) => {
 
 const hirePlayer = (
   btnId, 
-  price, 
+  price,
   disabledButtons, 
   setDisabledButtons, 
-  balance, 
+  balance,
   setBalance, 
   theSquad,
   clubCounters,
@@ -447,7 +415,6 @@ const hirePlayer = (
   let withinClubLimit = false;
   let withinPositionLimit = false;
 
-  let classNameToPass
     if(price <= balance){
       withinBudget = true;
     }
@@ -457,83 +424,63 @@ const hirePlayer = (
     }
     if(club==="Ata" && ataCounter < 3){
       withinClubLimit = true;
-      classNameToPass = "player-bean-atalanta"
     }
     else if(club==="Bol" && bolCounter < 3){
       withinClubLimit = true;
-      classNameToPass = "player-bean-bologna"
     }
     else if(club==="Cag" && cagCounter < 3){
       withinClubLimit = true;
-      classNameToPass = "player-bean-cagliari"
     }
     else if(club==="Emp" && empCounter < 3){
       withinClubLimit = true;
-      classNameToPass = "player-bean-empoli"
     }
     else if(club==="Fio" && fioCounter < 3){
       withinClubLimit = true;
-      classNameToPass = "player-bean-fiorentina"
     }
     else if(club==="Gen" && genCounter < 3){
       withinClubLimit = true;
-      classNameToPass = "player-bean-genoa"
     }
     else if(club==="Hel" && helCounter < 3){
       withinClubLimit = true;
-      classNameToPass = "player-bean-hellas"
     }
     else if(club==="Int" && intCounter < 3){
       withinClubLimit = true;
-      classNameToPass = "player-bean-inter"
     }
     else if(club==="Juv" && juvCounter < 3){
       withinClubLimit = true;
-      classNameToPass = "player-bean-juventus"
     }
     else if(club==="Laz" && lazCounter < 3){
       withinClubLimit = true;
-      classNameToPass = "player-bean-lazio"
     }
     else if(club==="Mil" && milCounter < 3){
       withinClubLimit = true;
-      classNameToPass = "player-bean-milan"
     }
     else if(club==="Nap" && napCounter < 3){
       withinClubLimit = true;
-      classNameToPass = "player-bean-napoli"
     }
     else if(club==="Rom" && romCounter < 3){
       withinClubLimit = true;
-      classNameToPass = "player-bean-roma"
     }
     else if(club==="Sal" && salCounter < 3){
       withinClubLimit = true;
-      classNameToPass = "player-bean-salernitana"
     }
     else if(club==="Sam" && samCounter < 3){
       withinClubLimit = true;
-      classNameToPass = "player-bean-sampdoria"
     }
     else if(club==="Sas" && sasCounter < 3){
       withinClubLimit = true;
-      classNameToPass = "player-bean-sassuolo"
     }
     else if(club==="Spe" && speCounter < 3){
       withinClubLimit = true;
-      classNameToPass = "player-bean-spezia"
     }
     else if(club==="Tor" && torCounter < 3){
       withinClubLimit = true;
-      classNameToPass = "player-bean-torino"
     }
     else if(club === "Udi" && udiCounter < 3){
       withinClubLimit = true;
-      classNameToPass = "player-bean-udinese"
     }
     else if(club === "Ven" && venCounter < 3){
       withinClubLimit = true;
-      classNameToPass = "player-bean-venezia"
     }
     else{
       alert("Możesz mieć maksymalnie trzech zawodników z jednego klubu w szerokiej kadrze.")
@@ -551,14 +498,14 @@ const hirePlayer = (
     } 
     else if(position === "f" && forwardsCounter < 3){
       withinPositionLimit = true;
-    } 
+    }
     else{
       alert("Możesz mieć maksymalnie dwóch bramkarzy, pięciu obrońców, pięciu pomocników i trzech napastników w szerokiej kadrze.")
-      withinPositionLimit = false;
       return [...theSquad]
     }
 
     if(withinBudget && withinClubLimit && withinPositionLimit){
+      const classNameToPass = "player-bean-" + club.toLowerCase()
       setBalance(Math.round((balance - price)*10)/10)
       setBeansCounter(beansCounter + 1)
       disabledButtons.push(btnId)

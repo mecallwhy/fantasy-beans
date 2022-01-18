@@ -3,6 +3,7 @@ import recycle2 from "./images/recycle2.png";
 import recycle from "./images/recycle.png";
 import eliminate from "./images/eliminate.png";
 import { playerBlank } from "./theSquad";
+import { inRange } from "./utilities.js";
 
 export const PlayerBean = (props) => {
   const {playerBeanProps,
@@ -173,9 +174,6 @@ export const PlayerBean = (props) => {
       }
     }
     setTheSquad([...theSquad])
-  }
-  const inRange = (numberToCheck, min, max) => {
-    return numberToCheck >= min && numberToCheck <= max;
   }
   const handleStats = ()=>{
     setStatsToShowIndex(parseInt(theSquad[squadIndex].btnId.slice(-7,-4)))

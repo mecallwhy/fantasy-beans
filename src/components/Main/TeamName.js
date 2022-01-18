@@ -1,19 +1,17 @@
-import React from "react"
+import React from "react";
 import { useState } from "react/cjs/react.development";
 import save from "./images/save.png";
+import { inRange } from "./utilities.js";
 
 const TeamName = (props) => {
 
     const {teamname,
         setTeamName,
         renameActive,
-        setRenameActive} = props
+        setRenameActive
+    } = props
 
-    const inRange = (numberToCheck, min, max) => {
-            return numberToCheck >= min && numberToCheck <= max;
-    }
     const [newName, setNewName] = useState("");
-    
     const handleRename = () => {
         if(inRange(newName.length, 1, 25)){
             setTeamName(newName)

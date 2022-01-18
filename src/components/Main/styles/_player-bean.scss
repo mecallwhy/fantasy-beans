@@ -19,39 +19,39 @@
       background: url(../images/blank.jpg);
   }
   
-  .player-bean-atalanta{
+  .player-bean-ata{
       color: white;
       background: url(../images/atalanta.jpg);
     }
-    .player-bean-bologna{
+    .player-bean-bol{
       color: white;
       background: url(../images/bologna.jpg);
     }
-    .player-bean-cagliari{
+    .player-bean-cag{
       color: white;
       background: url(../images/cagliari.jpg);
     }
-    .player-bean-empoli{
+    .player-bean-emp{
       color: white;
       background: url(../images/empoli.jpg);
     }
-    .player-bean-fiorentina{
+    .player-bean-fio{
       color: white;
       background: url(../images/fiorentina.jpg);
     }
-    .player-bean-genoa{
+    .player-bean-ge{
       color: #FFD400;
       background: url(../images/genoa.jpg);
     }
-    .player-bean-hellas{
+    .player-bean-hel{
       color: #FFE74A;
       background: url(../images/hellas.jpg);
     }
-    .player-bean-inter{
+    .player-bean-int{
       color: white;
       background: url(../images/inter.jpg);
     }
-    .player-bean-juventus{
+    .player-bean-juv{
       color: white;
       background: url(../images/juventus.jpg);
         
@@ -59,28 +59,28 @@
             background-color: black;
         }
     }
-    .player-bean-lazio{
+    .player-bean-laz{
       color: black;
       background: url(../images/lazio.jpg);
     }
-    .player-bean-milan{
+    .player-bean-mil{
       color: white;
       background: url(../images/milan.jpg);
     }
-    .player-bean-napoli{
+    .player-bean-nap{
       color: black;
       background: url(../images/napoli.jpg);
     }
-    .player-bean-roma{
+    .player-bean-rom{
       color: black;
       background: url(../images/roma.jpg);
       background-size: auto !important;
     }
-    .player-bean-salernitana{
+    .player-bean-sal{
       color: white;
       background: url(../images/salernitana.jpg);
     }
-    .player-bean-sampdoria{
+    .player-bean-sam{
       color: black;
       background: url(../images/sampdoria.jpg);
 
@@ -92,23 +92,23 @@
       }
     }
 
-    .player-bean-sassuolo{
+    .player-bean-sas{
       color: white;
       background: url(../images/sassuolo.jpg);
     }
-    .player-bean-spezia{
+    .player-bean-spe{
       color: black;
       background-color: white;
     }
-    .player-bean-torino{
+    .player-bean-tor{
       color: white;
       background: url(../images/torino.jpg);
     }
-    .player-bean-udinese{
+    .player-bean-udi{
       color: white;
       background-image: linear-gradient(to bottom, rgb(49, 97, 135) 20%, rgb(17, 206, 202) 50%)
     }
-    .player-bean-venezia{
+    .player-bean-ven{
       color: rgb(235, 214, 149);
       background-color: black;
     }
@@ -222,7 +222,7 @@
       transform: rotate(0deg);
     }
     to {
-      transform: rotate(359deg);
+      transform: rotate(360deg);
     }
   }
   
@@ -258,6 +258,3 @@
     }
   }
   
-  .extra-bean{
-    display: none;
-  }

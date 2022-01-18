@@ -265,116 +265,116 @@
   background: url(../images/blank.jpg);
 }
 
-.player-bean-atalanta {
+.player-bean-ata {
   color: white;
   background: url(../images/atalanta.jpg);
 }
 
-.player-bean-bologna {
+.player-bean-bol {
   color: white;
   background: url(../images/bologna.jpg);
 }
 
-.player-bean-cagliari {
+.player-bean-cag {
   color: white;
   background: url(../images/cagliari.jpg);
 }
 
-.player-bean-empoli {
+.player-bean-emp {
   color: white;
   background: url(../images/empoli.jpg);
 }
 
-.player-bean-fiorentina {
+.player-bean-fio {
   color: white;
   background: url(../images/fiorentina.jpg);
 }
 
-.player-bean-genoa {
+.player-bean-ge {
   color: #FFD400;
   background: url(../images/genoa.jpg);
 }
 
-.player-bean-hellas {
+.player-bean-hel {
   color: #FFE74A;
   background: url(../images/hellas.jpg);
 }
 
-.player-bean-inter {
+.player-bean-int {
   color: white;
   background: url(../images/inter.jpg);
 }
 
-.player-bean-juventus {
+.player-bean-juv {
   color: white;
   background: url(../images/juventus.jpg);
 }
 
-.player-bean-juventus .player-bean-surname {
+.player-bean-juv .player-bean-surname {
   background-color: black;
 }
 
-.player-bean-lazio {
+.player-bean-laz {
   color: black;
   background: url(../images/lazio.jpg);
 }
 
-.player-bean-milan {
+.player-bean-mil {
   color: white;
   background: url(../images/milan.jpg);
 }
 
-.player-bean-napoli {
+.player-bean-nap {
   color: black;
   background: url(../images/napoli.jpg);
 }
 
-.player-bean-roma {
+.player-bean-rom {
   color: black;
   background: url(../images/roma.jpg);
   background-size: auto !important;
 }
 
-.player-bean-salernitana {
+.player-bean-sal {
   color: white;
   background: url(../images/salernitana.jpg);
 }
 
-.player-bean-sampdoria {
+.player-bean-sam {
   color: black;
   background: url(../images/sampdoria.jpg);
 }
 
-.player-bean-sampdoria .player-bean-number {
+.player-bean-sam .player-bean-number {
   background-color: white;
 }
 
-.player-bean-sampdoria .player-bean-surname {
+.player-bean-sam .player-bean-surname {
   z-index: 100;
 }
 
-.player-bean-sassuolo {
+.player-bean-sas {
   color: white;
   background: url(../images/sassuolo.jpg);
 }
 
-.player-bean-spezia {
+.player-bean-spe {
   color: black;
   background-color: white;
 }
 
-.player-bean-torino {
+.player-bean-tor {
   color: white;
   background: url(../images/torino.jpg);
 }
 
-.player-bean-udinese {
+.player-bean-udi {
   color: white;
   background-image: -webkit-gradient(linear, left top, left bottom, color-stop(20%, #316187), color-stop(50%, #11ceca));
   background-image: linear-gradient(to bottom, #316187 20%, #11ceca 50%);
 }
 
-.player-bean-venezia {
+.player-bean-ven {
   color: #ebd695;
   background-color: black;
 }
@@ -533,8 +533,8 @@
             transform: rotate(0deg);
   }
   to {
-    -webkit-transform: rotate(359deg);
-            transform: rotate(359deg);
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
   }
 }
 
@@ -544,8 +544,8 @@
             transform: rotate(0deg);
   }
   to {
-    -webkit-transform: rotate(359deg);
-            transform: rotate(359deg);
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
   }
 }
 
@@ -589,10 +589,6 @@
 .hoverable:hover .player-bean-btn-switch-small,
 .hoverable:hover .player-bean-btn-eliminate {
   display: block;
-}
-
-.extra-bean {
-  display: none;
 }
 
 #schedule-wide-screen {
