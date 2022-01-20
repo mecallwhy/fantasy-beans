@@ -16,21 +16,10 @@ export const playerBlank = {
     recentMatchdayPoints:"",
 }
 
-export const theSquadInitial = [
-  playerBlank,
-  playerBlank, 
-  playerBlank, 
-  playerBlank, 
-  playerBlank, 
-  playerBlank, 
-  playerBlank, 
-  playerBlank, 
-  playerBlank, 
-  playerBlank, 
-  playerBlank, 
-  playerBlank, 
-  playerBlank,
-  playerBlank,
-  playerBlank
-]
+export const theSquadInitial = {
+  goalkeepers: [],
+  defenders: [],
+  midfielders: [],
+  forwards: []
+}
 

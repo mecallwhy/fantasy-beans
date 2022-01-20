@@ -2,210 +2,103 @@ import React from "react";
 import recycle2 from "./images/recycle2.png";
 import recycle from "./images/recycle.png";
 import eliminate from "./images/eliminate.png";
-import { playerBlank } from "./theSquad";
 import { inRange } from "./utilities.js";
 
 export const PlayerBean = (props) => {
-  const {playerBeanProps,
-    squadIndex
+  const {
+    playerIndex,
+    position,
+    extraBean,
+    playerBeanProps
   } = props;
 
-  const {
+   const {
     theSquad,
+    setTheSquad,
     disabledButtons,
     setDisabledButtons,
     balance,
     setBalance,
-    clubCounters,
-    clubCounterSetters,
-    setTheSquad,
-    positionCounters,
     playerToSwitchIndex,
     setPlayerToSwitchIndex,
-    setBeansCounter,
-    beansCounter,
     setStatsToShowIndex,
     setShowStats,
   } = playerBeanProps
-  
-  const {
-    ataCounter,
-    bolCounter,
-    cagCounter,
-    empCounter,
-    fioCounter,
-    genCounter,
-    helCounter,
-    intCounter,
-    juvCounter,
-    lazCounter,
-    milCounter,
-    napCounter,
-    romCounter,
-    salCounter,
-    samCounter,
-    sasCounter,
-    speCounter,
-    torCounter,
-    udiCounter,
-    venCounter
-  } = clubCounters
-  const {
-    setAtaCounter,
-    setBolCounter,
-    setCagCounter,
-    setEmpCounter,
-    setFioCounter,
-    setGenCounter,
-    setHelCounter,
-    setIntCounter,
-    setJuvCounter,
-    setLazCounter,
-    setMilCounter,
-    setNapCounter,
-    setRomCounter,
-    setSalCounter,
-    setSamCounter,
-    setSasCounter,
-    setSpeCounter,
-    setTorCounter,
-    setUdiCounter,
-    setVenCounter,
-  } = clubCounterSetters
-  const {
-    goalkeepersCounter, setGoalkeepersCounter,
-    defendersCounter, setDefendersCounter,
-    midfieldersCounter, setMidfieldersCounter,
-    forwardsCounter, setForwardsCounter
-  } = positionCounters
 
   const eliminatePlayer = () => {
     
-    switch(theSquad[squadIndex].btnId.slice(-3)){
-      case "Ata": setAtaCounter(ataCounter-1);
-      break;
-      case "Bol": setBolCounter(bolCounter-1);
-      break;
-      case "Cag": setCagCounter(cagCounter-1);
-      break;
-      case "Emp": setEmpCounter(empCounter-1);
-      break;
-      case "Fio": setFioCounter(fioCounter-1);
-      break;
-      case "Gen": setGenCounter(genCounter-1);
-      break;
-      case "Hel": setHelCounter(helCounter-1);
-      break;
-      case "Int": setIntCounter(intCounter-1);
-      break;
-      case "Juv": setJuvCounter(juvCounter-1);
-      break;
-      case "Laz": setLazCounter(lazCounter-1);
-      break;
-      case "Mil": setMilCounter(milCounter-1);
-      break;
-      case "Nap": setNapCounter(napCounter-1);
-      break;
-      case "Rom": setRomCounter(romCounter-1);
-      break;
-      case "Sal": setSalCounter(salCounter-1);
-      break;
-      case "Sam": setSamCounter(samCounter-1);
-      break;
-      case "Sas": setSasCounter(sasCounter-1);
-      break;
-      case "Spe": setSpeCounter(speCounter-1);
-      break;
-      case "Tor": setTorCounter(torCounter-1);
-      break;
-      case "Udi": setUdiCounter(udiCounter-1);
-      break;
-      case "Ven": setVenCounter(venCounter-1);
-      break;
-      default: return
-    }
-    
-    let newDisabledButtons = disabledButtons.filter(button => button !== theSquad[squadIndex].btnId)
-    let newBalance = balance + theSquad[squadIndex].price
-    
-    switch(theSquad[squadIndex].position){
-      case "Gk": setGoalkeepersCounter(goalkeepersCounter-1);
-      break;
-      case "Def": setDefendersCounter(defendersCounter-1);
-      break;
-      case "Mid": setMidfieldersCounter(midfieldersCounter-1);
-      break;
-      case "Fwd": setForwardsCounter(forwardsCounter-1);
-      break;
-      default: return
-    }
-    theSquad[squadIndex] = playerBlank;
+    let newDisabledButtons = disabledButtons.filter(button => button !== position[playerIndex].btnId)
+    let newBalance = balance + position[playerIndex].price
 
-    setBeansCounter(beansCounter - 1)
+    theSquad.goalkeepers = theSquad.goalkeepers.filter(singlePlayer => singlePlayer !== position[playerIndex])
+    theSquad.defenders = theSquad.defenders.filter(singlePlayer => singlePlayer !== position[playerIndex])
+    theSquad.midfielders = theSquad.midfielders.filter(singlePlayer => singlePlayer !== position[playerIndex])
+    theSquad.forwards = theSquad.forwards.filter(singlePlayer => singlePlayer !== position[playerIndex])
+
     setBalance(Math.round(newBalance *10)/10)
     setDisabledButtons(newDisabledButtons)
-    setTheSquad([...theSquad])
+    setTheSquad({...theSquad})
   };
 
   const prepareToSwitch = () => {
-    for(let i = 0; i <= 14; i++){
-      if(theSquad[i].position === theSquad[squadIndex].position){
-        theSquad[i].className3 = "switchable"
-      }
-      else if(theSquad[i].position !== theSquad[squadIndex].position || theSquad[i].position !== ""){
-        theSquad[i].className3 = "faded"
-      }
-    }
-    setPlayerToSwitchIndex(squadIndex)
-    setTheSquad([...theSquad])
+    
+    theSquad.goalkeepers.forEach(singlePlayer => singlePlayer.className3 = "faded")
+    theSquad.defenders.forEach(singlePlayer => singlePlayer.className3 = "faded")
+    theSquad.midfielders.forEach(singlePlayer => singlePlayer.className3 = "faded")
+    theSquad.forwards.forEach(singlePlayer => singlePlayer.className3 = "faded")
+    position.forEach(singlePlayer => singlePlayer.className3 = "switchable")
+    setPlayerToSwitchIndex(playerIndex)
+    setTheSquad({...theSquad})
   }
   const switchPlayers = () => {
-
-    let temporarySlot = theSquad[playerToSwitchIndex]
-    theSquad[playerToSwitchIndex] = theSquad[squadIndex]
-    theSquad[squadIndex] = temporarySlot
+    let temporarySlot = position[playerIndex]
+    position[playerIndex] = position[playerToSwitchIndex]
+    position[playerToSwitchIndex] = temporarySlot
     
-    for(let i = 0; i <= 14; i++){
-      if(theSquad[i].btnId !== ""){
-        theSquad[i].className3 = "hoverable"
-      }
-      else{
-        theSquad[i].className3 = ""
-      }
-    }
-    setTheSquad([...theSquad])
+    theSquad.goalkeepers.forEach(singlePlayer => singlePlayer.className3 = "hoverable")
+    theSquad.defenders.forEach(singlePlayer => singlePlayer.className3 = "hoverable")
+    theSquad.midfielders.forEach(singlePlayer => singlePlayer.className3 = "hoverable")
+    theSquad.forwards.forEach(singlePlayer => singlePlayer.className3 = "hoverable")
+    setTheSquad({...theSquad})
   }
   const handleStats = ()=>{
-    setStatsToShowIndex(parseInt(theSquad[squadIndex].btnId.slice(-7,-4)))
+    setStatsToShowIndex(position[playerIndex].btnId.marketIndex)
     setShowStats(true)
   }
 
+  if(extraBean){
+    return null
+  }
+  else if(!position[playerIndex]){
+    return <div className="player-bean player-bean-blank"></div>
+  }
+  else{
     return (
-      squadIndex !== "extraBean" ? <div
+      <div
        className={
-         theSquad[squadIndex].className1 + " " +
-         theSquad[squadIndex].className2 + " " +
-         theSquad[squadIndex].className3 + " " +
-         theSquad[squadIndex].className4
+         position[playerIndex].className1 + " " +
+         position[playerIndex].className2 + " " +
+         position[playerIndex].className3 + " " +
+         position[playerIndex].className4
        }>
        <span
          className="player-bean-surname"
-         style={inRange(theSquad[squadIndex].surname.length, 0, 4) ? {fontSize: ".95em"} : 
-               inRange(theSquad[squadIndex].surname.length, 5, 7) ? {fontSize: ".85em"} : 
+         style={inRange(position[playerIndex].surname.length, 0, 4) ? {fontSize: ".95em"} : 
+               inRange(position[playerIndex].surname.length, 5, 7) ? {fontSize: ".85em"} : 
                {fontSize: ".65em"}}>
-         {theSquad[squadIndex].surname}
+         {position[playerIndex].surname}
        </span>
        <span
          className="player-bean-number">
-         {theSquad[squadIndex].shirtNumber}
+         {position[playerIndex].shirtNumber}
        </span>
        <span 
          className="player-bean-points">
-         {theSquad[squadIndex].overallPoints !== "" ? + theSquad[squadIndex].overallPoints + "p" : ""}
+         {position[playerIndex].overallPoints !== "" ? + position[playerIndex].overallPoints + "p" : ""}
        </span>
        <span 
          className="player-bean-price">
-         {theSquad[squadIndex].price !== "" ? theSquad[squadIndex].price + "K" : ""}
+         {position[playerIndex].price !== "" ? position[playerIndex].price + "K" : ""}
          </span>
        <button
          className="player-bean-btn-stats"
@@ -232,10 +125,8 @@ export const PlayerBean = (props) => {
          <img className="eliminate-img" src={eliminate} alt=""></img>
        </button>
      </div>
-     :
-     null
    );
-  
+  }
 };
 
 export default PlayerBean;

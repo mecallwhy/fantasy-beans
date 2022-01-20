@@ -1,6 +1,5 @@
 import React from "react"
 import players from "./Players";
-import { playerBlank } from "./theSquad";
 
 const RandomSquadButton = (props)=>{
 
@@ -9,43 +8,14 @@ const RandomSquadButton = (props)=>{
         clubTotalValue,
         setBalance,
         setTheSquad, 
-        setDisabledButtons, 
-        setBeansCounter, 
-        positionCounters,
-        clubCounterSetters } = props
-    const {
-        setAtaCounter,
-        setBolCounter,
-        setCagCounter,
-        setEmpCounter,
-        setFioCounter,
-        setGenCounter,
-        setHelCounter,
-        setIntCounter,
-        setJuvCounter,
-        setLazCounter,
-        setMilCounter,
-        setNapCounter,
-        setRomCounter,
-        setSalCounter,
-        setSamCounter,
-        setSasCounter,
-        setSpeCounter,
-        setTorCounter,
-        setUdiCounter,
-        setVenCounter,
-        } = clubCounterSetters
-    const {
-        goalkeepersCounter, setGoalkeepersCounter,
-        defendersCounter, setDefendersCounter,
-        midfieldersCounter, setMidfieldersCounter,
-        forwardsCounter, setForwardsCounter
-        } = positionCounters 
+        setDisabledButtons
+        } = props
 
     const clearTheSquad = () => {
-        for(let i = 0; i <= 14; i++){
-            theSquad[i] = playerBlank
-        }
+        theSquad.goalkeepers = []
+        theSquad.defenders = []
+        theSquad.midfielders = []
+        theSquad.forwards = []
         return theSquad
     }
     const handleRandomSquad = (theSquad) => {
@@ -61,30 +31,6 @@ const RandomSquadButton = (props)=>{
         
         let playersToHire = []
         let buttonsToDisable = []
-        setGoalkeepersCounter(0)
-        setDefendersCounter(0)
-        setMidfieldersCounter(0)
-        setForwardsCounter(0)
-        setAtaCounter(0)
-        setBolCounter(0)
-        setCagCounter(0)
-        setEmpCounter(0)
-        setFioCounter(0)
-        setGenCounter(0)
-        setHelCounter(0)
-        setIntCounter(0)
-        setJuvCounter(0)
-        setLazCounter(0)
-        setMilCounter(0)
-        setNapCounter(0)
-        setRomCounter(0)
-        setSalCounter(0)
-        setSamCounter(0)
-        setSasCounter(0)
-        setSpeCounter(0)
-        setTorCounter(0)
-        setUdiCounter(0)
-        setVenCounter(0)
 
         let newPlayer
         let tempAtaCounter = 0
@@ -330,154 +276,44 @@ const RandomSquadButton = (props)=>{
             // ZATRUDNIANIE 
            
             else{
-                setBalance(Math.round((clubTotalValue - moneySpent)*10)/10)
-                setGoalkeepersCounter(2)
-                setDefendersCounter(5)
-                setMidfieldersCounter(5)
-                setForwardsCounter(3)
-                setBeansCounter(15)
-                setDisabledButtons(buttonsToDisable)
 
                 for (let i = 0; i <= 14; i++) {
-                    let classNameToPass
-                    let club = playersToHire[i].btnId.slice(-3)
                     let btnId = playersToHire[i].btnId
                     buttonsToDisable.push(btnId)
-
-                    switch(club){
-                        case "Ata": setAtaCounter(tempAtaCounter);
-                        break;
-                        case "Bol": setBolCounter(tempBolCounter);
-                        break;
-                        case "Cag": setCagCounter(tempCagCounter);
-                        break;
-                        case "Emp": setEmpCounter(tempEmpCounter);
-                        break;
-                        case "Fio": setFioCounter(tempFioCounter);
-                        break;
-                        case "Gen": setGenCounter(tempGenCounter);
-                        break;
-                        case "Hel":  setHelCounter(tempHelCounter);
-                        break;
-                        case "Int":  setIntCounter(tempIntCounter);
-                        break;
-                        case "Juv":  setJuvCounter(tempJuvCounter);
-                        break;
-                        case "Laz":  setLazCounter(tempLazCounter);
-                        break;
-                        case "Mil":  setMilCounter(tempMilCounter);
-                        break;
-                        case "Nap":  setNapCounter(tempNapCounter);
-                        break;
-                        case "Rom":  setRomCounter(tempRomCounter);
-                        break;
-                        case "Sal":  setSalCounter(tempSalCounter);
-                        break;
-                        case "Sam":  setSamCounter(tempSamCounter);
-                        break;
-                        case "Sas":  setSasCounter(tempSasCounter);
-                        break;
-                        case "Spe":  setSpeCounter(tempSpeCounter);
-                        break;
-                        case "Tor":  setTorCounter(tempTorCounter);
-                        break;
-                        case "Udi":  setUdiCounter(tempUdiCounter);
-                        break;
-                        case "Ven":  setVenCounter(tempVenCounter);
-                        break;
-                        default: return
-                    }
                     
-                    classNameToPass = "player-bean-" + club.toLowerCase()
-
-                    switch(playersToHire[i].position){
-                        case "Gk":
-                          if(theSquad[0].id === ""){
-                            assignDataToSquad(btnId, 0, classNameToPass, theSquad)
-                          }
-                          else if(theSquad[1].id === ""){
-                            assignDataToSquad(btnId, 1, classNameToPass, theSquad)
-                          }
-                          break;
-                        case "Def":
-                          if(theSquad[2].id === ""){
-                            assignDataToSquad(btnId, 2, classNameToPass, theSquad)
-                          }
-                          else if(theSquad[3].id === ""){
-                            assignDataToSquad(btnId, 3, classNameToPass, theSquad)
-                          }
-                          else if(theSquad[4].id === ""){
-                            assignDataToSquad(btnId, 4, classNameToPass, theSquad)
-                          }
-                          else if(theSquad[5].id === ""){
-                            assignDataToSquad(btnId, 5, classNameToPass, theSquad)
-                          }
-                          else if(theSquad[6].id === ""){
-                            assignDataToSquad(btnId, 6, classNameToPass, theSquad)
-                          }
-                          break;
-                        case "Mid":
-                          if(theSquad[7].id === ""){
-                            assignDataToSquad(btnId, 7, classNameToPass, theSquad)
-                          }
-                          else if(theSquad[8].id === ""){
-                            assignDataToSquad(btnId, 8, classNameToPass, theSquad)
-                          }
-                          else if(theSquad[9].id === ""){
-                            assignDataToSquad(btnId, 9, classNameToPass, theSquad)
-                          }
-                          else if(theSquad[10].id === ""){
-                            assignDataToSquad(btnId, 10, classNameToPass, theSquad)
-                          }
-                          else if(theSquad[11].id === ""){
-                            assignDataToSquad(btnId, 11, classNameToPass, theSquad)
-                          }
-                          break;
-                        case "Fwd":
-                          if(theSquad[12].id === ""){
-                            assignDataToSquad(btnId, 12, classNameToPass, theSquad)
-                          }
-                          else if(theSquad[13].id === ""){
-                            assignDataToSquad(btnId, 13, classNameToPass, theSquad)
-                          }
-                          else if(theSquad[14].id === ""){
-                            assignDataToSquad(btnId, 14, classNameToPass, theSquad)
-                          }
-                          break;
-                        default: return
+                    const player = {
+                      id: playersToHire[i].id,
+                      pointSystemId: playersToHire[i].pointSystemId, 
+                      btnId: btnId,
+                      className1: "player-bean",
+                      className2: "player-bean-" + btnId.club.toLowerCase(),
+                      className3: "hoverable",
+                      className4: "",
+                      name: playersToHire[i].name,
+                      surname: playersToHire[i].surname, 
+                      shirtNumber: playersToHire[i].shirtNumber, 
+                      position: playersToHire[i].position, 
+                      club: playersToHire[i].club, 
+                      price: playersToHire[i].price,
+                      overallPoints: playersToHire[i].overallPoints,
+                      recentMatchdayPoints: playersToHire[i].recentMatchdayPoints,
+                    }
+                    switch(btnId.position){
+                      case "g": theSquad.goalkeepers.push(player)
+                      break;
+                      case "d": theSquad.defenders.push(player)
+                      break;
+                      case "m": theSquad.midfielders.push(player)
+                      break;
+                      case "f": theSquad.forwards.push(player)
+                      break;
                     }
                 }
+                setBalance(Math.round((clubTotalValue - moneySpent)*10)/10)
+                setDisabledButtons(buttonsToDisable)
+                setTheSquad(theSquad)
             }
         }
-    }
-    
-    const assignDataToSquad = (
-        btnId, 
-        squadPositionIndex, 
-        classNameToPass, 
-        theSquad
-        ) => {
-        let marketIndex = parseInt(btnId.slice(-7,-4))
-        
-        theSquad[squadPositionIndex] = {
-            id: players[marketIndex].id, 
-            pointSystemId: players[marketIndex].pointSystemId, 
-            btnId: btnId, 
-            className1: "player-bean",
-            className2: classNameToPass,
-            className3: "hoverable",
-            className4: "",
-            name: players[marketIndex].name,
-            surname: players[marketIndex].surname, 
-            shirtNumber: players[marketIndex].shirtNumber, 
-            position: players[marketIndex].position, 
-            club: players[marketIndex].club, 
-            price: players[marketIndex].price,
-            overallPoints: players[marketIndex].overallPoints,
-            recentMatchdayPoints: players[marketIndex].recentMatchdayPoints,
-        }
-
-        setTheSquad([...theSquad])
     }
 
     return (

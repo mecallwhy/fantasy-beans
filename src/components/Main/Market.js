@@ -32,7 +32,7 @@ const Market = (props) => {
   const [marketListID, setMarketListID] = useState("market-list")
 
   const handleStats = (player)=>{
-    setStatsToShowIndex(parseInt(player.btnId.slice(-7,-4)))
+    setStatsToShowIndex(player.btnId.marketIndex)
     setShowStats(true)
   }
   const clubNameVersion = (player)=>{
@@ -49,13 +49,27 @@ const Market = (props) => {
     <span className={"position-marker-" + player.position.toLowerCase()}></span>
     <span
       className="second-name"
-      onClick={()=>{handleStats(player)}}>{player.surname}{player.name.slice(0,1) !== "" ? " " + player.name.slice(0,1) + '.' : ""} </span>
-    <h3 className={"club-name club-name-"+player.club.toLowerCase()}>{clubNameVersion(player)}</h3>
+      onClick={()=>{handleStats(player)}}>
+        {player.surname}{player.name.slice(0,1) !== "" ? " " + player.name.slice(0,1) + '.' : ""} 
+    </span>
+    <h3 className={"club-name club-name-"+player.club.toLowerCase()}>
+      {clubNameVersion(player)}
+    </h3>
     <button
-      disabled={disabledButtons.includes(player.btnId) ? true : false} 
-      onClick={() => handleHirePlayer(player.btnId, player.price)} 
+      disabled={disabledButtons.includes(player.btnId) && true}
+      onClick={() => hirePlayer(
+            player.btnId,
+            player.price,
+            setTheSquad,
+            disabledButtons, 
+            setDisabledButtons, 
+            balance,
+            setBalance, 
+            theSquad,
+            clubCounters,
+            positionCounters)} 
       className="price-btn" 
-      id={player.btnId}>
+      id={player.btnId.marketIndex}>
       {player.price + "K"}
     </button>
   </li>).slice(marketPageIndex1, marketPageIndex2);
@@ -89,25 +103,17 @@ const Market = (props) => {
   const [sortDirectionAscending, setSortDirectionAscending] = useState(false)
 
   const filterByPosition = (player) => {
-    if(showGoalkeepers){
-      if(player.position==="Gk"){
-        return true
-      }
+    if(showGoalkeepers && player.position==="Gk"){
+      return true
     }
-    if(showDefenders){
-      if(player.position==="Def"){
-        return true
-      }
+    if(showDefenders && player.position==="Def"){
+      return true
     }
-    if(showMidfielders){
-      if(player.position==="Mid"){
-        return true
-      }
+    if(showMidfielders && player.position==="Mid"){
+      return true
     }
-    if(showForwards){
-      if(player.position==="Fwd"){
-        return true
-      }
+    if(showForwards && player.position==="Fwd"){
+      return true
     }
   }
   const [searchValue, setSearchValue] = useState('')
@@ -174,21 +180,6 @@ const Market = (props) => {
     setSortDirectionAscending(direction)
   }
 
-  const handleHirePlayer = (btnId, price) => {
-    setTheSquad(hirePlayer(
-      btnId,
-      price, 
-      disabledButtons, 
-      setDisabledButtons, 
-      balance, 
-      setBalance, 
-      theSquad, 
-      clubCounters, 
-      clubCounterSetters, 
-      positionCounters,
-      setBeansCounter,
-      beansCounter));
-  }
   const [showSortingMenu, setShowSortingMenu] = useState(false)
   return (
     <div id={id}>
@@ -263,7 +254,6 @@ const Market = (props) => {
               setDisabledButtons={(data) => setDisabledButtons(data)}
               setBeansCounter = {setBeansCounter}
               positionCounters ={positionCounters}
-              clubCounterSetters = {clubCounterSetters}
             />}
         {!showSortingMenu && <div id={"market-position-filters"}>
           <div 
@@ -366,16 +356,14 @@ const Market = (props) => {
 const hirePlayer = (
   btnId, 
   price,
+  setTheSquad,
   disabledButtons, 
   setDisabledButtons, 
   balance,
   setBalance, 
   theSquad,
   clubCounters,
-  clubCounterSetters,
-  positionCounters,
-  setBeansCounter,
-  beansCounter
+  positionCounters
   ) => {
     
     const {
@@ -402,14 +390,11 @@ const hirePlayer = (
     } = clubCounters
     
   const {
-    goalkeepersCounter, setGoalkeepersCounter,
-    defendersCounter, setDefendersCounter,
-    midfieldersCounter, setMidfieldersCounter,
-    forwardsCounter, setForwardsCounter
+    goalkeepersCounter,
+    defendersCounter,
+    midfieldersCounter,
+    forwardsCounter, 
   } = positionCounters
-    
-  let position = btnId.slice(-4,-3)
-  let club = btnId.slice(-3)
 
   let withinBudget = false;
   let withinClubLimit = false;
@@ -420,277 +405,126 @@ const hirePlayer = (
     }
     else{
       alert("Potrzebujesz " + price + " Kredytów, by kupić tego zawodnika, a masz tylko " + Math.round(balance *10)/10 + "K. Wstawaj wcześniej, zrezygnuj z awokado i cynamonowego latte, albo sprzedaj któregoś zawodnika by zwolnić środki na koncie.")
-      return [...theSquad]
+      return {...theSquad}
     }
-    if(club==="Ata" && ataCounter < 3){
+    if(btnId.club==="Ata" && ataCounter < 3){
       withinClubLimit = true;
     }
-    else if(club==="Bol" && bolCounter < 3){
+    else if(btnId.club==="Bol" && bolCounter < 3){
       withinClubLimit = true;
     }
-    else if(club==="Cag" && cagCounter < 3){
+    else if(btnId.club==="Cag" && cagCounter < 3){
       withinClubLimit = true;
     }
-    else if(club==="Emp" && empCounter < 3){
+    else if(btnId.club==="Emp" && empCounter < 3){
       withinClubLimit = true;
     }
-    else if(club==="Fio" && fioCounter < 3){
+    else if(btnId.club==="Fio" && fioCounter < 3){
       withinClubLimit = true;
     }
-    else if(club==="Gen" && genCounter < 3){
+    else if(btnId.club==="Gen" && genCounter < 3){
       withinClubLimit = true;
     }
-    else if(club==="Hel" && helCounter < 3){
+    else if(btnId.club==="Hel" && helCounter < 3){
       withinClubLimit = true;
     }
-    else if(club==="Int" && intCounter < 3){
+    else if(btnId.club==="Int" && intCounter < 3){
       withinClubLimit = true;
     }
-    else if(club==="Juv" && juvCounter < 3){
+    else if(btnId.club==="Juv" && juvCounter < 3){
       withinClubLimit = true;
     }
-    else if(club==="Laz" && lazCounter < 3){
+    else if(btnId.club==="Laz" && lazCounter < 3){
       withinClubLimit = true;
     }
-    else if(club==="Mil" && milCounter < 3){
+    else if(btnId.club==="Mil" && milCounter < 3){
       withinClubLimit = true;
     }
-    else if(club==="Nap" && napCounter < 3){
+    else if(btnId.club==="Nap" && napCounter < 3){
       withinClubLimit = true;
     }
-    else if(club==="Rom" && romCounter < 3){
+    else if(btnId.club==="Rom" && romCounter < 3){
       withinClubLimit = true;
     }
-    else if(club==="Sal" && salCounter < 3){
+    else if(btnId.club==="Sal" && salCounter < 3){
       withinClubLimit = true;
     }
-    else if(club==="Sam" && samCounter < 3){
+    else if(btnId.club==="Sam" && samCounter < 3){
       withinClubLimit = true;
     }
-    else if(club==="Sas" && sasCounter < 3){
+    else if(btnId.club==="Sas" && sasCounter < 3){
       withinClubLimit = true;
     }
-    else if(club==="Spe" && speCounter < 3){
+    else if(btnId.club==="Spe" && speCounter < 3){
       withinClubLimit = true;
     }
-    else if(club==="Tor" && torCounter < 3){
+    else if(btnId.club==="Tor" && torCounter < 3){
       withinClubLimit = true;
     }
-    else if(club === "Udi" && udiCounter < 3){
+    else if(btnId.club === "Udi" && udiCounter < 3){
       withinClubLimit = true;
     }
-    else if(club === "Ven" && venCounter < 3){
+    else if(btnId.club === "Ven" && venCounter < 3){
       withinClubLimit = true;
     }
     else{
+      console.log(ataCounter)
       alert("Możesz mieć maksymalnie trzech zawodników z jednego klubu w szerokiej kadrze.")
-      return [...theSquad]
+      return {...theSquad}
     }
   
-    if(position === "g" && goalkeepersCounter < 2){
+    if(btnId.position === "g" && goalkeepersCounter < 2){
       withinPositionLimit = true;
     }
-    else if(position === "d" && defendersCounter < 5){
+    else if(btnId.position === "d" && defendersCounter < 5){
       withinPositionLimit = true;
     } 
-    else if(position === "m" && midfieldersCounter < 5){
+    else if(btnId.position === "m" && midfieldersCounter < 5){
       withinPositionLimit = true;
     } 
-    else if(position === "f" && forwardsCounter < 3){
+    else if(btnId.position === "f" && forwardsCounter < 3){
       withinPositionLimit = true;
     }
     else{
       alert("Możesz mieć maksymalnie dwóch bramkarzy, pięciu obrońców, pięciu pomocników i trzech napastników w szerokiej kadrze.")
-      return [...theSquad]
+      return {...theSquad}
     }
 
     if(withinBudget && withinClubLimit && withinPositionLimit){
-      const classNameToPass = "player-bean-" + club.toLowerCase()
+      
       setBalance(Math.round((balance - price)*10)/10)
-      setBeansCounter(beansCounter + 1)
+      
+      const player = {
+        id: players[btnId.marketIndex].id,
+        pointSystemId: players[btnId.marketIndex].pointSystemId, 
+        btnId: btnId,
+        className1: "player-bean",
+        className2: "player-bean-" + btnId.club.toLowerCase(),
+        className3: "hoverable",
+        className4: "",
+        name: players[btnId.marketIndex].name,
+        surname: players[btnId.marketIndex].surname, 
+        shirtNumber: players[btnId.marketIndex].shirtNumber, 
+        position: players[btnId.marketIndex].position, 
+        club: players[btnId.marketIndex].club, 
+        price: players[btnId.marketIndex].price,
+        overallPoints: players[btnId.marketIndex].overallPoints,
+        recentMatchdayPoints: players[btnId.marketIndex].recentMatchdayPoints,
+      }
+      switch(btnId.position){
+        case "g": theSquad.goalkeepers.push(player)
+        break;
+        case "d": theSquad.defenders.push(player)
+        break;
+        case "m": theSquad.midfielders.push(player)
+        break;
+        case "f": theSquad.forwards.push(player)
+        break;
+      }
       disabledButtons.push(btnId)
       setDisabledButtons([...disabledButtons])
-
-          switch(position){
-            case "g": setGoalkeepersCounter(goalkeepersCounter+1);
-              if(theSquad[0].id === ""){
-                return assignDataToSquad(btnId, 0, classNameToPass, theSquad, clubCounters, clubCounterSetters)
-              }
-              else if(theSquad[1].id === ""){
-                return assignDataToSquad(btnId, 1, classNameToPass, theSquad, clubCounters, clubCounterSetters)
-              }
-              break;
-            case "d": setDefendersCounter(defendersCounter+1);
-              if(theSquad[2].id === ""){
-                return assignDataToSquad(btnId, 2, classNameToPass, theSquad, clubCounters, clubCounterSetters)
-              }
-              else if(theSquad[3].id === ""){
-                return assignDataToSquad(btnId, 3, classNameToPass, theSquad, clubCounters, clubCounterSetters)
-              }
-              else if(theSquad[4].id === ""){
-                return assignDataToSquad(btnId, 4, classNameToPass, theSquad, clubCounters, clubCounterSetters)
-              }
-              else if(theSquad[5].id === ""){
-                return assignDataToSquad(btnId, 5, classNameToPass, theSquad, clubCounters, clubCounterSetters)
-              }
-              else if(theSquad[6].id === ""){
-                return assignDataToSquad(btnId, 6, classNameToPass, theSquad, clubCounters, clubCounterSetters)
-              }
-              break;
-            case "m": setMidfieldersCounter(midfieldersCounter+1);
-              if(theSquad[7].id === ""){
-                return assignDataToSquad(btnId, 7, classNameToPass, theSquad, clubCounters, clubCounterSetters)
-              }
-              else if(theSquad[8].id === ""){
-                return assignDataToSquad(btnId, 8, classNameToPass, theSquad, clubCounters, clubCounterSetters)
-              }
-              else if(theSquad[9].id === ""){
-                return assignDataToSquad(btnId, 9, classNameToPass, theSquad, clubCounters, clubCounterSetters)
-              }
-              else if(theSquad[10].id === ""){
-                return assignDataToSquad(btnId, 10, classNameToPass, theSquad, clubCounters, clubCounterSetters)
-              }
-              else if(theSquad[11].id === ""){
-                return assignDataToSquad(btnId, 11, classNameToPass, theSquad, clubCounters, clubCounterSetters)
-              }
-              break;
-            case "f": setForwardsCounter(forwardsCounter+1);
-              if(theSquad[12].id === ""){
-                return assignDataToSquad(btnId, 12, classNameToPass, theSquad, clubCounters, clubCounterSetters)
-              }
-              else if(theSquad[13].id === ""){
-                return assignDataToSquad(btnId, 13, classNameToPass, theSquad, clubCounters, clubCounterSetters)
-              }
-              else if(theSquad[14].id === ""){
-                return assignDataToSquad(btnId, 14, classNameToPass, theSquad, clubCounters, clubCounterSetters)
-              }
-              break;
-            default: return
-          }
-        }
-}
-
-const assignDataToSquad = (
-  btnId, 
-  squadPositionIndex, 
-  classNameToPass, 
-  theSquad,
-  clubCounters,
-  clubCounterSetters
-  ) => {
-    const {
-      setAtaCounter,
-      setBolCounter,
-      setCagCounter,
-      setEmpCounter,
-      setFioCounter,
-      setGenCounter,
-      setHelCounter,
-      setIntCounter,
-      setJuvCounter,
-      setLazCounter,
-      setMilCounter,
-      setNapCounter,
-      setRomCounter,
-      setSalCounter,
-      setSamCounter,
-      setSasCounter,
-      setSpeCounter,
-      setTorCounter,
-      setUdiCounter,
-      setVenCounter,
-    } = clubCounterSetters
-    const {
-      ataCounter,
-      bolCounter,
-      cagCounter,
-      empCounter,
-      fioCounter,
-      genCounter,
-      helCounter,
-      intCounter,
-      juvCounter,
-      lazCounter,
-      milCounter,
-      napCounter,
-      romCounter,
-      salCounter,
-      samCounter,
-      sasCounter,
-      speCounter,
-      torCounter,
-      udiCounter,
-      venCounter
-    } = clubCounters
-
-  let marketIndex = parseInt(btnId.slice(-7,-4))
-  let club = btnId.slice(-3)
-  
-  switch(club){
-    case "Ata": setAtaCounter(ataCounter+1);
-    break;
-    case "Bol": setBolCounter(bolCounter+1);
-    break;
-    case "Cag": setCagCounter(cagCounter+1);
-    break;
-    case "Emp": setEmpCounter(empCounter+1);
-    break;
-    case "Fio": setFioCounter(fioCounter+1);
-    break;
-    case "Gen": setGenCounter(genCounter+1);
-    break;
-    case "Hel": setHelCounter(helCounter+1);
-    break;
-    case "Int": setIntCounter(intCounter+1);
-    break;
-    case "Juv": setJuvCounter(juvCounter+1);
-    break;
-    case "Laz": setLazCounter(lazCounter+1);
-    break;
-    case "Mil": setMilCounter(milCounter+1);
-    break;
-    case "Nap": setNapCounter(napCounter+1);
-    break;
-    case "Rom": setRomCounter(romCounter+1);
-    break;
-    case "Sal": setSalCounter(salCounter+1);
-    break;
-    case "Sam": setSamCounter(samCounter+1);
-    break;
-    case "Sas": setSasCounter(sasCounter+1);
-    break;
-    case "Spe": setSpeCounter(speCounter+1);
-    break;
-    case "Tor": setTorCounter(torCounter+1);
-    break;
-    case "Udi": setUdiCounter(udiCounter+1);
-    break;
-    case "Ven": setVenCounter(venCounter+1);
-    break;
-    default: return
-  }
-
-  theSquad[squadPositionIndex] = {
-    id: players[marketIndex].id, 
-    pointSystemId: players[marketIndex].pointSystemId, 
-    btnId: btnId, 
-    className1: "player-bean",
-    className2: classNameToPass,
-    className3: "hoverable",
-    className4: "",
-    name: players[marketIndex].name,
-    surname: players[marketIndex].surname, 
-    shirtNumber: players[marketIndex].shirtNumber, 
-    position: players[marketIndex].position, 
-    club: players[marketIndex].club, 
-    price: players[marketIndex].price,
-    overallPoints: players[marketIndex].overallPoints,
-    recentMatchdayPoints: players[marketIndex].recentMatchdayPoints,
-}
-  
-  return [...theSquad]
-
-  
+      setTheSquad(theSquad)
+    }
 }
 
 export default Market
