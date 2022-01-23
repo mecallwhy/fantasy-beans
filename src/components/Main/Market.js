@@ -14,12 +14,7 @@ const Market = (props) => {
     disabledButtons, 
     setDisabledButtons, 
     balance,
-    setBalance, 
-    clubCounters, 
-    clubCounterSetters, 
-    positionCounters,
-    setBeansCounter,
-    beansCounter,
+    setBalance,
     clubTotalValue,
     setStatsToShowIndex,
     setShowStats
@@ -56,7 +51,7 @@ const Market = (props) => {
       {clubNameVersion(player)}
     </h3>
     <button
-      disabled={disabledButtons.includes(player.btnId) && true}
+      disabled={disabledButtons.includes(player.btnId)}
       onClick={() => hirePlayer(
             player.btnId,
             player.price,
@@ -65,9 +60,7 @@ const Market = (props) => {
             setDisabledButtons, 
             balance,
             setBalance, 
-            theSquad,
-            clubCounters,
-            positionCounters)} 
+            theSquad)} 
       className="price-btn" 
       id={player.btnId.marketIndex}>
       {player.price + "K"}
@@ -252,8 +245,6 @@ const Market = (props) => {
               setBalance = {setBalance}
               setTheSquad={setTheSquad}
               setDisabledButtons={(data) => setDisabledButtons(data)}
-              setBeansCounter = {setBeansCounter}
-              positionCounters ={positionCounters}
             />}
         {!showSortingMenu && <div id={"market-position-filters"}>
           <div 
@@ -361,44 +352,11 @@ const hirePlayer = (
   setDisabledButtons, 
   balance,
   setBalance, 
-  theSquad,
-  clubCounters,
-  positionCounters
+  theSquad
   ) => {
-    
-    const {
-      ataCounter,
-      bolCounter,
-      cagCounter,
-      empCounter,
-      fioCounter,
-      genCounter,
-      helCounter,
-      intCounter,
-      juvCounter,
-      lazCounter,
-      milCounter,
-      napCounter,
-      romCounter,
-      salCounter,
-      samCounter,
-      sasCounter,
-      speCounter,
-      torCounter,
-      udiCounter,
-      venCounter
-    } = clubCounters
-    
-  const {
-    goalkeepersCounter,
-    defendersCounter,
-    midfieldersCounter,
-    forwardsCounter, 
-  } = positionCounters
 
   let withinBudget = false;
   let withinClubLimit = false;
-  let withinPositionLimit = false;
 
     if(price <= balance){
       withinBudget = true;
@@ -407,120 +365,33 @@ const hirePlayer = (
       alert("Potrzebujesz " + price + " Kredytów, by kupić tego zawodnika, a masz tylko " + Math.round(balance *10)/10 + "K. Wstawaj wcześniej, zrezygnuj z awokado i cynamonowego latte, albo sprzedaj któregoś zawodnika by zwolnić środki na koncie.")
       return {...theSquad}
     }
-    if(btnId.club==="Ata" && ataCounter < 3){
-      withinClubLimit = true;
-    }
-    else if(btnId.club==="Bol" && bolCounter < 3){
-      withinClubLimit = true;
-    }
-    else if(btnId.club==="Cag" && cagCounter < 3){
-      withinClubLimit = true;
-    }
-    else if(btnId.club==="Emp" && empCounter < 3){
-      withinClubLimit = true;
-    }
-    else if(btnId.club==="Fio" && fioCounter < 3){
-      withinClubLimit = true;
-    }
-    else if(btnId.club==="Gen" && genCounter < 3){
-      withinClubLimit = true;
-    }
-    else if(btnId.club==="Hel" && helCounter < 3){
-      withinClubLimit = true;
-    }
-    else if(btnId.club==="Int" && intCounter < 3){
-      withinClubLimit = true;
-    }
-    else if(btnId.club==="Juv" && juvCounter < 3){
-      withinClubLimit = true;
-    }
-    else if(btnId.club==="Laz" && lazCounter < 3){
-      withinClubLimit = true;
-    }
-    else if(btnId.club==="Mil" && milCounter < 3){
-      withinClubLimit = true;
-    }
-    else if(btnId.club==="Nap" && napCounter < 3){
-      withinClubLimit = true;
-    }
-    else if(btnId.club==="Rom" && romCounter < 3){
-      withinClubLimit = true;
-    }
-    else if(btnId.club==="Sal" && salCounter < 3){
-      withinClubLimit = true;
-    }
-    else if(btnId.club==="Sam" && samCounter < 3){
-      withinClubLimit = true;
-    }
-    else if(btnId.club==="Sas" && sasCounter < 3){
-      withinClubLimit = true;
-    }
-    else if(btnId.club==="Spe" && speCounter < 3){
-      withinClubLimit = true;
-    }
-    else if(btnId.club==="Tor" && torCounter < 3){
-      withinClubLimit = true;
-    }
-    else if(btnId.club === "Udi" && udiCounter < 3){
-      withinClubLimit = true;
-    }
-    else if(btnId.club === "Ven" && venCounter < 3){
+    
+    if(disabledButtons.filter(button => button.club === btnId.club).length<3){
       withinClubLimit = true;
     }
     else{
-      console.log(ataCounter)
       alert("Możesz mieć maksymalnie trzech zawodników z jednego klubu w szerokiej kadrze.")
       return {...theSquad}
     }
-  
-    if(btnId.position === "g" && goalkeepersCounter < 2){
-      withinPositionLimit = true;
-    }
-    else if(btnId.position === "d" && defendersCounter < 5){
-      withinPositionLimit = true;
-    } 
-    else if(btnId.position === "m" && midfieldersCounter < 5){
-      withinPositionLimit = true;
-    } 
-    else if(btnId.position === "f" && forwardsCounter < 3){
-      withinPositionLimit = true;
-    }
-    else{
-      alert("Możesz mieć maksymalnie dwóch bramkarzy, pięciu obrońców, pięciu pomocników i trzech napastników w szerokiej kadrze.")
-      return {...theSquad}
-    }
 
-    if(withinBudget && withinClubLimit && withinPositionLimit){
-      
+    if(withinBudget && withinClubLimit){
+      if(btnId.position === "g" && theSquad.goalkeepers.length < 2){
+        theSquad.goalkeepers.push(players[btnId.marketIndex])
+      }
+      else if(btnId.position === "d" && theSquad.defenders.length < 5){
+        theSquad.defenders.push(players[btnId.marketIndex])
+      }
+      else if(btnId.position === "m" && theSquad.midfielders.length < 5){
+        theSquad.midfielders.push(players[btnId.marketIndex])
+      } 
+      else if(btnId.position === "f" && theSquad.forwards.length < 3){
+        theSquad.forwards.push(players[btnId.marketIndex])
+      }
+      else{
+        alert("Możesz mieć maksymalnie dwóch bramkarzy, pięciu obrońców, pięciu pomocników i trzech napastników w szerokiej kadrze.")
+        return {...theSquad}
+      }
       setBalance(Math.round((balance - price)*10)/10)
-      
-      const player = {
-        id: players[btnId.marketIndex].id,
-        pointSystemId: players[btnId.marketIndex].pointSystemId, 
-        btnId: btnId,
-        className1: "player-bean",
-        className2: "player-bean-" + btnId.club.toLowerCase(),
-        className3: "hoverable",
-        className4: "",
-        name: players[btnId.marketIndex].name,
-        surname: players[btnId.marketIndex].surname, 
-        shirtNumber: players[btnId.marketIndex].shirtNumber, 
-        position: players[btnId.marketIndex].position, 
-        club: players[btnId.marketIndex].club, 
-        price: players[btnId.marketIndex].price,
-        overallPoints: players[btnId.marketIndex].overallPoints,
-        recentMatchdayPoints: players[btnId.marketIndex].recentMatchdayPoints,
-      }
-      switch(btnId.position){
-        case "g": theSquad.goalkeepers.push(player)
-        break;
-        case "d": theSquad.defenders.push(player)
-        break;
-        case "m": theSquad.midfielders.push(player)
-        break;
-        case "f": theSquad.forwards.push(player)
-        break;
-      }
       disabledButtons.push(btnId)
       setDisabledButtons([...disabledButtons])
       setTheSquad(theSquad)

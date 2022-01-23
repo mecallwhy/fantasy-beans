@@ -28,61 +28,6 @@ function Main(){
     midfielders: 4,
     forwards: 2
   });
-  const ataCounter = disabledButtons.filter(element => element.club === "Ata").length
-  const bolCounter = disabledButtons.filter(element => element.club === "Bol").length
-  const cagCounter = disabledButtons.filter(element => element.club === "Cag").length
-  const empCounter = disabledButtons.filter(element => element.club === "Emp").length
-  const fioCounter = disabledButtons.filter(element => element.club === "Fio").length
-  const genCounter = disabledButtons.filter(element => element.club === "Gen").length
-  const helCounter = disabledButtons.filter(element => element.club === "Hel").length
-  const intCounter = disabledButtons.filter(element => element.club === "Int").length
-  const juvCounter = disabledButtons.filter(element => element.club === "Juv").length
-  const lazCounter = disabledButtons.filter(element => element.club === "Laz").length
-  const milCounter = disabledButtons.filter(element => element.club === "Mil").length
-  const napCounter = disabledButtons.filter(element => element.club === "Nap").length
-  const romCounter = disabledButtons.filter(element => element.club === "Rom").length
-  const salCounter = disabledButtons.filter(element => element.club === "Sal").length
-  const samCounter = disabledButtons.filter(element => element.club === "Sam").length
-  const sasCounter = disabledButtons.filter(element => element.club === "Sas").length
-  const speCounter = disabledButtons.filter(element => element.club === "Spe").length
-  const torCounter = disabledButtons.filter(element => element.club === "Tor").length
-  const udiCounter = disabledButtons.filter(element => element.club === "Udi").length
-  const venCounter = disabledButtons.filter(element => element.club === "Ven").length
-
-  const goalkeepersCounter = theSquad.goalkeepers.length
-  const defendersCounter = theSquad.defenders.length
-  const midfieldersCounter = theSquad.midfielders.length
-  const forwardsCounter = theSquad.forwards.length
-  const beansCounter = disabledButtons.length
-
-  const clubCounters = {
-    ataCounter,
-    bolCounter,
-    cagCounter,
-    empCounter,
-    fioCounter,
-    genCounter,
-    helCounter,
-    intCounter,
-    juvCounter,
-    lazCounter,
-    milCounter,
-    napCounter,
-    romCounter,
-    salCounter,
-    samCounter,
-    sasCounter,
-    speCounter,
-    torCounter,
-    udiCounter,
-    venCounter};
-
-  const positionCounters = {
-    goalkeepersCounter,
-    defendersCounter, 
-    midfieldersCounter,
-    forwardsCounter
-  };
 
   const playerBeanProps = {
     theSquad,
@@ -129,7 +74,7 @@ function Main(){
           <h2 id="teamdata-balance-status">{balance}/{clubTotalValue}K</h2>
           <button 
             id="teamdata-save-button"
-            disabled={beansCounter !== 15 && true}>Zapisz</button>
+            disabled={disabledButtons.length !== 15}>Zapisz</button>
           <div id="teamdata-formations">
             <FormationButton
               id={"formation-button-first"}
@@ -223,13 +168,13 @@ function Main(){
             <PlayerBean
               playerIndex={3}
               position={theSquad.defenders}
-              extraBean={formation.defenders < 4 && true}
+              extraBean={formation.defenders < 4}
               playerBeanProps = {playerBeanProps}
             />
             <PlayerBean
               playerIndex={4}
               position={theSquad.defenders}
-              extraBean={formation.defenders < 5 && true}
+              extraBean={formation.defenders < 5}
               playerBeanProps = {playerBeanProps}
             />
           </div>
@@ -252,13 +197,13 @@ function Main(){
             <PlayerBean
               playerIndex={3}
               position={theSquad.midfielders}
-              extraBean={formation.midfielders < 4 && true}
+              extraBean={formation.midfielders < 4}
               playerBeanProps = {playerBeanProps}
             />
             <PlayerBean
               playerIndex={4}
               position={theSquad.midfielders}
-              extraBean={formation.midfielders < 5 && true}
+              extraBean={formation.midfielders < 5}
               playerBeanProps = {playerBeanProps}
             />
           </div>
@@ -271,13 +216,13 @@ function Main(){
             <PlayerBean
               playerIndex={1}
               position={theSquad.forwards}
-              extraBean={formation.forwards < 2 && true}
+              extraBean={formation.forwards < 2}
               playerBeanProps = {playerBeanProps}
             />
             <PlayerBean
               playerIndex={2}
               position={theSquad.forwards}
-              extraBean={formation.forwards < 3 && true}
+              extraBean={formation.forwards < 3}
               playerBeanProps = {playerBeanProps}
             />
           </div>
@@ -290,9 +235,6 @@ function Main(){
             setDisabledButtons={(data) => setDisabledButtons(data)}
             balance = {balance}
             setBalance = {setBalance}
-            clubCounters = {clubCounters}
-            positionCounters = {positionCounters}
-            beansCounter = {beansCounter}
             clubTotalValue ={clubTotalValue}
             setStatsToShowIndex={setStatsToShowIndex}
             setShowStats={setShowStats}
@@ -314,37 +256,37 @@ function Main(){
                 <PlayerBean
                   playerIndex={3}
                   position={theSquad.defenders}
-                  extraBean={formation.defenders > 3 && true}
+                  extraBean={formation.defenders > 3}
                   playerBeanProps = {playerBeanProps}
                 />
                 <PlayerBean
                   playerIndex={4}
                   position={theSquad.defenders}
-                  extraBean={formation.defenders > 4 && true}
+                  extraBean={formation.defenders > 4}
                   playerBeanProps = {playerBeanProps}
                 />
                 <PlayerBean
                   playerIndex={3}
                   position={theSquad.midfielders}
-                  extraBean={formation.midfielders > 3 && true}
+                  extraBean={formation.midfielders > 3}
                   playerBeanProps = {playerBeanProps}
                 />
                 <PlayerBean
                   playerIndex={4}
                   position={theSquad.midfielders}
-                  extraBean={formation.midfielders > 4 && true}
+                  extraBean={formation.midfielders > 4}
                   playerBeanProps = {playerBeanProps}
                 />
                 <PlayerBean
                   playerIndex={1}
                   position={theSquad.forwards}
-                  extraBean={formation.forwards > 1 && true}
+                  extraBean={formation.forwards > 1}
                   playerBeanProps = {playerBeanProps}
                 />
                 <PlayerBean
                   playerIndex={2}
                   position={theSquad.forwards}
-                  extraBean={formation.forwards > 2 && true}
+                  extraBean={formation.forwards > 2}
                   playerBeanProps = {playerBeanProps}
                 />
           </div>
@@ -359,9 +301,6 @@ function Main(){
           setDisabledButtons={(data) => setDisabledButtons(data)}
           balance = {balance}
           setBalance = {setBalance}
-          clubCounters = {clubCounters}
-          positionCounters = {positionCounters}
-          beansCounter = {beansCounter}
           clubTotalValue ={clubTotalValue}
           setStatsToShowIndex={setStatsToShowIndex}
           setShowStats={setShowStats}

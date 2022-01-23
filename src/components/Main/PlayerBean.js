@@ -42,11 +42,11 @@ export const PlayerBean = (props) => {
 
   const prepareToSwitch = () => {
     
-    theSquad.goalkeepers.forEach(singlePlayer => singlePlayer.className3 = "faded")
-    theSquad.defenders.forEach(singlePlayer => singlePlayer.className3 = "faded")
-    theSquad.midfielders.forEach(singlePlayer => singlePlayer.className3 = "faded")
-    theSquad.forwards.forEach(singlePlayer => singlePlayer.className3 = "faded")
-    position.forEach(singlePlayer => singlePlayer.className3 = "switchable")
+    theSquad.goalkeepers.forEach(singlePlayer => singlePlayer.className = "faded")
+    theSquad.defenders.forEach(singlePlayer => singlePlayer.className = "faded")
+    theSquad.midfielders.forEach(singlePlayer => singlePlayer.className = "faded")
+    theSquad.forwards.forEach(singlePlayer => singlePlayer.className = "faded")
+    position.forEach(singlePlayer => singlePlayer.className = "switchable")
     setPlayerToSwitchIndex(playerIndex)
     setTheSquad({...theSquad})
   }
@@ -55,10 +55,10 @@ export const PlayerBean = (props) => {
     position[playerIndex] = position[playerToSwitchIndex]
     position[playerToSwitchIndex] = temporarySlot
     
-    theSquad.goalkeepers.forEach(singlePlayer => singlePlayer.className3 = "hoverable")
-    theSquad.defenders.forEach(singlePlayer => singlePlayer.className3 = "hoverable")
-    theSquad.midfielders.forEach(singlePlayer => singlePlayer.className3 = "hoverable")
-    theSquad.forwards.forEach(singlePlayer => singlePlayer.className3 = "hoverable")
+    theSquad.goalkeepers.forEach(singlePlayer => singlePlayer.className = "hoverable")
+    theSquad.defenders.forEach(singlePlayer => singlePlayer.className = "hoverable")
+    theSquad.midfielders.forEach(singlePlayer => singlePlayer.className = "hoverable")
+    theSquad.forwards.forEach(singlePlayer => singlePlayer.className = "hoverable")
     setTheSquad({...theSquad})
   }
   const handleStats = ()=>{
@@ -73,13 +73,17 @@ export const PlayerBean = (props) => {
     return <div className="player-bean player-bean-blank"></div>
   }
   else{
+    
+    let className1 = "player-bean"
+    let className2 = "player-bean-" + position[playerIndex].btnId.club.toLowerCase()
+    let className3 = position[playerIndex].className
+    
     return (
       <div
        className={
-         position[playerIndex].className1 + " " +
-         position[playerIndex].className2 + " " +
-         position[playerIndex].className3 + " " +
-         position[playerIndex].className4
+        className1 + " " +
+        className2 + " " +
+        className3
        }>
        <span
          className="player-bean-surname"
