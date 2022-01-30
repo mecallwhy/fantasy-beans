@@ -6,7 +6,6 @@ const RandomSquadButton = (props)=>{
     const {
         theSquad,
         clubTotalValue,
-        setBalance,
         setTheSquad, 
         setDisabledButtons
         } = props
@@ -144,7 +143,6 @@ const RandomSquadButton = (props)=>{
             // ZATRUDNIANIE 
            
             else{
-                setBalance(Math.round((clubTotalValue - moneySpent)*10)/10)
                 setDisabledButtons(buttonsToDisable)
                 setTheSquad(playersToHire)
             }

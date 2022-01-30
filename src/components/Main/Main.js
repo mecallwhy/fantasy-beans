@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./styles/style.css";
 
+import players from "./Players";
 import PlayerBean from "./PlayerBean.js";
 import Market from "./Market.js";
 import FormationButton from "./FormationButton.js";
@@ -13,8 +14,15 @@ function Main(){
   const [theSquad, setTheSquad] = useState(theSquadInitial);
   const [formationIndex, setFormationIndex] = useState(0);
   const [disabledButtons, setDisabledButtons] = useState([]);
-  const [balance, setBalance] = useState(170);
   const [clubTotalValue, setClubTotalValue] = useState(170);
+  const teamTotalValue = (()=>{
+    let value = 0
+    for(let i=0;i<disabledButtons.length;i++){
+      value += players[disabledButtons[i].marketIndex].price
+    }
+    return value
+  })
+  let balance = Math.round(clubTotalValue*10-teamTotalValue()*10)/10
   const [playerToSwitchIndex, setPlayerToSwitchIndex] = useState(0);
   const [matchdayIndex, setMatchdayIndex] = useState(0);
   const [teamname, setTeamName] = useState("FC Team");
@@ -34,8 +42,6 @@ function Main(){
     setTheSquad,
     disabledButtons,
     setDisabledButtons,
-    balance,
-    setBalance,
     playerToSwitchIndex,
     setPlayerToSwitchIndex,
     setStatsToShowIndex,
@@ -234,7 +240,6 @@ function Main(){
             disabledButtons={disabledButtons} 
             setDisabledButtons={(data) => setDisabledButtons(data)}
             balance = {balance}
-            setBalance = {setBalance}
             clubTotalValue ={clubTotalValue}
             setStatsToShowIndex={setStatsToShowIndex}
             setShowStats={setShowStats}
@@ -300,7 +305,6 @@ function Main(){
           disabledButtons={disabledButtons} 
           setDisabledButtons={(data) => setDisabledButtons(data)}
           balance = {balance}
-          setBalance = {setBalance}
           clubTotalValue ={clubTotalValue}
           setStatsToShowIndex={setStatsToShowIndex}
           setShowStats={setShowStats}

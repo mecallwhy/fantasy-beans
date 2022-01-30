@@ -17,8 +17,6 @@ export const PlayerBean = (props) => {
     setTheSquad,
     disabledButtons,
     setDisabledButtons,
-    balance,
-    setBalance,
     playerToSwitchIndex,
     setPlayerToSwitchIndex,
     setStatsToShowIndex,
@@ -28,14 +26,12 @@ export const PlayerBean = (props) => {
   const eliminatePlayer = () => {
     
     let newDisabledButtons = disabledButtons.filter(button => button !== position[playerIndex].btnId)
-    let newBalance = balance + position[playerIndex].price
 
     theSquad.goalkeepers = theSquad.goalkeepers.filter(singlePlayer => singlePlayer !== position[playerIndex])
     theSquad.defenders = theSquad.defenders.filter(singlePlayer => singlePlayer !== position[playerIndex])
     theSquad.midfielders = theSquad.midfielders.filter(singlePlayer => singlePlayer !== position[playerIndex])
     theSquad.forwards = theSquad.forwards.filter(singlePlayer => singlePlayer !== position[playerIndex])
 
-    setBalance(Math.round(newBalance *10)/10)
     setDisabledButtons(newDisabledButtons)
     setTheSquad({...theSquad})
   };

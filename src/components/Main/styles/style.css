@@ -745,7 +745,7 @@
       grid-template-rows: 27px 25px 36px 55px;
 }
 
-#market-search-bar, #market-reset-button, .market-random-squad-button, .market-sort-button-active, .market-sort-button {
+#market-search-bar, #market-reset-button, .market-random-squad-button, .market-sorting-option {
   font-family: 'Exo 2', sans-serif;
   border: none;
   padding: 0;
@@ -797,7 +797,8 @@
   width: 81%;
 }
 
-#market-sorting-menu-opener {
+#market-sorting-opener {
+  border-radius: 5px;
   -ms-grid-row: 2;
   -ms-grid-row-span: 1;
   grid-row: 2/3;
@@ -811,45 +812,10 @@
       align-self: center;
 }
 
-#sorting-menu {
-  -ms-grid-row: 2;
-  -ms-grid-row-span: 1;
-  grid-row: 2/3;
-  -ms-grid-column: 1;
-  -ms-grid-column-span: 4;
-  grid-column: 1/5;
-  position: relative;
-  list-style: none;
-  height: 10px;
-  width: 100%;
-  padding: 0;
-  margin: 0;
-}
-
-#sorting-menu li {
-  z-index: 100;
-}
-
-.market-sort-button-active {
-  border-radius: 0;
-  background-color: #1a1a1a;
-  color: #d8d8d8;
-  margin: 0;
-  height: 20px;
-  width: 90%;
-}
-
-.market-sort-button {
-  border-radius: 0;
+.market-sorting-option {
   background-color: #d8d8d8;
   color: #1a1a1a;
-  margin: 0;
-  height: 20px;
   width: 90%;
-}
-
-#surname-descending-button {
-  border-radius: 0 0 5px 5px;
 }
 
 #market-position-filters {

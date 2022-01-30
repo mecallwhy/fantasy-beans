@@ -14,7 +14,6 @@ const Market = (props) => {
     disabledButtons, 
     setDisabledButtons, 
     balance,
-    setBalance,
     clubTotalValue,
     setStatsToShowIndex,
     setShowStats
@@ -59,7 +58,6 @@ const Market = (props) => {
             disabledButtons, 
             setDisabledButtons, 
             balance,
-            setBalance, 
             theSquad)} 
       className="price-btn" 
       id={player.btnId.marketIndex}>
@@ -156,8 +154,6 @@ const Market = (props) => {
     sortDirectionAscending])
   
   const resetFilters = () => {
-    setSortParameter("price")
-    setSortDirectionAscending(false)
     setShowGoalkeepers(true)
     setShowDefenders(true)
     setShowMidfielders(true)
@@ -168,12 +164,11 @@ const Market = (props) => {
     setVisibleMarketPage(1)
   }
 
-  const sortChangeHandler = (parameter, direction) => {
-    setSortParameter(parameter)
-    setSortDirectionAscending(direction)
+  const sortChangeHandler = (data) => {
+    setSortParameter(data.parameter)
+    setSortDirectionAscending(data.ascending)
   }
 
-  const [showSortingMenu, setShowSortingMenu] = useState(false)
   return (
     <div id={id}>
       <h1>Rynek Transferowy</h1>
@@ -185,68 +180,51 @@ const Market = (props) => {
           value={searchValue}
           onChange={(e)=>setSearchValue(e.target.value)}
           />
-          <ul id={"sorting-menu"}>
-            <li>
-              <button
-                id="market-sorting-menu-opener"
-                className="market-sort-button-active" 
-                onClick={()=>setShowSortingMenu(!showSortingMenu)}
-                style={!showSortingMenu ? {borderRadius: "5px"} : {borderRadius: "5px 5px 0 0"}}>sortuj...
-              </button></li>
-              {showSortingMenu && <li>
-              <button 
-                id="price-descending-button" 
-                className={sortParameter === "price" && !sortDirectionAscending ? "market-sort-button-active" : "market-sort-button"} 
-                onClick={()=>{sortChangeHandler("price", false)}}>wg ceny (malejąco)
-              </button>
-              </li>}
-              {showSortingMenu && <li>
-                <button 
-                  id="price-ascending-button" 
-                  className={sortParameter === "price" && sortDirectionAscending ? "market-sort-button-active" : "market-sort-button"}
-                  onClick={()=>{sortChangeHandler("price", true)}}>wg ceny (rosnąco)
-                </button>
-              </li>}
-              {showSortingMenu && <li>
-                <button 
-                  id="overall-descending-button" 
-                  className={sortParameter === "overallPoints" && !sortDirectionAscending ? "market-sort-button-active" : "market-sort-button"}
-                  onClick={()=>{sortChangeHandler("overallPoints", false)}}>wg punktów (malejąco)
-                </button>
-              </li>}
-              {showSortingMenu && <li>
-                <button 
-                  id="overall-ascending-button" 
-                  className={sortParameter === "overallPoints" && sortDirectionAscending ? "market-sort-button-active" : "market-sort-button"}
-                  onClick={()=>{sortChangeHandler("overallPoints", true)}}>wg punktów (rosnąco)
-                </button>
-              </li>}
-              {showSortingMenu && <li>
-                <button 
-                  id="surname-ascending-button" 
-                  className={sortParameter === "surname" && sortDirectionAscending ? "market-sort-button-active" : "market-sort-button"}
-                  onClick={()=>{sortChangeHandler("surname", true)}}>wg nazwiska (A-Z)
-                </button>
-              </li>}
-              {showSortingMenu && <li>
-                <button 
-                  id="surname-descending-button" 
-                  className={sortParameter === "surname" && !sortDirectionAscending ? "market-sort-button-active" : "market-sort-button"} 
-                  onClick={()=>{sortChangeHandler("surname", false)}}>wg nazwiska (Z-A)
-                </button>
-              </li>}
-            </ul>
-            {!showSortingMenu && <button id="market-reset-button" 
+            <select
+              id="market-sorting-opener"
+              className="market-sorting-option" 
+              onChange={(e)=>sortChangeHandler(JSON.parse(e.target.value))}>
+              <option 
+                className="market-sorting-option"
+                value='{"parameter":"price", "ascending":false}'>
+                wg ceny malejąco
+              </option>
+              <option 
+                className="market-sorting-option"
+                value='{"parameter":"price", "ascending":true}'>
+                wg ceny rosnąco
+              </option>
+              <option 
+                className="market-sorting-option"
+                value='{"parameter":"overallPoints", "ascending":false}'>
+                wg punktów malejąco
+              </option>
+              <option 
+                className="market-sorting-option"
+                value='{"parameter":"overallPoints", "ascending":true}'>
+                wg punktów rosnąco
+              </option>
+              <option 
+                className="market-sorting-option"
+                value='{"parameter":"surname", "ascending":true}'>
+                wg nazwiska A-Z
+              </option>
+              <option 
+                className="market-sorting-option"
+                value='{"parameter":"surname", "ascending":false}'>
+                wg nazwiska Z-A
+              </option>
+            </select>
+            <button id="market-reset-button" 
               onClick={()=>{resetFilters()}}>reset filtrów
-            </button>}
-            {!showSortingMenu && <RandomSquadButton
+            </button>
+            <RandomSquadButton
               theSquad={theSquad}
               clubTotalValue={clubTotalValue}
-              setBalance = {setBalance}
               setTheSquad={setTheSquad}
               setDisabledButtons={(data) => setDisabledButtons(data)}
-            />}
-        {!showSortingMenu && <div id={"market-position-filters"}>
+            />
+        <div id="market-position-filters">
           <div 
             id="gk-filter-border-element" 
             className="border-element" 
@@ -315,7 +293,7 @@ const Market = (props) => {
               onClick={()=>{setShowForwards(!showForwards)}}>FWD
             </button>
           </div>
-        </div>}
+        </div>
       </div>
       <ul id={marketListID}>
         <li className="market-player-label">
@@ -345,13 +323,12 @@ const Market = (props) => {
 }
 
 const hirePlayer = (
-  btnId, 
+  btnId,
   price,
   setTheSquad,
   disabledButtons, 
   setDisabledButtons, 
   balance,
-  setBalance, 
   theSquad
   ) => {
 
@@ -391,7 +368,6 @@ const hirePlayer = (
         alert("Możesz mieć maksymalnie dwóch bramkarzy, pięciu obrońców, pięciu pomocników i trzech napastników w szerokiej kadrze.")
         return {...theSquad}
       }
-      setBalance(Math.round((balance - price)*10)/10)
       disabledButtons.push(btnId)
       setDisabledButtons([...disabledButtons])
       setTheSquad(theSquad)
