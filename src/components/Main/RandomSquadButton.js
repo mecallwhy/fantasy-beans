@@ -1,158 +1,104 @@
-import React from "react"
+import React from "react";
 import players from "./Players";
+import {checkPositionLimit} from "./utilities.js";
+import {findFirstFreeRole} from "./utilities.js";
 
 const RandomSquadButton = (props)=>{
 
+    //this component hires the squad of 15 unique random players, but with restrictions: 
+    //    max 3 players per club, 
+    //    exactly 2 goalkeepers, 5 defensors, 5 midfielders and 3 forwards
+    //    total value of players must not be less than user's budget - 1 but within the budget
+    //    the squad must contain at least "star" - one of the most expensive players
+
     const {
-        theSquad,
         clubTotalValue,
         setTheSquad, 
-        setDisabledButtons
-        } = props
-
-    const clearTheSquad = () => {
-        theSquad.goalkeepers = []
-        theSquad.defenders = []
-        theSquad.midfielders = []
-        theSquad.forwards = []
-        return theSquad
-    }
-    const handleRandomSquad = (theSquad) => {
-        let totalPlayersNeededNumber = 15
-        let goalkeepersNeededNumber = 2
-        let defendersNeededNumber = 5
-        let midfieldersNeededNumber = 5
-        let forwardsNeededNumber = 3
-        let averageBudgetPerPlayer = 0
-        let moneySpent = 0
+        positionLimits,
+        playersPerClubLimit,
+        roles,
+        } = props;
+    
+    const handleRandomSquad = () => {
+        let averageBudgetPerPlayer = 0;
+        let moneySpent = 0;
         
-        const goalkeepers = players.filter(player => player.position === "Gk")
-        
-        let positionArray
-        let buttonsToDisable = []
-        let newPlayer
-        let playersToHire = {
-            goalkeepers: [],
-            defenders: [],
-            midfielders: [],
-            forwards: [],
-        }
-
+        let newPlayer;
+        let playersToHire = [];
         const isWithinLimits = (player) => {
-            let isWithinClubLimits = false;
-            let isOnNeededPosition = false;
-            
-            if(buttonsToDisable.filter(singleButton => singleButton.club === player.btnId.club).length < 3){
-                isWithinClubLimits = true;
-            }
+            if(playersToHire.includes(player))
+                return false;
+            if(playersToHire.filter(singlePlayer => singlePlayer.playerData.club === player.club).length >= playersPerClubLimit)
+                return false;
+            if(!checkPositionLimit(player, playersToHire, positionLimits))
+                return false;
+            let firstFreeRole = findFirstFreeRole(roles, player, playersToHire);
+            playersToHire.push({
+                role: firstFreeRole,
+                playerData: player
+              })
+            return true;
+        }
 
-            switch(player.position){
-                case "Gk": if(playersToHire.goalkeepers.length < 2){ 
-                    isOnNeededPosition = true 
-                    positionArray = playersToHire.goalkeepers
-                    }
-                    break;
-                case "Def": if(playersToHire.defenders.length < 5){ 
-                    isOnNeededPosition = true
-                    positionArray = playersToHire.defenders
-                    }
-                    break;
-                case "Mid": if(playersToHire.midfielders.length < 5){ 
-                    isOnNeededPosition = true 
-                    positionArray = playersToHire.midfielders
-                    }
-                    break;
-                case "Fwd": if(playersToHire.forwards.length < 3){ 
-                    isOnNeededPosition = true 
-                    positionArray = playersToHire.forwards
-                    }
-                    break;
-                default:
-                    break;
-            }
-            if(isWithinClubLimits && isOnNeededPosition && !positionArray.includes(player)){
-                buttonsToDisable.push(player.btnId)
-                return true
-            }
+        let stars = players.filter(player => player.price >= 19)                         //hiring 1 "star"
+        newPlayer = stars[Math.floor(Math.random()*stars.length)]
+        if(isWithinLimits(newPlayer))
+            moneySpent = moneySpent + newPlayer.price;
+        
+        const goalkeepers = players.filter(player => player.position === "g");
+
+        while(playersToHire.length < 3){                                                  //hiring 2 goalkeepers
+            newPlayer = goalkeepers[Math.floor(Math.random()*goalkeepers.length)]
+            if(isWithinLimits(newPlayer))
+                moneySpent = moneySpent + newPlayer.price;
         }
-//                                  ZATRUDNIANIE JEDNEJ "GWIAZDY"
-        newPlayer = players.filter(player => player.price >= 19)[Math.floor(Math.random()*players.filter(player => player.price >= 19).length)]
-        if(isWithinLimits(newPlayer)){
-            moneySpent = moneySpent + newPlayer.price
-            positionArray.push(newPlayer)
-            totalPlayersNeededNumber--
-        }
-//                                  ZATRUDNIANIE BRAMKARZY
-    while(totalPlayersNeededNumber > 12){
-        newPlayer = goalkeepers[Math.floor(Math.random()*goalkeepers.length)]
-        if(isWithinLimits(newPlayer)){
-            moneySpent = moneySpent + newPlayer.price
-            positionArray.push(newPlayer)
-            totalPlayersNeededNumber--
-        }
-    }
-//                              ZATRUDNIANIE OŚMIU LOSOWYCH PIŁKARZY
-        while(totalPlayersNeededNumber > 4){         
+
+        while(playersToHire.length < 11){                                                 //hiring 8 random players
             newPlayer = players[Math.floor(Math.random()*players.length)]
-            if(isWithinLimits(newPlayer)){
-                moneySpent = moneySpent + newPlayer.price
-                positionArray.push(newPlayer)
-                totalPlayersNeededNumber--
-            }
-        }
-//                           ZATRUDNIANIE PIŁKARZY ZALEŻNIE OD BUDŻETU
-
-        averageBudgetPerPlayer = Math.round(((clubTotalValue - moneySpent) / 4)*10)/10
-        let infiniteLoopPrevention = 0
-        while(totalPlayersNeededNumber > 1 && infiniteLoopPrevention < 500){
-            newPlayer = players.filter(player => player.price >= averageBudgetPerPlayer - 1 && player.price <= averageBudgetPerPlayer + 1)[Math.floor(Math.random()*players.filter(player => player.price >= averageBudgetPerPlayer - 1 && player.price <= averageBudgetPerPlayer + 1).length)]
-            if(isWithinLimits(newPlayer)){
-                moneySpent = moneySpent + newPlayer.price
-                positionArray.push(newPlayer)
-                totalPlayersNeededNumber--
-            }
-            infiniteLoopPrevention++
-        }
-        if(totalPlayersNeededNumber !== 1){
-            handleRandomSquad(clearTheSquad())
+            if(isWithinLimits(newPlayer))
+                moneySpent = moneySpent + newPlayer.price;
         }
 
-//                      ZATRUDNIANIE OSTATNIEGO PIŁKARZA - NAJDROŻSZEGO NA KTÓREGO STAĆ UŻYTKOWNIKA
-        if((clubTotalValue - moneySpent) < 5 || (clubTotalValue - moneySpent) > 22){
-            handleRandomSquad(clearTheSquad())
+        averageBudgetPerPlayer = Math.round(((clubTotalValue - moneySpent) / 4)*10)/10    //hiring 4 players depending on budget
+        let infiniteLoopPrevention = 0;
+        while(playersToHire.length < 14 && infiniteLoopPrevention < 500){
+            const playersOfAverageValue = players.filter(player => 
+                player.price >= averageBudgetPerPlayer - 1 && 
+                player.price <= averageBudgetPerPlayer + 1)
+            newPlayer = playersOfAverageValue[Math.floor(Math.random()*playersOfAverageValue.length)]
+            if (isWithinLimits(newPlayer)){
+                moneySpent = moneySpent + newPlayer.price
+            }
+            infiniteLoopPrevention++;
         }
+        if(playersToHire.length !== 14)
+            handleRandomSquad();
+
+        if((clubTotalValue - moneySpent) < 5 || (clubTotalValue - moneySpent) > 22)       //hiring last player - the most expensive that user can afford
+            handleRandomSquad();
         else{
-            infiniteLoopPrevention = 0
-            while(totalPlayersNeededNumber > 0 && infiniteLoopPrevention < 500){
+            infiniteLoopPrevention = 0;
+            while(playersToHire.length !== 15 && infiniteLoopPrevention < 500){
                 const mostExpensiveAffordablePlayers = players.filter(player => 
                     player.price >= clubTotalValue - moneySpent -1 && 
                     player.price <= clubTotalValue - moneySpent)
                 newPlayer = mostExpensiveAffordablePlayers[Math.floor(Math.random()*mostExpensiveAffordablePlayers.length)]
-
                 if(isWithinLimits(newPlayer)){
                     moneySpent = moneySpent + newPlayer.price
-                    positionArray.push(newPlayer)
-                    totalPlayersNeededNumber--
                 }
                 infiniteLoopPrevention++
             }
-            if(totalPlayersNeededNumber !== 0){
-                handleRandomSquad(clearTheSquad())
-            }
-
-            // ZATRUDNIANIE 
-           
-            else{
-                setDisabledButtons(buttonsToDisable)
+            if(playersToHire.length !== 15)
+                handleRandomSquad()
+            else
                 setTheSquad(playersToHire)
-            }
         }
     }
 
     return (
             <button
                 className="market-random-squad-button"
-                onClick={()=>handleRandomSquad(clearTheSquad())}>losowy skład
+                onClick={()=>handleRandomSquad()}>losowy skład
             </button>
     )
 }

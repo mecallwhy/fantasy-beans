@@ -4,6 +4,8 @@ import RandomSquadButton from "./RandomSquadButton.js";
 import rightArrow from "./images/right-arrow.png";
 import leftArrow from "./images/left-arrow.png";
 import { inRange } from "./utilities.js";
+import {findFirstFreeRole} from "./utilities.js";
+import { playersWithinLimits } from "./utilities";
 
 const Market = (props) => {
 
@@ -11,33 +13,32 @@ const Market = (props) => {
     id,
     setTheSquad,
     theSquad, 
-    disabledButtons, 
-    setDisabledButtons, 
     balance,
     clubTotalValue,
-    setStatsToShowIndex,
-    setShowStats
-   } = props
-
-  const [marketPageIndex1, setMarketPageIndex1] = useState(0)
-  const [marketPageIndex2, setMarketPageIndex2] = useState(10)
+    setStatsToShow,
+    setShowStats,
+    positionLimits,
+    playersPerClubLimit,
+    roles
+   } = props;
   const [playersToMap, setPlayersToMap] = useState(players)
   const [visibleMarketPage, setVisibleMarketPage] = useState(1)
   const [marketListID, setMarketListID] = useState("market-list")
-
+  const [availablePlayers, setAvaliablePlayers] = useState([])
   const handleStats = (player)=>{
-    setStatsToShowIndex(player.btnId.marketIndex)
+    setStatsToShow(player)
     setShowStats(true)
   }
   const clubNameVersion = (player)=>{
-    if(id==="market-wide-screen"){
+    if(id==="market-wide-screen")
       return player.club.slice(0,3).toUpperCase()
-    }
-    else if(id==="market-small-screen"){
+    else if(id==="market-small-screen")
       return player.club.toUpperCase()
-    }
   }
-  
+  useEffect(()=>{
+    setAvaliablePlayers(playersWithinLimits(players, theSquad, balance, playersPerClubLimit, positionLimits))
+  },[theSquad])
+
   const listOfPlayers = playersToMap.map((player) =>
   <li key={player.id} className={"market-player market-player-" + player.position.toLowerCase()}>
     <span className={"position-marker-" + player.position.toLowerCase()}></span>
@@ -50,24 +51,21 @@ const Market = (props) => {
       {clubNameVersion(player)}
     </h3>
     <button
-      disabled={disabledButtons.includes(player.btnId)}
+      disabled={!availablePlayers.includes(player)}
       onClick={() => hirePlayer(
-            player.btnId,
-            player.price,
+            player,
             setTheSquad,
-            disabledButtons, 
-            setDisabledButtons, 
-            balance,
-            theSquad)} 
+            theSquad,
+            positionLimits,
+            roles
+            )} 
       className="price-btn" 
-      id={player.btnId.marketIndex}>
+      id={player.id}>
       {player.price + "K"}
     </button>
-  </li>).slice(marketPageIndex1, marketPageIndex2);
+  </li>).slice(visibleMarketPage*10-10, visibleMarketPage*10);
 
   const handlePageToggle = (pageNum) => {
-    const marketPageIndex1 = pageNum*10-10
-    const marketPageIndex2 = pageNum*10
     if(pageNum !== 0 && !inRange(playersToMap.length, (pageNum-2)*10, (pageNum-1)*10)){
       if(visibleMarketPage>pageNum){
         setMarketListID("market-list-right")
@@ -79,10 +77,8 @@ const Market = (props) => {
         setMarketListID("market-list")
       }, 400)
       setTimeout(() => {
-        setMarketPageIndex1(marketPageIndex1)
-        setMarketPageIndex2(marketPageIndex2)
         setVisibleMarketPage(pageNum)
-      } , 200);
+      }, 200);
     }
   }
 
@@ -94,18 +90,14 @@ const Market = (props) => {
   const [sortDirectionAscending, setSortDirectionAscending] = useState(false)
 
   const filterByPosition = (player) => {
-    if(showGoalkeepers && player.position==="Gk"){
+    if(showGoalkeepers && player.position==="g")
       return true
-    }
-    if(showDefenders && player.position==="Def"){
+    if(showDefenders && player.position==="d")
       return true
-    }
-    if(showMidfielders && player.position==="Mid"){
+    if(showMidfielders && player.position==="m")
       return true
-    }
-    if(showForwards && player.position==="Fwd"){
+    if(showForwards && player.position==="f")
       return true
-    }
   }
   const [searchValue, setSearchValue] = useState('')
   const filterBySearchValue = (player) => {
@@ -115,16 +107,13 @@ const Market = (props) => {
       const playerFullNameLow = playerFullName.toLowerCase()
   
       if (playerFullNameLow.includes(searchValue) ||
-        playerFullNameReversedLow.includes(searchValue) ||
-        playerFullName.includes(searchValue) ||
-        playerFullNameReversed.includes(searchValue) ||
-        searchValue === ''){
+          playerFullNameReversedLow.includes(searchValue) ||
+          playerFullName.includes(searchValue) ||
+          playerFullNameReversed.includes(searchValue) ||
+          searchValue === '')
           return true
-      }
   }
   useEffect(()=>{
-    setMarketPageIndex1(0)
-    setMarketPageIndex2(10)
     setVisibleMarketPage(1)
   },[showGoalkeepers, showDefenders, showMidfielders, showForwards, searchValue])
 
@@ -138,7 +127,6 @@ const Market = (props) => {
       }
     }
     setPlayersToMap(matchingPlayers)
-
     if(sortDirectionAscending){
       setPlayersToMap(matchingPlayers.sort((player1, player2) => (player1[sortParameter] > player2[sortParameter]) ? 1 : -1))
     }
@@ -159,8 +147,6 @@ const Market = (props) => {
     setShowMidfielders(true)
     setShowForwards(true)
     setSearchValue('')
-    setMarketPageIndex1(0)
-    setMarketPageIndex2(10)
     setVisibleMarketPage(1)
   }
 
@@ -169,6 +155,27 @@ const Market = (props) => {
     setSortDirectionAscending(data.ascending)
   }
 
+  const hirePlayer = (
+    player,
+    setTheSquad,
+    theSquad,
+    positionLimits,
+    roles
+    ) => {
+    let position = player.position;
+      for (let i=0; i<positionLimits.length; i++){
+        if (position === positionLimits[i].position){
+            let firstFreeRole = findFirstFreeRole(roles, player, theSquad)
+            theSquad.push({
+              role: firstFreeRole,
+              playerData: player
+            })
+            setTheSquad([...theSquad]);
+          
+        }
+      }
+  }
+  
   return (
     <div id={id}>
       <h1>Rynek Transferowy</h1>
@@ -219,10 +226,11 @@ const Market = (props) => {
               onClick={()=>{resetFilters()}}>reset filtrów
             </button>
             <RandomSquadButton
-              theSquad={theSquad}
               clubTotalValue={clubTotalValue}
               setTheSquad={setTheSquad}
-              setDisabledButtons={(data) => setDisabledButtons(data)}
+              positionLimits={positionLimits}
+              playersPerClubLimit={playersPerClubLimit}
+              roles={roles}
             />
         <div id="market-position-filters">
           <div 
@@ -247,8 +255,7 @@ const Market = (props) => {
             className="border-element"
             onClick={()=>{setShowDefenders(!showDefenders)}}>
             <button 
-              style={showDefenders
-                ?
+              style={showDefenders ?
                 {background:"linear-gradient(to left bottom, rgb(0, 255, 42), rgba(0, 167, 14))", 
                 color:"white",
                 fontSize:".7em"}
@@ -320,58 +327,6 @@ const Market = (props) => {
       </div>
     </div>
   )
-}
-
-const hirePlayer = (
-  btnId,
-  price,
-  setTheSquad,
-  disabledButtons, 
-  setDisabledButtons, 
-  balance,
-  theSquad
-  ) => {
-
-  let withinBudget = false;
-  let withinClubLimit = false;
-
-    if(price <= balance){
-      withinBudget = true;
-    }
-    else{
-      alert("Potrzebujesz " + price + " Kredytów, by kupić tego zawodnika, a masz tylko " + Math.round(balance *10)/10 + "K. Wstawaj wcześniej, zrezygnuj z awokado i cynamonowego latte, albo sprzedaj któregoś zawodnika by zwolnić środki na koncie.")
-      return {...theSquad}
-    }
-    
-    if(disabledButtons.filter(button => button.club === btnId.club).length<3){
-      withinClubLimit = true;
-    }
-    else{
-      alert("Możesz mieć maksymalnie trzech zawodników z jednego klubu w szerokiej kadrze.")
-      return {...theSquad}
-    }
-
-    if(withinBudget && withinClubLimit){
-      if(btnId.position === "g" && theSquad.goalkeepers.length < 2){
-        theSquad.goalkeepers.push(players[btnId.marketIndex])
-      }
-      else if(btnId.position === "d" && theSquad.defenders.length < 5){
-        theSquad.defenders.push(players[btnId.marketIndex])
-      }
-      else if(btnId.position === "m" && theSquad.midfielders.length < 5){
-        theSquad.midfielders.push(players[btnId.marketIndex])
-      } 
-      else if(btnId.position === "f" && theSquad.forwards.length < 3){
-        theSquad.forwards.push(players[btnId.marketIndex])
-      }
-      else{
-        alert("Możesz mieć maksymalnie dwóch bramkarzy, pięciu obrońców, pięciu pomocników i trzech napastników w szerokiej kadrze.")
-        return {...theSquad}
-      }
-      disabledButtons.push(btnId)
-      setDisabledButtons([...disabledButtons])
-      setTheSquad(theSquad)
-    }
 }
 
 export default Market

@@ -61,7 +61,6 @@ const Date = (props) => {
                     <span className="schedule-match-guest">{matchdayList[matchdayIndex][dateIndex].team20}</span></li>}
             </ul>
         </div>
-            
     )
 }
 

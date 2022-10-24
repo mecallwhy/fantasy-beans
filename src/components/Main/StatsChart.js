@@ -1,40 +1,39 @@
 import React from "react";
 import {Line} from "react-chartjs-2"
-import players from "./Players.js";
 import close from "./images/close.png";
 
 const StatsChart = (props) => {
 
-    const {statsToShowIndex, matchdaysPlayed, setShowStats} = props
-    let chartColor = ''
-    let statsClubClassName = ''
-    let position = ''
-    let positionColor = ''
+    const {statsToShow, matchdaysPlayed, setShowStats} = props
+    let chartColor
+    let statsClubClassName
+    let position
+    let positionColor
     const averagePointsPerMatch = () => {
       if(matchdaysPlayed === 0){
-        return 0
+        return 0;
       }
       else{
-        return Math.floor((players[statsToShowIndex].overallPoints/matchdaysPlayed)*10)/10
+        return Math.floor((statsToShow.overallPoints/matchdaysPlayed)*10)/10
       }
     }
-    switch(players[statsToShowIndex].position){
-      case "Gk":  position='Bramkarz'
+    switch(statsToShow.position){
+      case "g":  position='Bramkarz'
                   positionColor='rgb(219, 144, 3)'
                   break;
-      case "Def": position='Obrońca'
+      case "d": position='Obrońca'
                   positionColor='rgba(0, 167, 14)'
                   break;
-      case "Mid": position='Pomocnik'
+      case "m": position='Pomocnik'
                   positionColor='rgba(0, 25, 167)'
                   break;
-      case "Fwd": position='Napastnik'
+      case "f": position='Napastnik'
                   positionColor='rgba(209, 3, 3)'
                   break;
       default:
                   break;
     }
-      switch(players[statsToShowIndex].club){
+      switch(statsToShow.club){
         case "Atalanta": 
             chartColor = '#1E71B8'
             statsClubClassName = 'stats-club-Ata'
@@ -122,16 +121,16 @@ const StatsChart = (props) => {
       <div id="stats-blur">
         <div 
           id="stats-container">
-          <h1 id="stats-fullname"><span>{players[statsToShowIndex].name}</span>{" " + players[statsToShowIndex].surname}</h1>
+          <h1 id="stats-fullname"><span>{statsToShow.name}</span>{" " + statsToShow.surname}</h1>
           <ul id="stats-points">Punkty:
-            <li>ostatnia kolejka <span>{players[statsToShowIndex].recentMatchdayPoints} pkt</span></li>
+            <li>ostatnia kolejka <span>{statsToShow.recentMatchdayPoints} pkt</span></li>
             <li>średnia <span>{averagePointsPerMatch()} pkt</span></li>
-            <li>łącznie <span>{players[statsToShowIndex].overallPoints} pkt</span></li>
+            <li>łącznie <span>{statsToShow.overallPoints} pkt</span></li>
           </ul>
           <h3 
             id="stats-club"
             className={statsClubClassName}>
-              {players[statsToShowIndex].club + " #" + players[statsToShowIndex].shirtNumber}</h3>
+              {statsToShow.club + " #" + statsToShow.shirtNumber}</h3>
           <h3 
             id="stats-position"
             style={{backgroundColor: positionColor}}>{position}</h3>
@@ -164,18 +163,18 @@ const StatsChart = (props) => {
                   tension: 0.5,
                   label: 'punkty',
                   data: [
-                    players[statsToShowIndex].matchday1Points, 
-                    players[statsToShowIndex].matchday2Points, 
-                    players[statsToShowIndex].matchday3Points, 
-                    players[statsToShowIndex].matchday4Points, 
-                    players[statsToShowIndex].matchday5Points, 
-                    players[statsToShowIndex].matchday6Points, 
-                    players[statsToShowIndex].matchday7Points, 
-                    players[statsToShowIndex].matchday8Points, 
-                    players[statsToShowIndex].matchday9Points, 
-                    players[statsToShowIndex].matchday10Points, 
-                    players[statsToShowIndex].matchday11Points, 
-                    players[statsToShowIndex].matchday12Points]
+                    statsToShow.matchday1Points, 
+                    statsToShow.matchday2Points, 
+                    statsToShow.matchday3Points, 
+                    statsToShow.matchday4Points, 
+                    statsToShow.matchday5Points, 
+                    statsToShow.matchday6Points, 
+                    statsToShow.matchday7Points, 
+                    statsToShow.matchday8Points, 
+                    statsToShow.matchday9Points, 
+                    statsToShow.matchday10Points, 
+                    statsToShow.matchday11Points, 
+                    statsToShow.matchday12Points]
                 }]
               }}
             />

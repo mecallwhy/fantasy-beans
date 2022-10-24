@@ -6,8 +6,7 @@ import { inRange } from "./utilities.js";
 
 export const PlayerBean = (props) => {
   const {
-    playerIndex,
-    position,
+    player,
     extraBean,
     playerBeanProps
   } = props;
@@ -15,64 +14,44 @@ export const PlayerBean = (props) => {
    const {
     theSquad,
     setTheSquad,
-    disabledButtons,
-    setDisabledButtons,
-    playerToSwitchIndex,
-    setPlayerToSwitchIndex,
-    setStatsToShowIndex,
+    playerToSwitchId,
+    setPlayerToSwitchId,
+    setStatsToShow,
     setShowStats,
   } = playerBeanProps
-
+  let playersOfSamePosition = player && theSquad.filter(singlePlayer => singlePlayer.playerData.position === player.playerData.position)
   const eliminatePlayer = () => {
-    
-    let newDisabledButtons = disabledButtons.filter(button => button !== position[playerIndex].btnId)
-
-    theSquad.goalkeepers = theSquad.goalkeepers.filter(singlePlayer => singlePlayer !== position[playerIndex])
-    theSquad.defenders = theSquad.defenders.filter(singlePlayer => singlePlayer !== position[playerIndex])
-    theSquad.midfielders = theSquad.midfielders.filter(singlePlayer => singlePlayer !== position[playerIndex])
-    theSquad.forwards = theSquad.forwards.filter(singlePlayer => singlePlayer !== position[playerIndex])
-
-    setDisabledButtons(newDisabledButtons)
-    setTheSquad({...theSquad})
+    setTheSquad([...theSquad.filter(singlePlayer => singlePlayer.playerData.id !== player.playerData.id)])
   };
-
   const prepareToSwitch = () => {
-    
-    theSquad.goalkeepers.forEach(singlePlayer => singlePlayer.className = "faded")
-    theSquad.defenders.forEach(singlePlayer => singlePlayer.className = "faded")
-    theSquad.midfielders.forEach(singlePlayer => singlePlayer.className = "faded")
-    theSquad.forwards.forEach(singlePlayer => singlePlayer.className = "faded")
-    position.forEach(singlePlayer => singlePlayer.className = "switchable")
-    setPlayerToSwitchIndex(playerIndex)
-    setTheSquad({...theSquad})
+    theSquad.forEach(singlePlayer => singlePlayer.playerData.className = "faded")
+    playersOfSamePosition.forEach(singlePlayer => singlePlayer.playerData.className = "switchable")
+    setPlayerToSwitchId(player.playerData.id)
+    setTheSquad([...theSquad])
   }
   const switchPlayers = () => {
-    let temporarySlot = position[playerIndex]
-    position[playerIndex] = position[playerToSwitchIndex]
-    position[playerToSwitchIndex] = temporarySlot
-    
-    theSquad.goalkeepers.forEach(singlePlayer => singlePlayer.className = "hoverable")
-    theSquad.defenders.forEach(singlePlayer => singlePlayer.className = "hoverable")
-    theSquad.midfielders.forEach(singlePlayer => singlePlayer.className = "hoverable")
-    theSquad.forwards.forEach(singlePlayer => singlePlayer.className = "hoverable")
-    setTheSquad({...theSquad})
+    let playerToSwitch = theSquad.find(singlePlayer => singlePlayer.playerData.id === playerToSwitchId)
+    let temporarySlot = player.role
+    player.role = playerToSwitch.role
+    playerToSwitch.role = temporarySlot
+    theSquad.forEach(singlePlayer => singlePlayer.playerData.className = "hoverable")
+    setTheSquad([...theSquad])
   }
   const handleStats = ()=>{
-    setStatsToShowIndex(position[playerIndex].btnId.marketIndex)
+    setStatsToShow(player.playerData)
     setShowStats(true)
   }
 
   if(extraBean){
-    return null
+    return null;
   }
-  else if(!position[playerIndex]){
+  else if(!player){
     return <div className="player-bean player-bean-blank"></div>
   }
   else{
-    
     let className1 = "player-bean"
-    let className2 = "player-bean-" + position[playerIndex].btnId.club.toLowerCase()
-    let className3 = position[playerIndex].className
+    let className2 = "player-bean-" + player.playerData.club.toLowerCase().slice(0, 3)
+    let className3 = player.playerData.className
     
     return (
       <div
@@ -83,22 +62,22 @@ export const PlayerBean = (props) => {
        }>
        <span
          className="player-bean-surname"
-         style={inRange(position[playerIndex].surname.length, 0, 4) ? {fontSize: ".95em"} : 
-               inRange(position[playerIndex].surname.length, 5, 7) ? {fontSize: ".85em"} : 
+         style={inRange(player.playerData.surname.length, 0, 4) ? {fontSize: ".95em"} : 
+               inRange(player.playerData.surname.length, 5, 7) ? {fontSize: ".85em"} : 
                {fontSize: ".65em"}}>
-         {position[playerIndex].surname}
+         {player.playerData.surname}
        </span>
        <span
          className="player-bean-number">
-         {position[playerIndex].shirtNumber}
+         {player.playerData.shirtNumber}
        </span>
        <span 
          className="player-bean-points">
-         {position[playerIndex].overallPoints !== "" ? + position[playerIndex].overallPoints + "p" : ""}
+         {player.playerData.overallPoints !== "" ? + player.playerData.overallPoints + "p" : ""}
        </span>
        <span 
          className="player-bean-price">
-         {position[playerIndex].price !== "" ? position[playerIndex].price + "K" : ""}
+         {player.playerData.price !== "" ? player.playerData.price + "K" : ""}
          </span>
        <button
          className="player-bean-btn-stats"

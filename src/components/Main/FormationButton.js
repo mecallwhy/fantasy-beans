@@ -3,7 +3,6 @@ import React from "react";
 const FormationButton = (props) => {
   const {
     id,
-    theSquad,
     setFormation,
     formationName,
     newFormationIndex,
