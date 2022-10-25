@@ -2,4 +2,4 @@ Fantasy Beans is browser-based fantasy football game. User assemble virtual imag
 User can sell and buy players from Market after every Matchday (usually 1 Matchday = 1 weekend). Prices of players change during season based on players performance.
 Users then compete with each other in leagues or head-to-head duels. 
 
-To run project locally go with: "npm start"
+To run project locally go with: "npm i" and then "npm start"
