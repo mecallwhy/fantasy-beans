@@ -1,4 +1,5 @@
 import React, { useEffect, useState} from "react";
+import axios from "axios";
 import players from "./Players";
 import RandomSquadButton from "./RandomSquadButton.js";
 import rightArrow from "./images/right-arrow.png";
@@ -21,6 +22,14 @@ const Market = (props) => {
     playersPerClubLimit,
     roles
    } = props;
+
+   useEffect(()=>{
+    axios.get(`https://soccer.sportmonks.com/api/v2.0/countries/320/teams?api_token=${process.env.REACT_APP_API_KEY}&include=squad`)
+    .then((response) => {
+        console.log(response.data.data)
+    })
+},[])
+
   const [playersToMap, setPlayersToMap] = useState(players)
   const [visibleMarketPage, setVisibleMarketPage] = useState(1)
   const [marketListID, setMarketListID] = useState("market-list")
@@ -37,7 +46,7 @@ const Market = (props) => {
   }
   useEffect(()=>{
     setAvaliablePlayers(playersWithinLimits(players, theSquad, balance, playersPerClubLimit, positionLimits))
-  },[theSquad])
+  },[theSquad, balance, playersPerClubLimit, positionLimits])
 
   const listOfPlayers = playersToMap.map((player) =>
   <li key={player.id} className={"market-player market-player-" + player.position.toLowerCase()}>
@@ -91,13 +100,13 @@ const Market = (props) => {
 
   const filterByPosition = (player) => {
     if(showGoalkeepers && player.position==="g")
-      return true
+      return true;
     if(showDefenders && player.position==="d")
-      return true
+      return true;
     if(showMidfielders && player.position==="m")
-      return true
+      return true;
     if(showForwards && player.position==="f")
-      return true
+      return true;
   }
   const [searchValue, setSearchValue] = useState('')
   const filterBySearchValue = (player) => {
@@ -105,13 +114,13 @@ const Market = (props) => {
       const playerFullName = player.name + " " + player.surname
       const playerFullNameReversedLow = playerFullNameReversed.toLowerCase()
       const playerFullNameLow = playerFullName.toLowerCase()
-  
+
       if (playerFullNameLow.includes(searchValue) ||
           playerFullNameReversedLow.includes(searchValue) ||
           playerFullName.includes(searchValue) ||
           playerFullNameReversed.includes(searchValue) ||
           searchValue === '')
-          return true
+          return true;
   }
   useEffect(()=>{
     setVisibleMarketPage(1)
@@ -163,17 +172,16 @@ const Market = (props) => {
     roles
     ) => {
     let position = player.position;
-      for (let i=0; i<positionLimits.length; i++){
-        if (position === positionLimits[i].position){
-            let firstFreeRole = findFirstFreeRole(roles, player, theSquad)
-            theSquad.push({
-              role: firstFreeRole,
-              playerData: player
-            })
-            setTheSquad([...theSquad]);
-          
-        }
+    for (const singlePosition of positionLimits){
+      if (position === singlePosition.position){
+          let firstFreeRole = findFirstFreeRole(roles, player, theSquad)
+          theSquad.push({
+            role: firstFreeRole,
+            playerData: player
+          })
+          setTheSquad([...theSquad]);
       }
+    }
   }
   
   return (

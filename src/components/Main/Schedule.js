@@ -1,11 +1,18 @@
-import React from "react";
-import Date from "./Date";
-import matchdayList from "./matchdayList";
+import React, { useState, useEffect } from "react";
+import Matchday from "./Matchday";
 import rightArrow from "./images/right-arrow.png";
 import leftArrow from "./images/left-arrow.png";
+import axios from "axios";
 
 const Schedule = (props) => {
-    const {id, matchdayIndex, setMatchdayIndex} = props
+    const {id, matchdayIndex, setMatchdayIndex, league, season} = props;
+    const [schedule, setSchedule] = useState();
+    useEffect(()=>{
+      season && axios.get(`https://soccer.sportmonks.com/api/v2.0/rounds/season/${season}?api_token=${process.env.REACT_APP_API_KEY}`)
+      .then((response) => {
+        setSchedule(response.data.data)
+      })
+    },[season])
 
     return (
         <div id={id}>
@@ -17,13 +24,9 @@ const Schedule = (props) => {
               </button>}
             {matchdayIndex < 37 && <button id="schedule-matchday-next-button" onClick={()=>{setMatchdayIndex(matchdayIndex+1)}}>
                 <img src={rightArrow} alt="right"></img>
-              </button>}
-          </div>
-          
-          <Date matchdayIndex={matchdayIndex} dateIndex={0} />
-          {matchdayList[matchdayIndex][1].date && <Date matchdayIndex={matchdayIndex} dateIndex={1}/>}
-          {matchdayList[matchdayIndex][2].date && <Date matchdayIndex={matchdayIndex} dateIndex={2}/>}
-          {matchdayList[matchdayIndex][3].date && <Date matchdayIndex={matchdayIndex} dateIndex={3}/>}
+              </button>} 
+          </div> 
+          {schedule && <Matchday league={league} season={season} matchday={schedule[matchdayIndex]}/>}
         </div>
     )
 }

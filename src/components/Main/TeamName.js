@@ -5,7 +5,7 @@ import { inRange } from "./utilities.js";
 
 const TeamName = (props) => {
 
-    const {teamname,
+    const {teamName,
         setTeamName,
         renameActive,
         setRenameActive
@@ -57,10 +57,10 @@ const TeamName = (props) => {
                 onClick={()=>{setRenameActive(true)}}
                 id="teamdata-teamname"
                 style={
-                    teamname.length < 12 ? {fontSize: "24px"} :
-                    inRange(teamname.length, 12, 17) ? {fontSize: "22px"} :
+                    teamName.length < 12 ? {fontSize: "24px"} :
+                    inRange(teamName.length, 12, 17) ? {fontSize: "22px"} :
                     {fontSize: "16px"}}>
-                {teamname}
+                {teamName}
               </h2>
             </div>
         )

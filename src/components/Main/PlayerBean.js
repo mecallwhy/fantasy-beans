@@ -18,7 +18,8 @@ export const PlayerBean = (props) => {
     setPlayerToSwitchId,
     setStatsToShow,
     setShowStats,
-  } = playerBeanProps
+  } = playerBeanProps;
+  
   let playersOfSamePosition = player && theSquad.filter(singlePlayer => singlePlayer.playerData.position === player.playerData.position)
   const eliminatePlayer = () => {
     setTheSquad([...theSquad.filter(singlePlayer => singlePlayer.playerData.id !== player.playerData.id)])

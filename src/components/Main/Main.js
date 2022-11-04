@@ -11,19 +11,22 @@ import StatsChart from "./StatsChart";
 
 function Main(){
   const [theSquad, setTheSquad] = useState(theSquadInitial);
-  const [formationIndex, setFormationIndex] = useState(0);
-  const [clubTotalValue, setClubTotalValue] = useState(170);
   const teamTotalValue = (()=>{
     let value = 0;
     for(let player of theSquad){
       value += player.playerData.price;
     }
     return value;
-  })
-  let balance = Math.round(clubTotalValue*10-teamTotalValue()*10)/10
+  });
+  const initialBalance = 170;
+  const balance = Math.round(initialBalance*10 - teamTotalValue()*10)/10
+  const clubTotalValue = Math.round(balance*10 + teamTotalValue()*10)/10;
+  const season = 19686;
+  const league = 501;
+  const [formationIndex, setFormationIndex] = useState(0);
   const [playerToSwitchId, setPlayerToSwitchId] = useState();
   const [matchdayIndex, setMatchdayIndex] = useState(0);
-  const [teamname, setTeamName] = useState("FC Team");
+  const [teamName, setTeamName] = useState("FC Team");
   const [renameActive, setRenameActive] = useState(false);
   const [statsToShow, setStatsToShow] = useState();
   const [showStats, setShowStats] = useState(false);
@@ -94,7 +97,7 @@ function Main(){
           <h5 id="teamdata-teamname-info">Zespół:</h5>
           <h5 id="teamdata-balance-status-info">Stan konta/wartość klubu:</h5>
           <TeamName 
-            teamname= {teamname}
+            teamName= {teamName}
             setTeamName= {setTeamName}
             renameActive= {renameActive}
             setRenameActive= {setRenameActive}/>
@@ -248,7 +251,9 @@ function Main(){
         <Schedule
           id={"schedule-wide-screen"}    
           matchdayIndex={matchdayIndex}
-          setMatchdayIndex={setMatchdayIndex}/>
+          setMatchdayIndex={setMatchdayIndex}
+          league={league}
+          season={season}/>
       </div>
       <div id="bench-img-container">
         <div id="bench-gradient-container">
@@ -308,6 +313,8 @@ function Main(){
           id={"schedule-small-screen"}
           matchdayIndex={matchdayIndex}
           setMatchdayIndex={setMatchdayIndex}
+          league={league}
+          season={season}
         />
       </div>
     </div>

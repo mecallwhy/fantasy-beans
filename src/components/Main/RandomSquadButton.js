@@ -20,6 +20,7 @@ const RandomSquadButton = (props)=>{
         } = props;
     
     const handleRandomSquad = () => {
+
         let averageBudgetPerPlayer = 0;
         let moneySpent = 0;
         
@@ -52,13 +53,11 @@ const RandomSquadButton = (props)=>{
             if(isWithinLimits(newPlayer))
                 moneySpent = moneySpent + newPlayer.price;
         }
-
         while(playersToHire.length < 11){                                                 //hiring 8 random players
             newPlayer = players[Math.floor(Math.random()*players.length)]
             if(isWithinLimits(newPlayer))
                 moneySpent = moneySpent + newPlayer.price;
         }
-
         averageBudgetPerPlayer = Math.round(((clubTotalValue - moneySpent) / 4)*10)/10    //hiring 4 players depending on budget
         let infiniteLoopPrevention = 0;
         while(playersToHire.length < 14 && infiniteLoopPrevention < 500){
@@ -73,15 +72,14 @@ const RandomSquadButton = (props)=>{
         }
         if(playersToHire.length !== 14)
             handleRandomSquad();
-
         if((clubTotalValue - moneySpent) < 5 || (clubTotalValue - moneySpent) > 22)       //hiring last player - the most expensive that user can afford
             handleRandomSquad();
         else{
             infiniteLoopPrevention = 0;
+            const mostExpensiveAffordablePlayers = players.filter(player => 
+                player.price >= clubTotalValue - moneySpent -1 && 
+                player.price <= clubTotalValue - moneySpent)
             while(playersToHire.length !== 15 && infiniteLoopPrevention < 500){
-                const mostExpensiveAffordablePlayers = players.filter(player => 
-                    player.price >= clubTotalValue - moneySpent -1 && 
-                    player.price <= clubTotalValue - moneySpent)
                 newPlayer = mostExpensiveAffordablePlayers[Math.floor(Math.random()*mostExpensiveAffordablePlayers.length)]
                 if(isWithinLimits(newPlayer)){
                     moneySpent = moneySpent + newPlayer.price
@@ -94,7 +92,6 @@ const RandomSquadButton = (props)=>{
                 setTheSquad(playersToHire)
         }
     }
-
     return (
             <button
                 className="market-random-squad-button"
