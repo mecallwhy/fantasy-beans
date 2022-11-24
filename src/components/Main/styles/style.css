@@ -892,50 +892,35 @@
   grid-column: 4/5;
 }
 
-.position-marker-g {
+.position-marker-fwd, .position-marker-mid, .position-marker-def, .position-marker-gk {
   grid-column: 1/2;
+  align-self: center;
+  justify-self: center;
+  width: 4px;
+  height: 70%;
+  transition-duration: 300ms;
+}
+
+.position-marker-gk {
   background-color: rgb(219, 144, 3);
-  width: 4px;
-  align-self: center;
-  justify-self: center;
-  height: 70%;
-  transition-duration: 300ms;
 }
 
-.position-marker-d {
-  grid-column: 1/2;
+.position-marker-def {
   background-color: rgb(17, 204, 0);
-  width: 4px;
-  align-self: center;
-  justify-self: center;
-  height: 70%;
-  transition-duration: 300ms;
 }
 
-.position-marker-m {
-  grid-column: 1/2;
+.position-marker-mid {
   background-color: rgb(0, 25, 167);
-  width: 4px;
-  align-self: center;
-  justify-self: center;
-  height: 70%;
-  transition-duration: 300ms;
 }
 
-.position-marker-f {
-  grid-column: 1/2;
+.position-marker-fwd {
   background-color: rgb(253, 1, 1);
-  width: 4px;
-  align-self: center;
-  justify-self: center;
-  height: 70%;
-  transition-duration: 300ms;
 }
 
-.market-player:hover .position-marker-g,
-.market-player:hover .position-marker-d,
-.market-player:hover .position-marker-m,
-.market-player:hover .position-marker-f {
+.market-player:hover .position-marker-gk,
+.market-player:hover .position-marker-def,
+.market-player:hover .position-marker-mid,
+.market-player:hover .position-marker-fwd {
   height: 130%;
   transition-duration: 300ms;
 }
